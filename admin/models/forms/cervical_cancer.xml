@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
+	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+>
+	<fieldset name="details">
+		<!-- Default Fields. -->
+		<!-- Id Field. Type: Text (joomla) -->
+		<field
+			name="id"
+			type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description ="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true"
+		/>
+		<!-- Date Created Field. Type: Calendar (joomla) -->
+		<field
+			name="created"
+			type="calendar"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CREATED_DATE_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CREATED_DATE_DESC"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			filter="user_utc"
+		/>
+		<!-- User Created Field. Type: User (joomla) -->
+		<field
+			name="created_by"
+			type="user"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CREATED_BY_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CREATED_BY_DESC"
+		/>
+		<!-- Published Field. Type: List (joomla) -->
+		<field name="published" type="list" label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC" class="chzn-color-state"
+			filter="intval" size="1" default="1" >
+			<option value="1">
+				JPUBLISHED</option>
+			<option value="0">
+				JUNPUBLISHED</option>
+			<option value="2">
+				JARCHIVED</option>
+			<option value="-2">
+				JTRASHED</option>
+		</field>
+		<!-- Date Modified Field. Type: Calendar (joomla) -->
+		<field name="modified" type="calendar" class="readonly"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_MODIFIED_DATE_LABEL" description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_MODIFIED_DATE_DESC"
+			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<!-- User Modified Field. Type: User (joomla) -->
+		<field name="modified_by" type="user"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_MODIFIED_BY_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_MODIFIED_BY_DESC"
+			class="readonly"
+			readonly="true"
+			filter="unset"
+		/>
+		<!-- Access Field. Type: Accesslevel (joomla) -->
+		<field name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			description="JFIELD_ACCESS_DESC"
+			default="1"
+			required="false"
+		/>
+		<!-- Ordering Field. Type: Numbers (joomla) -->
+		<field
+			name="ordering"
+			type="number"
+			class="inputbox validate-ordering"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_ORDERING_LABEL"
+			description=""
+			default="0"
+			size="6"
+			required="false"
+		/>
+		<!-- Version Field. Type: Text (joomla) -->
+		<field
+			name="version"
+			type="text"
+			class="readonly"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_VERSION_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_VERSION_DESC"
+			size="6"
+			readonly="true"
+			filter="unset"
+		/>
+		<!-- Was added due to Permissions JS needing a Title field -->
+		<!-- Let us know at gh-629 should this change -->
+		<!-- https://github.com/vdm-io/Joomla-Component-Builder/issues/629#issuecomment-750117235 -->
+		<field
+			name="title"
+			type="hidden"
+			default="ehealth_portal cervical_cancer"
+		/>
+		<!-- Dynamic Fields. -->
+		<!-- Patient Field. Type: User. (joomla) -->
+		<field
+			type="user"
+			name="patient"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_PATIENT_LABEL"
+		/>
+		<!-- Cc_viginal_bleeding Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_viginal_bleeding"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_VIGINAL_BLEEDING_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_VIGINAL_BLEEDING_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Cc_v_discharge Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_v_discharge"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_V_DISCHARGE_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_V_DISCHARGE_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Cc_periods Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_periods"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_PERIODS_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_PERIODS_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Cc_smoking Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_smoking"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_SMOKING_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_SMOKING_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Cc_sex_actve Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_sex_actve"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_SEX_ACTVE_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_SEX_ACTVE_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Cc_sex_partner Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_sex_partner"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_SEX_PARTNER_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_SEX_PARTNER_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Pap_smear_collection Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="pap_smear_collection"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_PAP_SMEAR_COLLECTION_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_PAP_SMEAR_COLLECTION_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO</option>
+		</field>
+		<!-- Cc_result Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="cc_result"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_RESULT_LABEL"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_RESULT_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			required="true"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_POSITIVE</option>
+			<option value="1">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_NEGATIVE</option>
+			<option value="2">
+				COM_EHEALTH_PORTAL_CERVICAL_CANCER_INCONCLUSIVE</option>
+		</field>
+		<!-- Referral Field. Type: Referrals. (custom) -->
+		<field
+			type="referrals"
+			name="referral"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_REFERRAL_LABEL"
+			class="list_class"
+			multiple="false"
+			default="0"
+			button="true"
+		/>
+		<!-- Reason Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="reason"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_REASON_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_REASON_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_REASON_HINT"
+		/>
+		<!-- Txt_cc_v_discharge Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="txt_cc_v_discharge"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_V_DISCHARGE_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_V_DISCHARGE_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_V_DISCHARGE_HINT"
+		/>
+		<!-- Txt_cc_sex_actve Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="txt_cc_sex_actve"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SEX_ACTVE_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SEX_ACTVE_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SEX_ACTVE_HINT"
+		/>
+		<!-- Txt_cc_periods Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="txt_cc_periods"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_PERIODS_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_PERIODS_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_PERIODS_HINT"
+		/>
+		<!-- Cc_reason Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="cc_reason"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_REASON_LABEL"
+			size="10"
+			maxlength="150"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_REASON_DESCRIPTION"
+			class="text_area"
+			readonly="false"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_REASON_MESSAGE"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_CC_REASON_HINT"
+			autocomplete="on"
+		/>
+		<!-- Txt_cc_smoking Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="txt_cc_smoking"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SMOKING_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SMOKING_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SMOKING_HINT"
+		/>
+		<!-- Txt_cc_viginal_bleeding Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="txt_cc_viginal_bleeding"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_VIGINAL_BLEEDING_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_VIGINAL_BLEEDING_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_VIGINAL_BLEEDING_HINT"
+		/>
+		<!-- Txt_cc_sex_partner Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="txt_cc_sex_partner"
+			label="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SEX_PARTNER_LABEL"
+			rows="5"
+			cols="20"
+			description="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SEX_PARTNER_DESCRIPTION"
+			class="text_area span12"
+			filter="HTML"
+			hint="COM_EHEALTH_PORTAL_CERVICAL_CANCER_TXT_CC_SEX_PARTNER_HINT"
+		/>
+	</fieldset>
+	
+	<!-- Access Control Fields. -->
+	<fieldset name="accesscontrol">
+		<!-- Asset Id Field. Type: Hidden (joomla) -->
+		<field
+			name="asset_id"
+			type="hidden"
+			filter="unset"
+		/>
+		<!-- Rules Field. Type: Rules (joomla) -->
+		<field
+			name="rules"
+			type="rules"
+			label="Permissions in relation to this cervical_cancer"
+			translate_label="false"
+			filter="rules"
+			validate="rules"
+			class="inputbox"
+			component="com_ehealth_portal"
+			section="cervical_cancer"
+		/>
+	</fieldset>
+</form>
