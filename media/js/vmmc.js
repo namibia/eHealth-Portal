@@ -9,12 +9,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		vmmc.js
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ jform_vvvvvvyvvw_required = false;
 jform_vvvvvvyvvx_required = false;
 
 // Initial Script
-jQuery(document).ready(function()
+document.addEventListener('DOMContentLoaded', function()
 {
 	var vmmc_gender_vvvvvvx = jQuery("#jform_vmmc_gender").val();
 	vvvvvvx(vmmc_gender_vvvvvvx);
@@ -172,7 +172,7 @@ function vmmc_gender_vvvvvvy_SomeFunc(vmmc_gender_vvvvvvy)
 // update fields required
 function updateFieldRequired(name, status) {
 	// check if not_required exist
-	if (jQuery('#jform_not_required').length > 0) {
+	if (document.getElementById('jform_not_required')) {
 		var not_required = jQuery('#jform_not_required').val().split(",");
 
 		if(status == 1)
@@ -218,4 +218,4 @@ function isSet(val)
 		return true;
 	}
 	return false;
-} 
+}

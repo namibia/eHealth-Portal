@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		edit.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,137 +26,135 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
-JHtml::_('behavior.keepalive');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+Html::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+Html::_('behavior.formvalidator');
+Html::_('formbehavior.chosen', 'select');
+Html::_('behavior.keepalive');
+
 $componentParams = $this->params; // will be removed just use $this->params instead
 ?>
 <script type="text/javascript">
 	// waiting spinner
-	var outerDiv = jQuery('body');
-	jQuery('<div id="loading"></div>')
-		.css("background", "rgba(255, 255, 255, .8) url('components/com_ehealth_portal/assets/images/import.gif') 50% 15% no-repeat")
-		.css("top", outerDiv.position().top - jQuery(window).scrollTop())
-		.css("left", outerDiv.position().left - jQuery(window).scrollLeft())
-		.css("width", outerDiv.width())
-		.css("height", outerDiv.height())
-		.css("position", "fixed")
-		.css("opacity", "0.80")
-		.css("-ms-filter", "progid:DXImageTransform.Microsoft.Alpha(Opacity = 80)")
-		.css("filter", "alpha(opacity = 80)")
-		.css("display", "none")
-		.appendTo(outerDiv);
-	jQuery('#loading').show();
+	var outerDiv = document.querySelector('body');
+	var loadingDiv = document.createElement('div');
+	loadingDiv.id = 'loading';
+	loadingDiv.style.cssText = "background: rgba(255, 255, 255, .8) url('components/com_ehealthportal/assets/images/import.gif') 50% 15% no-repeat; top: " + (outerDiv.getBoundingClientRect().top + window.pageYOffset) + "px; left: " + (outerDiv.getBoundingClientRect().left + window.pageXOffset) + "px; width: " + outerDiv.offsetWidth + "px; height: " + outerDiv.offsetHeight + "px; position: fixed; opacity: 0.80; -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80); filter: alpha(opacity=80); display: none;";
+	outerDiv.appendChild(loadingDiv);
+	loadingDiv.style.display = 'block';
 	// when page is ready remove and show
-	jQuery(window).load(function() {
-		jQuery('#ehealth_portal_loader').fadeIn('fast');
-		jQuery('#loading').hide();
+	window.addEventListener('load', function() {
+		var componentLoader = document.getElementById('ehealthportal_loader');
+		if (componentLoader) componentLoader.style.display = 'block';
+		loadingDiv.style.display = 'none';
 	});
 </script>
-<div id="ehealth_portal_loader" style="display: none;">
-<form action="<?php echo JRoute::_('index.php?option=com_ehealth_portal&layout=edit&id='. (int) $this->item->id . $this->referral); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
+<div id="ehealthportal_loader" style="display: none;">
+<form action="<?php echo Route::_('index.php?option=com_ehealthportal&layout=edit&id='. (int) $this->item->id . $this->referral); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
-	<?php echo JLayoutHelper::render('test.urine_above', $this); ?>
+	<?php echo LayoutHelper::render('test.urine_above', $this); ?>
 <div class="form-horizontal">
 
-	<?php echo JHtml::_('bootstrap.startTabSet', 'testTab', array('active' => 'urine')); ?>
+	<?php echo Html::_('bootstrap.startTabSet', 'testTab', array('active' => 'urine')); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'urine', JText::_('COM_EHEALTH_PORTAL_TEST_URINE', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'urine', Text::_('COM_EHEALTHPORTAL_TEST_URINE', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.urine_left', $this); ?>
+				<?php echo LayoutHelper::render('test.urine_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'glucose', JText::_('COM_EHEALTH_PORTAL_TEST_GLUCOSE', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'glucose', Text::_('COM_EHEALTHPORTAL_TEST_GLUCOSE', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.glucose_left', $this); ?>
+				<?php echo LayoutHelper::render('test.glucose_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'haemoglobin', JText::_('COM_EHEALTH_PORTAL_TEST_HAEMOGLOBIN', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'haemoglobin', Text::_('COM_EHEALTHPORTAL_TEST_HAEMOGLOBIN', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.haemoglobin_left', $this); ?>
+				<?php echo LayoutHelper::render('test.haemoglobin_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'cholesterol', JText::_('COM_EHEALTH_PORTAL_TEST_CHOLESTEROL', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'cholesterol', Text::_('COM_EHEALTHPORTAL_TEST_CHOLESTEROL', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.cholesterol_left', $this); ?>
+				<?php echo LayoutHelper::render('test.cholesterol_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'syphillis', JText::_('COM_EHEALTH_PORTAL_TEST_SYPHILLIS', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'syphillis', Text::_('COM_EHEALTHPORTAL_TEST_SYPHILLIS', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.syphillis_left', $this); ?>
+				<?php echo LayoutHelper::render('test.syphillis_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'hepatitis_b', JText::_('COM_EHEALTH_PORTAL_TEST_HEPATITIS_B', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'hepatitis_b', Text::_('COM_EHEALTHPORTAL_TEST_HEPATITIS_B', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.hepatitis_b_left', $this); ?>
+				<?php echo LayoutHelper::render('test.hepatitis_b_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'malaria', JText::_('COM_EHEALTH_PORTAL_TEST_MALARIA', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'malaria', Text::_('COM_EHEALTHPORTAL_TEST_MALARIA', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.malaria_left', $this); ?>
+				<?php echo LayoutHelper::render('test.malaria_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'pregnancy', JText::_('COM_EHEALTH_PORTAL_TEST_PREGNANCY', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'pregnancy', Text::_('COM_EHEALTHPORTAL_TEST_PREGNANCY', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('test.pregnancy_left', $this); ?>
+				<?php echo LayoutHelper::render('test.pregnancy_left', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'referrals', JText::_('COM_EHEALTH_PORTAL_TEST_REFERRALS', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'referrals', Text::_('COM_EHEALTHPORTAL_TEST_REFERRALS', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span6">
-				<?php echo JLayoutHelper::render('test.referrals_left', $this); ?>
+				<?php echo LayoutHelper::render('test.referrals_left', $this); ?>
 			</div>
 			<div class="span6">
-				<?php echo JLayoutHelper::render('test.referrals_right', $this); ?>
+				<?php echo LayoutHelper::render('test.referrals_right', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
 	<?php $this->ignore_fieldsets = array('details','metadata','vdmmetadata','accesscontrol'); ?>
 	<?php $this->tab_name = 'testTab'; ?>
-	<?php echo JLayoutHelper::render('joomla.edit.params', $this); ?>
+	<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 
 	<?php if ($this->canDo->get('core.edit.created_by') || $this->canDo->get('core.edit.created') || $this->canDo->get('core.edit.state') || ($this->canDo->get('core.delete') && $this->canDo->get('core.edit.state'))) : ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'publishing', JText::_('COM_EHEALTH_PORTAL_TEST_PUBLISHING', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'publishing', Text::_('COM_EHEALTHPORTAL_TEST_PUBLISHING', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span6">
-				<?php echo JLayoutHelper::render('test.publishing', $this); ?>
+				<?php echo LayoutHelper::render('test.publishing', $this); ?>
 			</div>
 			<div class="span6">
-				<?php echo JLayoutHelper::render('test.publlshing', $this); ?>
+				<?php echo LayoutHelper::render('test.publlshing', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 	<?php endif; ?>
 
 	<?php if ($this->canDo->get('core.admin')) : ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'testTab', 'permissions', JText::_('COM_EHEALTH_PORTAL_TEST_PERMISSION', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'testTab', 'permissions', Text::_('COM_EHEALTHPORTAL_TEST_PERMISSION', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
 				<fieldset class="adminform">
@@ -171,14 +169,14 @@ $componentParams = $this->params; // will be removed just use $this->params inst
 				</fieldset>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 	<?php endif; ?>
 
-	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+	<?php echo Html::_('bootstrap.endTabSet'); ?>
 
 	<div>
 		<input type="hidden" name="task" value="test.edit" />
-		<?php echo JHtml::_('form.token'); ?>
+		<?php echo Html::_('form.token'); ?>
 	</div>
 </div>
 </form>

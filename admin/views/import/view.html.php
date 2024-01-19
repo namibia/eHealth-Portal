@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		view.html.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,10 +26,16 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use VDM\Joomla\Utilities\StringHelper;
+
 /**
- * Ehealth_portal Import View
+ * Ehealthportal Import Html View
  */
-class Ehealth_portalViewImport extends JViewLegacy
+class EhealthportalViewImport extends HtmlView
 {
 	protected $headerList;
 	protected $hasPackage = false;
@@ -38,11 +44,11 @@ class Ehealth_portalViewImport extends JViewLegacy
 	protected $dataType;
 
 	public function display($tpl = null)
-	{		
+	{
 		if ($this->getLayout() !== 'modal')
 		{
 			// Include helper submenu
-			Ehealth_portalHelper::addSubmenu('import');
+			EhealthportalHelper::addSubmenu('import');
 		}
 
 		$paths = new stdClass;
@@ -51,8 +57,8 @@ class Ehealth_portalViewImport extends JViewLegacy
 
 		$this->paths = &$paths;
 		$this->state = &$state;
-                // get global action permissions
-		$this->canDo = Ehealth_portalHelper::getActions('import');
+		// get global action permissions
+		$this->canDo = EhealthportalHelper::getActions('import');
 
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
@@ -62,18 +68,18 @@ class Ehealth_portalViewImport extends JViewLegacy
 		}
 
 		// get the session object
-		$session = JFactory::getSession();
+		$session = Factory::getSession();
 		// check if it has package
-		$this->hasPackage 	= $session->get('hasPackage', false);
-		$this->dataType 	= $session->get('dataType', false);
+		$this->hasPackage     = $session->get('hasPackage', false);
+		$this->dataType     = $session->get('dataType', false);
 		if($this->hasPackage && $this->dataType)
 		{
-			$this->headerList 	= json_decode($session->get($this->dataType.'_VDM_IMPORTHEADERS', false),true);
-			$this->headers 		= Ehealth_portalHelper::getFileHeaders($this->dataType);
+			$this->headerList     = json_decode($session->get($this->dataType.'_VDM_IMPORTHEADERS', false),true);
+			$this->headers         = EhealthportalHelper::getFileHeaders($this->dataType);
 			// clear the data type
 			$session->clear('dataType');
 		}
-		
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -89,19 +95,19 @@ class Ehealth_portalViewImport extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_EHEALTH_PORTAL_IMPORT_TITLE'), 'upload');
-		JHtmlSidebar::setAction('index.php?option=com_ehealth_portal&view=import');
+		ToolbarHelper::title(Text::_('COM_EHEALTHPORTAL_IMPORT_TITLE'), 'upload');
+		JHtmlSidebar::setAction('index.php?option=com_ehealthportal&view=import');
 
 		if ($this->canDo->get('core.admin') || $this->canDo->get('core.options'))
 		{
-			JToolBarHelper::preferences('com_ehealth_portal');
+			ToolbarHelper::preferences('com_ehealthportal');
 		}
 
 		// set help url for this view if found
-		$help_url = Ehealth_portalHelper::getHelpUrl('import');
-		if (Ehealth_portalHelper::checkString($help_url))
+		$this->help_url = EhealthportalHelper::getHelpUrl('import');
+		if (StringHelper::check($this->help_url))
 		{
-			   JToolbarHelper::help('COM_EHEALTH_PORTAL_HELP_MANAGER', false, $help_url);
+			ToolbarHelper::help('COM_EHEALTHPORTAL_HELP_MANAGER', false, $this->help_url);
 		}
 	}
 }

@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		paymentsfilterpaymentamount.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,57 +26,61 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+
 // import the list field type
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
 /**
- * Paymentsfilterpaymentamount Form Field class for the Ehealth_portal component
+ * Paymentsfilterpaymentamount Form Field class for the Ehealthportal component
  */
 class JFormFieldPaymentsfilterpaymentamount extends JFormFieldList
 {
 	/**
 	 * The paymentsfilterpaymentamount field type.
 	 *
-	 * @var		string
+	 * @var        string
 	 */
 	public $type = 'paymentsfilterpaymentamount';
 
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return	array    An array of JHtml options.
+	 * @return    array    An array of Html options.
 	 */
 	protected function getOptions()
 	{
 		// Get a db connection.
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 
 		// Create a new query object.
 		$query = $db->getQuery(true);
 
 		// Select the text.
 		$query->select($db->quoteName('payment_amount'));
-		$query->from($db->quoteName('#__ehealth_portal_payment'));
+		$query->from($db->quoteName('#__ehealthportal_payment'));
 		$query->order($db->quoteName('payment_amount') . ' ASC');
 
 		// Reset the query using our newly populated query object.
 		$db->setQuery($query);
 
-		$results = $db->loadColumn();
-		$_filter = array();
+		$_results = $db->loadColumn();
+		$_filter = [];
 
-		if ($results)
+		if ($_results)
 		{
 			// get paymentsmodel
-			$model = Ehealth_portalHelper::getModel('payments');
-			$results = array_unique($results);
-			foreach ($results as $payment_amount)
+			$_model = EhealthportalHelper::getModel('payments');
+			$_results = array_unique($_results);
+			foreach ($_results as $payment_amount)
 			{
 				// Translate the payment_amount selection
-				$text = $model->selectionTranslation($payment_amount,'payment_amount');
+				$_text = $_model->selectionTranslation($payment_amount,'payment_amount');
 				// Now add the payment_amount and its text to the options array
-				$_filter[] = JHtml::_('select.option', $payment_amount, JText::_($text));
+				$_filter[] = Html::_('select.option', $payment_amount, Text::_($_text));
 			}
 		}
 		return $_filter;

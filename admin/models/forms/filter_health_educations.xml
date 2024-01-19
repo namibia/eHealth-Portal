@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fields name="filter">
 		<field
 			type="text"
 			name="search"
 			inputmode="search"
-			label="COM_EHEALTH_PORTAL_FILTER_SEARCH"
-			description="COM_EHEALTH_PORTAL_FILTER_SEARCH_HEALTH_EDUCATIONS"
+			label="COM_EHEALTHPORTAL_FILTER_SEARCH"
+			description="COM_EHEALTHPORTAL_FILTER_SEARCH_HEALTH_EDUCATIONS"
 			hint="JSEARCH_FILTER"
 		/>
 		<field
 			type="status"
 			name="published"
-			label="COM_EHEALTH_PORTAL_FILTER_PUBLISHED"
-			description="COM_EHEALTH_PORTAL_FILTER_PUBLISHED_HEALTH_EDUCATIONS"
+			label="COM_EHEALTHPORTAL_FILTER_PUBLISHED"
+			description="COM_EHEALTHPORTAL_FILTER_PUBLISHED_HEALTH_EDUCATIONS"
 			onchange="this.form.submit();"
 		>
 			<option value="">JOPTION_SELECT_PUBLISHED</option>
@@ -33,14 +33,14 @@
 		<field
 			type="healtheducationsfiltereducationtype"
 			name="education_type"
-			label="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_EDUCATION_TYPE_LABEL"
+			label="COM_EHEALTHPORTAL_HEALTH_EDUCATION_EDUCATION_TYPE_LABEL"
 			multiple="false"
 			onchange="this.form.submit();"
 		/>
 		<field
 			type="healtheducationsfilterpatient"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_HEALTH_EDUCATION_PATIENT_LABEL"
 			class="multipleHealtheducationsfilterpatient"
 			multiple="true"
 			onchange="this.form.submit();"
@@ -63,10 +63,10 @@
 			<option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
 			<option value="a.published ASC">JSTATUS_ASC</option>
 			<option value="a.published DESC">JSTATUS_DESC</option>
-			<option value="g.name ASC">COM_EHEALTH_PORTAL_FILTER_SELECT_TOPIC_ASCENDING</option>
-			<option value="g.name DESC">COM_EHEALTH_PORTAL_FILTER_SELECT_TOPIC_DESCENDING</option>
-			<option value="a.patient ASC">COM_EHEALTH_PORTAL_FILTER_PATIENT_NAME_ASCENDING</option>
-			<option value="a.patient DESC">COM_EHEALTH_PORTAL_FILTER_PATIENT_NAME_DESCENDING</option>
+			<option value="g.name ASC">COM_EHEALTHPORTAL_FILTER_SELECT_TOPIC_ASCENDING</option>
+			<option value="g.name DESC">COM_EHEALTHPORTAL_FILTER_SELECT_TOPIC_DESCENDING</option>
+			<option value="a.patient ASC">COM_EHEALTHPORTAL_FILTER_PATIENT_NAME_ASCENDING</option>
+			<option value="a.patient DESC">COM_EHEALTHPORTAL_FILTER_PATIENT_NAME_DESCENDING</option>
 			<option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
 			<option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
 		</field>

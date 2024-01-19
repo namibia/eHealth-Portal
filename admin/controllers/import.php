@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		import.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,17 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
 use Joomla\Utilities\ArrayHelper;
 
 /**
- * Ehealth_portal Import Controller
+ * Ehealthportal Import Base Controller
  */
-class Ehealth_portalControllerImport extends JControllerLegacy
+class EhealthportalControllerImport extends BaseController
 {
 	/**
 	 * Import an spreadsheet.
@@ -41,28 +46,28 @@ class Ehealth_portalControllerImport extends JControllerLegacy
 	public function import()
 	{
 		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
 		$model = $this->getModel('import');
 		if ($model->import())
 		{
-			$cache = JFactory::getCache('mod_menu');
+			$cache = Factory::getCache('mod_menu');
 			$cache->clean();
 			// TODO: Reset the users acl here as well to kill off any missing bits
 		}
 
-		$app = JFactory::getApplication();
-		$redirect_url = $app->getUserState('com_ehealth_portal.redirect_url');
+		$app = Factory::getApplication();
+		$redirect_url = $app->getUserState('com_ehealthportal.redirect_url');
 		if (empty($redirect_url))
 		{
-			$redirect_url = JRoute::_('index.php?option=com_ehealth_portal&view=import', false);
+			$redirect_url = Route::_('index.php?option=com_ehealthportal&view=import', false);
 		}
 		else
 		{
 			// wipe out the user state when we're going to redirect
-			$app->setUserState('com_ehealth_portal.redirect_url', '');
-			$app->setUserState('com_ehealth_portal.message', '');
-			$app->setUserState('com_ehealth_portal.extension_message', '');
+			$app->setUserState('com_ehealthportal.redirect_url', '');
+			$app->setUserState('com_ehealthportal.message', '');
+			$app->setUserState('com_ehealthportal.extension_message', '');
 		}
 		$this->setRedirect($redirect_url);
 	}

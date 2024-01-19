@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		default_head.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,14 +26,17 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+
 ?>
 <tr>
 	<?php if ($this->canEdit&& $this->canState): ?>
 		<th width="1%" class="nowrap center hidden-phone">
-			<?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $this->listDirn, $this->listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+			<?php echo Html::_('searchtools.sort', '', 'a.ordering', $this->listDirn, $this->listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 		</th>
 		<th width="20" class="nowrap center">
-			<?php echo JHtml::_('grid.checkall'); ?>
+			<?php echo Html::_('grid.checkall'); ?>
 		</th>
 	<?php else: ?>
 		<th width="20" class="nowrap center hidden-phone">
@@ -44,36 +47,36 @@ defined('_JEXEC') or die('Restricted access');
 		</th>
 	<?php endif; ?>
 	<th class="nowrap" >
-			<?php echo JHtml::_('searchtools.sort', 'COM_EHEALTH_PORTAL_VMMC_PATIENT_LABEL', 'a.patient', $this->listDirn, $this->listOrder); ?>
+			<?php echo Html::_('searchtools.sort', 'COM_EHEALTHPORTAL_VMMC_PATIENT_LABEL', 'a.patient', $this->listDirn, $this->listOrder); ?>
 	</th>
 	<th class="nowrap hidden-phone" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_ARE_YOU_CIRCUMCISED_LABEL'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_ARE_YOU_CIRCUMCISED_LABEL'); ?>
 	</th>
 	<th class="nowrap hidden-phone" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_INFO_BEN_VMCC_LABEL'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_INFO_BEN_VMCC_LABEL'); ?>
 	</th>
 	<th class="nowrap hidden-phone" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_INTERESTED_IN_VMMC_LABEL'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_INTERESTED_IN_VMMC_LABEL'); ?>
 	</th>
 	<th class="nowrap hidden-phone" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_VMMC_GENDER_LABEL'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_VMMC_GENDER_LABEL'); ?>
 	</th>
 	<th class="nowrap hidden-phone" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_REASON_LABEL'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_REASON_LABEL'); ?>
 	</th>
 	<th class="nowrap hidden-phone" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_REFERRAL_LABEL'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_REFERRAL_LABEL'); ?>
 	</th>
 	<?php if ($this->canState): ?>
 		<th width="10" class="nowrap center" >
-			<?php echo JHtml::_('searchtools.sort', 'COM_EHEALTH_PORTAL_VMMC_STATUS', 'a.published', $this->listDirn, $this->listOrder); ?>
+			<?php echo Html::_('searchtools.sort', 'COM_EHEALTHPORTAL_VMMC_STATUS', 'a.published', $this->listDirn, $this->listOrder); ?>
 		</th>
 	<?php else: ?>
 		<th width="10" class="nowrap center" >
-			<?php echo JText::_('COM_EHEALTH_PORTAL_VMMC_STATUS'); ?>
+			<?php echo Text::_('COM_EHEALTHPORTAL_VMMC_STATUS'); ?>
 		</th>
 	<?php endif; ?>
 	<th width="5" class="nowrap center hidden-phone" >
-			<?php echo JHtml::_('searchtools.sort', 'COM_EHEALTH_PORTAL_VMMC_ID', 'a.id', $this->listDirn, $this->listOrder); ?>
+			<?php echo Html::_('searchtools.sort', 'COM_EHEALTHPORTAL_VMMC_ID', 'a.id', $this->listDirn, $this->listOrder); ?>
 	</th>
 </tr>

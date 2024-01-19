@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		prostateandtesticularcancersfilterpatient.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,54 +26,58 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+
 // import the list field type
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
 /**
- * Prostateandtesticularcancersfilterpatient Form Field class for the Ehealth_portal component
+ * Prostateandtesticularcancersfilterpatient Form Field class for the Ehealthportal component
  */
 class JFormFieldProstateandtesticularcancersfilterpatient extends JFormFieldList
 {
 	/**
 	 * The prostateandtesticularcancersfilterpatient field type.
 	 *
-	 * @var		string
+	 * @var        string
 	 */
 	public $type = 'prostateandtesticularcancersfilterpatient';
 
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return	array    An array of JHtml options.
+	 * @return    array    An array of Html options.
 	 */
 	protected function getOptions()
 	{
 		// Get a db connection.
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 
 		// Create a new query object.
 		$query = $db->getQuery(true);
 
 		// Select the text.
 		$query->select($db->quoteName('patient'));
-		$query->from($db->quoteName('#__ehealth_portal_prostate_and_testicular_cancer'));
+		$query->from($db->quoteName('#__ehealthportal_prostate_and_testicular_cancer'));
 		$query->order($db->quoteName('patient') . ' ASC');
 
 		// Reset the query using our newly populated query object.
 		$db->setQuery($query);
 
-		$results = $db->loadColumn();
-		$_filter = array();
-		$_filter[] = JHtml::_('select.option', '', '- ' . JText::_('COM_EHEALTH_PORTAL_FILTER_SELECT_PATIENT_NAME') . ' -');
+		$_results = $db->loadColumn();
+		$_filter = [];
+		$_filter[] = Html::_('select.option', '', '- ' . Text::_('COM_EHEALTHPORTAL_FILTER_SELECT_PATIENT_NAME') . ' -');
 
-		if ($results)
+		if ($_results)
 		{
-			$results = array_unique($results);
-			foreach ($results as $patient)
+			$_results = array_unique($_results);
+			foreach ($_results as $patient)
 			{
 				// Now add the patient and its text to the options array
-				$_filter[] = JHtml::_('select.option', $patient, JFactory::getUser($patient)->name);
+				$_filter[] = Html::_('select.option', $patient, Factory::getUser($patient)->name);
 			}
 		}
 		return $_filter;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fieldset name="details">
 		<!-- Default Fields. -->
@@ -16,8 +16,8 @@
 		<field
 			name="created"
 			type="calendar"
-			label="COM_EHEALTH_PORTAL_TEST_CREATED_DATE_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_CREATED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_TEST_CREATED_DATE_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_CREATED_DATE_DESC"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc"
@@ -26,8 +26,8 @@
 		<field
 			name="created_by"
 			type="user"
-			label="COM_EHEALTH_PORTAL_TEST_CREATED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_CREATED_BY_DESC"
+			label="COM_EHEALTHPORTAL_TEST_CREATED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_CREATED_BY_DESC"
 		/>
 		<!-- Published Field. Type: List (joomla) -->
 		<field name="published" type="list" label="JSTATUS"
@@ -44,12 +44,12 @@
 		</field>
 		<!-- Date Modified Field. Type: Calendar (joomla) -->
 		<field name="modified" type="calendar" class="readonly"
-			label="COM_EHEALTH_PORTAL_TEST_MODIFIED_DATE_LABEL" description="COM_EHEALTH_PORTAL_TEST_MODIFIED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_TEST_MODIFIED_DATE_LABEL" description="COM_EHEALTHPORTAL_TEST_MODIFIED_DATE_DESC"
 			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
 		<!-- User Modified Field. Type: User (joomla) -->
 		<field name="modified_by" type="user"
-			label="COM_EHEALTH_PORTAL_TEST_MODIFIED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_MODIFIED_BY_DESC"
+			label="COM_EHEALTHPORTAL_TEST_MODIFIED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_MODIFIED_BY_DESC"
 			class="readonly"
 			readonly="true"
 			filter="unset"
@@ -67,7 +67,7 @@
 			name="ordering"
 			type="number"
 			class="inputbox validate-ordering"
-			label="COM_EHEALTH_PORTAL_TEST_ORDERING_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_ORDERING_LABEL"
 			description=""
 			default="0"
 			size="6"
@@ -78,8 +78,8 @@
 			name="version"
 			type="text"
 			class="readonly"
-			label="COM_EHEALTH_PORTAL_TEST_VERSION_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_VERSION_DESC"
+			label="COM_EHEALTHPORTAL_TEST_VERSION_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_VERSION_DESC"
 			size="6"
 			readonly="true"
 			filter="unset"
@@ -90,242 +90,243 @@
 		<field
 			name="title"
 			type="hidden"
-			default="ehealth_portal test"
+			default="ehealthportal test"
 		/>
 		<!-- Dynamic Fields. -->
 		<!-- Patient Field. Type: User. (joomla) -->
 		<field
 			type="user"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_TEST_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_PATIENT_LABEL"
+			required="true"
 		/>
 		<!-- Urine_test_result Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="urine_test_result"
-			label="COM_EHEALTH_PORTAL_TEST_URINE_TEST_RESULT_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_URINE_TEST_RESULT_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_URINE_TEST_RESULT_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_URINE_TEST_RESULT_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_NORMAL</option>
+				COM_EHEALTHPORTAL_TEST_NORMAL</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_ABNORMAL</option>
+				COM_EHEALTHPORTAL_TEST_ABNORMAL</option>
 		</field>
 		<!-- Glucose_first_reading Field. Type: Text. (joomla) -->
 		<field
 			type="text"
 			name="glucose_first_reading"
-			label="COM_EHEALTH_PORTAL_TEST_GLUCOSE_FIRST_READING_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_GLUCOSE_FIRST_READING_LABEL"
 			size="10"
 			maxlength="20"
-			description="COM_EHEALTH_PORTAL_TEST_GLUCOSE_FIRST_READING_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_TEST_GLUCOSE_FIRST_READING_DESCRIPTION"
 			class="text_area"
 			readonly="false"
 			disabled="false"
 			required="false"
 			filter="STRING"
-			hint="COM_EHEALTH_PORTAL_TEST_GLUCOSE_FIRST_READING_HINT"
+			hint="COM_EHEALTHPORTAL_TEST_GLUCOSE_FIRST_READING_HINT"
 		/>
 		<!-- Glucose_second_reading Field. Type: Text. (joomla) -->
 		<field
 			type="text"
 			name="glucose_second_reading"
-			label="COM_EHEALTH_PORTAL_TEST_GLUCOSE_SECOND_READING_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_GLUCOSE_SECOND_READING_LABEL"
 			size="10"
 			maxlength="20"
-			description="COM_EHEALTH_PORTAL_TEST_GLUCOSE_SECOND_READING_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_TEST_GLUCOSE_SECOND_READING_DESCRIPTION"
 			class="text_area"
 			readonly="false"
 			disabled="false"
 			required="false"
 			filter="STRING"
-			hint="COM_EHEALTH_PORTAL_TEST_GLUCOSE_SECOND_READING_HINT"
+			hint="COM_EHEALTHPORTAL_TEST_GLUCOSE_SECOND_READING_HINT"
 		/>
 		<!-- Haemoglobin_reading Field. Type: Text. (joomla) -->
 		<field
 			type="text"
 			name="haemoglobin_reading"
-			label="COM_EHEALTH_PORTAL_TEST_HAEMOGLOBIN_READING_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_HAEMOGLOBIN_READING_LABEL"
 			size="10"
 			maxlength="20"
-			description="COM_EHEALTH_PORTAL_TEST_HAEMOGLOBIN_READING_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_TEST_HAEMOGLOBIN_READING_DESCRIPTION"
 			class="text_area"
 			readonly="false"
 			disabled="false"
 			required="false"
 			filter="STRING"
-			hint="COM_EHEALTH_PORTAL_TEST_HAEMOGLOBIN_READING_HINT"
+			hint="COM_EHEALTHPORTAL_TEST_HAEMOGLOBIN_READING_HINT"
 			autocomplete="on"
 		/>
 		<!-- Cholesterol_reading Field. Type: Text. (joomla) -->
 		<field
 			type="text"
 			name="cholesterol_reading"
-			label="COM_EHEALTH_PORTAL_TEST_CHOLESTEROL_READING_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_CHOLESTEROL_READING_LABEL"
 			size="10"
 			maxlength="20"
-			description="COM_EHEALTH_PORTAL_TEST_CHOLESTEROL_READING_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_TEST_CHOLESTEROL_READING_DESCRIPTION"
 			class="text_area"
 			readonly="false"
 			disabled="false"
 			required="false"
 			filter="STRING"
-			hint="COM_EHEALTH_PORTAL_TEST_CHOLESTEROL_READING_HINT"
+			hint="COM_EHEALTHPORTAL_TEST_CHOLESTEROL_READING_HINT"
 			autocomplete="on"
 		/>
 		<!-- Syphilis_first_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="syphilis_first_reading"
-			label="COM_EHEALTH_PORTAL_TEST_SYPHILIS_FIRST_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_SYPHILIS_FIRST_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_SYPHILIS_FIRST_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_SYPHILIS_FIRST_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Syphilis_second_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="syphilis_second_reading"
-			label="COM_EHEALTH_PORTAL_TEST_SYPHILIS_SECOND_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_SYPHILIS_SECOND_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_SYPHILIS_SECOND_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_SYPHILIS_SECOND_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Hepatitis_first_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="hepatitis_first_reading"
-			label="COM_EHEALTH_PORTAL_TEST_HEPATITIS_FIRST_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_HEPATITIS_FIRST_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_HEPATITIS_FIRST_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_HEPATITIS_FIRST_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Hepatitis_second_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="hepatitis_second_reading"
-			label="COM_EHEALTH_PORTAL_TEST_HEPATITIS_SECOND_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_HEPATITIS_SECOND_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_HEPATITIS_SECOND_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_HEPATITIS_SECOND_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Malaria_first_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="malaria_first_reading"
-			label="COM_EHEALTH_PORTAL_TEST_MALARIA_FIRST_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_MALARIA_FIRST_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_MALARIA_FIRST_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_MALARIA_FIRST_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
-			required="true"
+			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Malaria_second_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="malaria_second_reading"
-			label="COM_EHEALTH_PORTAL_TEST_MALARIA_SECOND_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_MALARIA_SECOND_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_MALARIA_SECOND_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_MALARIA_SECOND_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
-			required="true"
+			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Pregnancy_first_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="pregnancy_first_reading"
-			label="COM_EHEALTH_PORTAL_TEST_PREGNANCY_FIRST_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_PREGNANCY_FIRST_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_PREGNANCY_FIRST_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_PREGNANCY_FIRST_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Pregnancy_second_reading Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="pregnancy_second_reading"
-			label="COM_EHEALTH_PORTAL_TEST_PREGNANCY_SECOND_READING_LABEL"
-			description="COM_EHEALTH_PORTAL_TEST_PREGNANCY_SECOND_READING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_TEST_PREGNANCY_SECOND_READING_LABEL"
+			description="COM_EHEALTHPORTAL_TEST_PREGNANCY_SECOND_READING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_TEST_POSITIVE</option>
+				COM_EHEALTHPORTAL_TEST_POSITIVE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_TEST_NEGATIVE</option>
+				COM_EHEALTHPORTAL_TEST_NEGATIVE</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_TEST_INCONCLUSIVE</option>
+				COM_EHEALTHPORTAL_TEST_INCONCLUSIVE</option>
 		</field>
 		<!-- Referral Field. Type: Referrals. (custom) -->
 		<field
 			type="referrals"
 			name="referral"
-			label="COM_EHEALTH_PORTAL_TEST_REFERRAL_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_REFERRAL_LABEL"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -335,16 +336,30 @@
 		<field
 			type="textarea"
 			name="reason"
-			label="COM_EHEALTH_PORTAL_TEST_REASON_LABEL"
+			label="COM_EHEALTHPORTAL_TEST_REASON_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_TEST_REASON_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_TEST_REASON_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_TEST_REASON_HINT"
+			hint="COM_EHEALTHPORTAL_TEST_REASON_HINT"
+		/>
+		<!-- Guid Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="guid"
+			label="COM_EHEALTHPORTAL_TEST_GUID_LABEL"
+			size="40"
+			maxlength="40"
+			description="COM_EHEALTHPORTAL_TEST_GUID_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			filter="CMD"
+			validate="guid"
+			hint="COM_EHEALTHPORTAL_TEST_GUID_HINT"
 		/>
 	</fieldset>
-	
+
 	<!-- Access Control Fields. -->
 	<fieldset name="accesscontrol">
 		<!-- Asset Id Field. Type: Hidden (joomla) -->
@@ -362,7 +377,7 @@
 			filter="rules"
 			validate="rules"
 			class="inputbox"
-			component="com_ehealth_portal"
+			component="com_ehealthportal"
 			section="test"
 		/>
 	</fieldset>

@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		view.html.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,22 +26,32 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access'); 
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+use Joomla\CMS\Layout\FileLayout;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use VDM\Joomla\Utilities\StringHelper;
+
 /**
- * Ehealth_portal View class for the Patient_queue
+ * Ehealthportal Html View class for the Patient_queue
  */
-class Ehealth_portalViewPatient_queue extends JViewLegacy
+class EhealthportalViewPatient_queue extends HtmlView
 {
 	// Overwriting JView display method
 	function display($tpl = null)
 	{
 		// get component params
-		$this->params = JComponentHelper::getParams('com_ehealth_portal');
+		$this->params = ComponentHelper::getParams('com_ehealthportal');
 		// get the application
-		$this->app = JFactory::getApplication();
+		$this->app = Factory::getApplication();
 		// get the user object
-		$this->user = JFactory::getUser();
+		$this->user = Factory::getUser();
 		// get global action permissions
-		$this->canDo = Ehealth_portalHelper::getActions('patient_queue');
+		$this->canDo = EhealthportalHelper::getActions('patient_queue');
 		// Initialise variables.
 		$this->item = $this->get('Item');
 
@@ -58,7 +68,7 @@ class Ehealth_portalViewPatient_queue extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			throw new Exception(implode(PHP_EOL, $errors), 500);
+			throw new \Exception(implode(PHP_EOL, $errors), 500);
 		}
 
 		parent::display($tpl);
@@ -70,14 +80,17 @@ class Ehealth_portalViewPatient_queue extends JViewLegacy
 	protected function setDocument()
 	{
 
-		// always make sure jquery is loaded.
-		JHtml::_('jquery.framework');
+		// Only load jQuery if needed. (default is true)
+		if ($this->params->get('add_jquery_framework', 1) == 1)
+		{
+			Html::_('jquery.framework');
+		}
 		// Load the header checker class.
 		require_once( JPATH_COMPONENT_ADMINISTRATOR.'/helpers/headercheck.php' );
 		// Initialize the header checker.
-		$HeaderCheck = new ehealth_portalHeaderCheck;
+		$HeaderCheck = new ehealthportalHeaderCheck();
 		// add the document default css file
-		$this->document->addStyleSheet(JURI::root(true) .'/administrator/components/com_ehealth_portal/assets/css/patient_queue.css', (Ehealth_portalHelper::jVersion()->isCompatible('3.8.0')) ? array('version' => 'auto') : 'text/css');
+		Html::_('stylesheet', 'administrator/components/com_ehealthportal/assets/css/patient_queue.css', ['version' => 'auto']);
 	}
 
 	/**
@@ -95,24 +108,24 @@ class Ehealth_portalViewPatient_queue extends JViewLegacy
 		// Check for empty title and add view name if param is set
 		if (empty($title))
 		{
-			$title = JText::_('COM_EHEALTH_PORTAL_PATIENT_QUEUE');
+			$title = Text::_('COM_EHEALTHPORTAL_PATIENT_QUEUE');
 		}
 		// add title to the page
-		JToolbarHelper::title($title,'joomla');
+		ToolbarHelper::title($title,'joomla');
 		// add cpanel button
-		JToolBarHelper::custom('patient_queue.dashboard', 'grid-2', '', 'COM_EHEALTH_PORTAL_DASH', false);
+		ToolbarHelper::custom('patient_queue.dashboard', 'grid-2', '', 'COM_EHEALTHPORTAL_DASH', false);
 
 		// set help url for this view if found
-		$help_url = Ehealth_portalHelper::getHelpUrl('patient_queue');
-		if (Ehealth_portalHelper::checkString($help_url))
+		$this->help_url = EhealthportalHelper::getHelpUrl('patient_queue');
+		if (StringHelper::check($this->help_url))
 		{
-			JToolbarHelper::help('COM_EHEALTH_PORTAL_HELP_MANAGER', false, $help_url);
+			ToolbarHelper::help('COM_EHEALTHPORTAL_HELP_MANAGER', false, $this->help_url);
 		}
 
 		// add the options comp button
 		if ($this->canDo->get('core.admin') || $this->canDo->get('core.options'))
 		{
-			JToolBarHelper::preferences('com_ehealth_portal');
+			ToolbarHelper::preferences('com_ehealthportal');
 		}
 	}
 
@@ -126,7 +139,7 @@ class Ehealth_portalViewPatient_queue extends JViewLegacy
 	public function escape($var)
 	{
 		// use the helper htmlEscape method instead.
-		return Ehealth_portalHelper::htmlEscape($var, $this->_charset);
+		return StringHelper::html($var, $this->_charset);
 	}
 }
 ?>

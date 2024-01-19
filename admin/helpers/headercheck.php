@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		headercheck.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,24 +26,36 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-class ehealth_portalHeaderCheck
+use Joomla\CMS\Factory;
+
+class ehealthportalHeaderCheck
 {
+	protected $document = null;
+	protected $app = null;
+
 	function js_loaded($script_name)
 	{
 		// UIkit check point
 		if (strpos($script_name,'uikit') !== false)
 		{
-			$app            	= JFactory::getApplication();
-			$getTemplateName  	= $app->getTemplate('template')->template;
-			
+			if (!$this->app)
+			{
+				$this->app = Factory::getApplication();
+			}
+
+			$getTemplateName = $this->app->getTemplate('template')->template;
 			if (strpos($getTemplateName,'yoo') !== false)
 			{
 				return true;
 			}
 		}
-		
-		$document 	= JFactory::getDocument();
-		$head_data 	= $document->getHeadData();
+
+		if (!$this->document)
+		{
+			$this->document = Factory::getDocument();
+		}
+
+		$head_data = $this->document->getHeadData();
 		foreach (array_keys($head_data['scripts']) as $script)
 		{
 			if (stristr($script, $script_name))
@@ -54,24 +66,30 @@ class ehealth_portalHeaderCheck
 
 		return false;
 	}
-	
+
 	function css_loaded($script_name)
 	{
 		// UIkit check point
 		if (strpos($script_name,'uikit') !== false)
 		{
-			$app            	= JFactory::getApplication();
-			$getTemplateName  	= $app->getTemplate('template')->template;
-			
+			if (!$this->app)
+			{
+				$this->app = Factory::getApplication();
+			}
+
+			$getTemplateName = $this->app->getTemplate('template')->template;
 			if (strpos($getTemplateName,'yoo') !== false)
 			{
 				return true;
 			}
 		}
-		
-		$document 	= JFactory::getDocument();
-		$head_data 	= $document->getHeadData();
-		
+
+		if (!$this->document)
+		{
+			$this->document = Factory::getDocument();
+		}
+
+		$head_data = $this->document->getHeadData();
 		foreach (array_keys($head_data['styleSheets']) as $script)
 		{
 			if (stristr($script, $script_name))

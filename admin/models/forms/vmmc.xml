@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fieldset name="details">
 		<!-- Default Fields. -->
@@ -16,8 +16,8 @@
 		<field
 			name="created"
 			type="calendar"
-			label="COM_EHEALTH_PORTAL_VMMC_CREATED_DATE_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_CREATED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_VMMC_CREATED_DATE_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_CREATED_DATE_DESC"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc"
@@ -26,8 +26,8 @@
 		<field
 			name="created_by"
 			type="user"
-			label="COM_EHEALTH_PORTAL_VMMC_CREATED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_CREATED_BY_DESC"
+			label="COM_EHEALTHPORTAL_VMMC_CREATED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_CREATED_BY_DESC"
 		/>
 		<!-- Published Field. Type: List (joomla) -->
 		<field name="published" type="list" label="JSTATUS"
@@ -44,12 +44,12 @@
 		</field>
 		<!-- Date Modified Field. Type: Calendar (joomla) -->
 		<field name="modified" type="calendar" class="readonly"
-			label="COM_EHEALTH_PORTAL_VMMC_MODIFIED_DATE_LABEL" description="COM_EHEALTH_PORTAL_VMMC_MODIFIED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_VMMC_MODIFIED_DATE_LABEL" description="COM_EHEALTHPORTAL_VMMC_MODIFIED_DATE_DESC"
 			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
 		<!-- User Modified Field. Type: User (joomla) -->
 		<field name="modified_by" type="user"
-			label="COM_EHEALTH_PORTAL_VMMC_MODIFIED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_MODIFIED_BY_DESC"
+			label="COM_EHEALTHPORTAL_VMMC_MODIFIED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_MODIFIED_BY_DESC"
 			class="readonly"
 			readonly="true"
 			filter="unset"
@@ -67,7 +67,7 @@
 			name="ordering"
 			type="number"
 			class="inputbox validate-ordering"
-			label="COM_EHEALTH_PORTAL_VMMC_ORDERING_LABEL"
+			label="COM_EHEALTHPORTAL_VMMC_ORDERING_LABEL"
 			description=""
 			default="0"
 			size="6"
@@ -78,8 +78,8 @@
 			name="version"
 			type="text"
 			class="readonly"
-			label="COM_EHEALTH_PORTAL_VMMC_VERSION_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_VERSION_DESC"
+			label="COM_EHEALTHPORTAL_VMMC_VERSION_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_VERSION_DESC"
 			size="6"
 			readonly="true"
 			filter="unset"
@@ -90,119 +90,134 @@
 		<field
 			name="title"
 			type="hidden"
-			default="ehealth_portal vmmc"
+			default="ehealthportal vmmc"
 		/>
 		<!-- Dynamic Fields. -->
 		<!-- Patient Field. Type: User. (joomla) -->
 		<field
 			type="user"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_VMMC_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_VMMC_PATIENT_LABEL"
+			required="true"
 		/>
 		<!-- Are_you_circumcised Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="are_you_circumcised"
-			label="COM_EHEALTH_PORTAL_VMMC_ARE_YOU_CIRCUMCISED_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_ARE_YOU_CIRCUMCISED_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_VMMC_ARE_YOU_CIRCUMCISED_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_ARE_YOU_CIRCUMCISED_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_VMMC_YES</option>
+				COM_EHEALTHPORTAL_VMMC_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_VMMC_NO</option>
+				COM_EHEALTHPORTAL_VMMC_NO</option>
 		</field>
 		<!-- Info_ben_vmcc Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="info_ben_vmcc"
-			label="COM_EHEALTH_PORTAL_VMMC_INFO_BEN_VMCC_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_INFO_BEN_VMCC_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_VMMC_INFO_BEN_VMCC_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_INFO_BEN_VMCC_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_VMMC_YES</option>
+				COM_EHEALTHPORTAL_VMMC_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_VMMC_NO</option>
+				COM_EHEALTHPORTAL_VMMC_NO</option>
 		</field>
 		<!-- Interested_in_vmmc Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="interested_in_vmmc"
-			label="COM_EHEALTH_PORTAL_VMMC_INTERESTED_IN_VMMC_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_INTERESTED_IN_VMMC_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_VMMC_INTERESTED_IN_VMMC_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_INTERESTED_IN_VMMC_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_VMMC_YES</option>
+				COM_EHEALTHPORTAL_VMMC_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_VMMC_NO</option>
+				COM_EHEALTHPORTAL_VMMC_NO</option>
 		</field>
 		<!-- Vmmc_gender Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="vmmc_gender"
-			label="COM_EHEALTH_PORTAL_VMMC_VMMC_GENDER_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_VMMC_GENDER_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_VMMC_VMMC_GENDER_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_VMMC_GENDER_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_VMMC_MALE</option>
+				COM_EHEALTHPORTAL_VMMC_MALE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_VMMC_FEMALE</option>
+				COM_EHEALTHPORTAL_VMMC_FEMALE</option>
 		</field>
 		<!-- Reason Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="reason"
-			label="COM_EHEALTH_PORTAL_VMMC_REASON_LABEL"
+			label="COM_EHEALTHPORTAL_VMMC_REASON_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_VMMC_REASON_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_VMMC_REASON_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_VMMC_REASON_HINT"
+			hint="COM_EHEALTHPORTAL_VMMC_REASON_HINT"
 		/>
 		<!-- Referral Field. Type: Referrals. (custom) -->
 		<field
 			type="referrals"
 			name="referral"
-			label="COM_EHEALTH_PORTAL_VMMC_REFERRAL_LABEL"
+			label="COM_EHEALTHPORTAL_VMMC_REFERRAL_LABEL"
 			class="list_class"
 			multiple="false"
 			default="0"
 			button="true"
 		/>
+		<!-- Guid Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="guid"
+			label="COM_EHEALTHPORTAL_VMMC_GUID_LABEL"
+			size="40"
+			maxlength="40"
+			description="COM_EHEALTHPORTAL_VMMC_GUID_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			filter="CMD"
+			validate="guid"
+			hint="COM_EHEALTHPORTAL_VMMC_GUID_HINT"
+		/>
 		<!-- Partner_circumcised Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="partner_circumcised"
-			label="COM_EHEALTH_PORTAL_VMMC_PARTNER_CIRCUMCISED_LABEL"
-			description="COM_EHEALTH_PORTAL_VMMC_PARTNER_CIRCUMCISED_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_VMMC_PARTNER_CIRCUMCISED_LABEL"
+			description="COM_EHEALTHPORTAL_VMMC_PARTNER_CIRCUMCISED_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_VMMC_YES</option>
+				COM_EHEALTHPORTAL_VMMC_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_VMMC_NO</option>
+				COM_EHEALTHPORTAL_VMMC_NO</option>
 		</field>
 	</fieldset>
-	
+
 	<!-- Access Control Fields. -->
 	<fieldset name="accesscontrol">
 		<!-- Asset Id Field. Type: Hidden (joomla) -->
@@ -220,7 +235,7 @@
 			filter="rules"
 			validate="rules"
 			class="inputbox"
-			component="com_ehealth_portal"
+			component="com_ehealthportal"
 			section="vmmc"
 		/>
 	</fieldset>

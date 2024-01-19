@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		default.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,11 +26,16 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
-JHtml::_('behavior.keepalive');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+Html::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+Html::_('behavior.formvalidator');
+Html::_('formbehavior.chosen', 'select');
+Html::_('behavior.keepalive');
+
 ?>
 <?php if ($this->canDo->get('patient_queue.access')): ?>
 <script type="text/javascript">
@@ -46,104 +51,101 @@ JHtml::_('behavior.keepalive');
 	}
 </script>
 <?php $urlId = (isset($this->item->id)) ? '&id='. (int) $this->item->id : ''; ?>
-<form action="<?php echo JRoute::_('index.php?option=com_ehealth_portal&view=patient_queue' . $urlId); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
+<form action="<?php echo Route::_('index.php?option=com_ehealthportal&view=patient_queue' . $urlId); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
-<?php
-$q = new \SplPriorityQueue();
+<script type="text/javascript">
 
-$q->insert(1, 0);
-$q->insert(2, 0);
-$q->insert(3, 0);
-$q->insert(4, 0);
+jQuery(document).ready(function() {
+       var table = jQuery('#example').DataTable( {
+           dom: 'Bfrtip',
+           buttons: [
+               'copy', 'excel', 'pdf'
+    ]
+       } ); 
+});
 
-while (!$q->isEmpty()) {
-    echo $q->extract() . " ";
-}
-?>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<style>
-   body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-   }
-   .result {
-      font-size: 18px;
-      font-weight: 500;
-      color: blueviolet;
-   }
-   button {
-      padding: 6px;
-      margin: 4px;
-   }
-</style>
-</head>
-<body>
-<h1>Implementation of queue in JavaScript.</h1>
-<div class="result"></div>
-<br />
-<input type="text" class="enqueueVal" /><button class="enqueueBtn">
-Enqueue
-</button>
-<button class="dequeueBtn">Dequeue</button>
-<button class="Btn">Display</button>
-<h3>Click on the above buttons to perform queue operations</h3>
-<script>
-   let resEle = document.querySelector(".result");
-   let BtnEle = document.querySelector(".Btn");
-   let enqueueBtnEle = document.querySelector(".enqueueBtn");
-   let dequeueBtnEle = document.querySelector(".dequeueBtn");
-   class Queue {
-      constructor() {
-         this.items = [];
-         this.length = 0;
-      }
-   }
-   Queue.prototype.enqueue = function (ele) {
-      this.items[this.length] = ele;
-      this.length += 1;
-   };
-   Queue.prototype.dequeue = function () {
-      debugger;
-      if (this.length === 0) {
-         return "Underflow: no more elements to remove";
-      }
-      tempNum = this.items[0];
-      this.length -= 1;
-      return tempNum;
-   };
-   Queue.prototype.display = function () {
-      debugger;
-      if (this.length == 0) {
-         return "Stack is empty";
-      }
-      for (let i = 0; i < this.length; i++) {
-         resEle.innerHTML += this.items[i] + " , ";
-      }
-   };
-   let queue1 = new Queue();
-   BtnEle.addEventListener("click", () => {
-      resEle.innerHTML = "";
-      queue1.display();
-   });
-   enqueueBtnEle.addEventListener("click", () => {
-      let ele = document.querySelector(".enqueueVal").value;
-      resEle.innerHTML = ele + " is added to the back of the queue";
-      queue1.enqueue(ele);
-   });
-   dequeueBtnEle.addEventListener("click", () => {
-      resEle.innerHTML =
-      queue1.dequeue() + " is removed from the front of queue";
-   });
 </script>
-</body>
-</html>
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Taylor Nixonne</td>
+                <td>Data Analyst</td>
+                <td>London</td>
+                <td>62</td>
+                <td>2019/04/25</td>
+                <td>$310,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+         
+            <tr>
+                <td>Jenette Caldwell</td>
+                <td>Development Lead</td>
+                <td>New York</td>
+                <td>30</td>
+                <td>2011/09/03</td>
+                <td>$345,000</td>
+            </tr>
+           
+            <tr>
+                <td>Suki Burks</td>
+                <td>Developer</td>
+                <td>London</td>
+                <td>53</td>
+                <td>2009/10/22</td>
+                <td>$114,500</td>
+            </tr>
+
+            <tr>
+                <td>Donnatello Snider</td>
+                <td>Customer Support</td>
+                <td>New York</td>
+                <td>27</td>
+                <td>2011/01/25</td>
+                <td>$112,000</td>
+            </tr>
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
 <input type="hidden" name="task" value="" />
-<?php echo JHtml::_('form.token'); ?>
+<?php echo Html::_('form.token'); ?>
 </form>
 <?php else: ?>
-        <h1><?php echo JText::_('COM_EHEALTH_PORTAL_NO_ACCESS_GRANTED'); ?></h1>
+		<h1><?php echo Text::_('COM_EHEALTHPORTAL_NO_ACCESS_GRANTED'); ?></h1>
 <?php endif; ?>
-

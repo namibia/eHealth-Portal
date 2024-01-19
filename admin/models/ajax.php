@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		ajax.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,21 +26,26 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Utilities\ArrayHelper;
 
 /**
- * Ehealth_portal Ajax Model
+ * Ehealthportal Ajax List Model
  */
-class Ehealth_portalModelAjax extends JModelList
+class EhealthportalModelAjax extends ListModel
 {
 	protected $app_params;
-	
-	public function __construct() 
-	{		
-		parent::__construct();		
+
+	public function __construct()
+	{
+		parent::__construct();
 		// get params
-		$this->app_params	= JComponentHelper::getParams('com_ehealth_portal');
-		
+		$this->app_params = ComponentHelper::getParams('com_ehealthportal');
+
 	}
 
 	// Used in immunisation
@@ -51,7 +56,7 @@ class Ehealth_portalModelAjax extends JModelList
 		// Create a new query object.
 		$query = $db->getQuery(true);
 		$query->select($db->quoteName( array('a.id') ));
-		$query->from($db->quoteName('#__ehealth_portal_immunisation_vaccine_type', 'a'));
+		$query->from($db->quoteName('#__ehealthportal_immunisation_vaccine_type', 'a'));
 		$query->where($db->quoteName('a.published') . ' = 1');
 		// check for administration part and immunisation vaccine type
 		$query->where($db->quoteName('a.administration_part') . ' = '. (int) $administration_part);

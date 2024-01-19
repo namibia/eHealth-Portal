@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		vaccines_fullwidth.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,22 +26,27 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+use VDM\Joomla\Utilities\StringHelper;
+
 // set the defaults
 $items = $displayData->vvyvaccines;
-$user = JFactory::getUser();
+$user = Factory::getUser();
 $id = $displayData->item->id;
 // set the edit URL
-$edit = "index.php?option=com_ehealth_portal&view=immunisation_vaccine_types&task=immunisation_vaccine_type.edit";
+$edit = "index.php?option=com_ehealthportal&view=immunisation_vaccine_types&task=immunisation_vaccine_type.edit";
 // set a return value
-$return = ($id) ? "index.php?option=com_ehealth_portal&view=administration_part&layout=edit&id=" . $id : "";
+$return = ($id) ? "index.php?option=com_ehealthportal&view=administration_part&layout=edit&id=" . $id : "";
 // check for a return value
-$jinput = JFactory::getApplication()->input;
+$jinput = Factory::getApplication()->input;
 if ($_return = $jinput->get('return', null, 'base64'))
 {
 	$return .= "&return=" . $_return;
 }
 // check if return value was set
-if (Ehealth_portalHelper::checkString($return))
+if (StringHelper::check($return))
 {
 	// set the referral values
 	$ref = ($id) ? "&ref=administration_part&refid=" . $id . "&return=" . urlencode(base64_encode($return)) : "&return=" . urlencode(base64_encode($return));
@@ -51,38 +56,38 @@ else
 	$ref = ($id) ? "&ref=administration_part&refid=" . $id : "";
 }
 // set the create new URL
-$new = "index.php?option=com_ehealth_portal&view=immunisation_vaccine_types&task=immunisation_vaccine_type.edit" . $ref;
+$new = "index.php?option=com_ehealthportal&view=immunisation_vaccine_types&task=immunisation_vaccine_type.edit" . $ref;
 // set the create new and close URL
-$close_new = "index.php?option=com_ehealth_portal&view=immunisation_vaccine_types&task=immunisation_vaccine_type.edit";
+$close_new = "index.php?option=com_ehealthportal&view=immunisation_vaccine_types&task=immunisation_vaccine_type.edit";
 // load the action object
-$can = Ehealth_portalHelper::getActions('immunisation_vaccine_type');
+$can = EhealthportalHelper::getActions('immunisation_vaccine_type');
 
 ?>
 <div class="form-vertical">
 <?php if ($can->get('core.create')): ?>
 	<div class="btn-group">
-		<a class="btn btn-small btn-success" href="<?php echo $new; ?>"><span class="icon-new icon-white"></span> <?php echo JText::_('COM_EHEALTH_PORTAL_NEW'); ?></a>
-		<a class="btn btn-small" onclick="Joomla.submitbutton('administration_part.cancel');" href="<?php echo $close_new; ?>"><span class="icon-new"></span> <?php echo JText::_('COM_EHEALTH_PORTAL_CLOSE_NEW'); ?></a>
+		<a class="btn btn-small btn-success" href="<?php echo $new; ?>"><span class="icon-new icon-white"></span> <?php echo Text::_('COM_EHEALTHPORTAL_NEW'); ?></a>
+		<a class="btn btn-small" onclick="Joomla.submitbutton('administration_part.cancel');" href="<?php echo $close_new; ?>"><span class="icon-new"></span> <?php echo Text::_('COM_EHEALTHPORTAL_CLOSE_NEW'); ?></a>
 	</div><br /><br />
 <?php endif; ?>
-<?php if (Ehealth_portalHelper::checkArray($items)): ?>
-<table class="footable table data immunisation_vaccine_types" data-sorting="true" data-paging="true" data-paging-size="20" data-filtering="true">
+<?php if (EhealthportalHelper::checkArray($items)): ?>
+<table class="footable table data immunisation_vaccine_types metro-blue" data-page-size="20" data-filter="#filter_immunisation_vaccine_types">
 <thead>
 	<tr>
-		<th>
-			<?php echo JText::_('COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPE_NAME_LABEL'); ?>
+		<th data-toggle="true">
+			<?php echo Text::_('COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPE_NAME_LABEL'); ?>
 		</th>
-		<th data-breakpoints="xs sm">
-			<?php echo JText::_('COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPE_ADMINISTRATION_PART_LABEL'); ?>
+		<th data-hide="phone">
+			<?php echo Text::_('COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPE_ADMINISTRATION_PART_LABEL'); ?>
 		</th>
-		<th data-breakpoints="xs sm">
-			<?php echo JText::_('COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPE_DESCRIPTION_LABEL'); ?>
+		<th data-hide="phone">
+			<?php echo Text::_('COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPE_DESCRIPTION_LABEL'); ?>
 		</th>
-		<th width="10" data-breakpoints="xs sm md">
-			<?php echo JText::_('COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPE_STATUS'); ?>
+		<th width="10" data-hide="phone,tablet">
+			<?php echo Text::_('COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPE_STATUS'); ?>
 		</th>
-		<th width="5" data-type="number" data-breakpoints="xs sm md">
-			<?php echo JText::_('COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPE_ID'); ?>
+		<th width="5" data-type="numeric" data-hide="phone,tablet">
+			<?php echo Text::_('COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPE_ID'); ?>
 		</th>
 	</tr>
 </thead>
@@ -90,15 +95,15 @@ $can = Ehealth_portalHelper::getActions('immunisation_vaccine_type');
 <?php foreach ($items as $i => $item): ?>
 	<?php
 		$canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->id || $item->checked_out == 0;
-		$userChkOut = JFactory::getUser($item->checked_out);
-		$canDo = Ehealth_portalHelper::getActions('immunisation_vaccine_type',$item,'immunisation_vaccine_types');
+		$userChkOut = Factory::getUser($item->checked_out);
+		$canDo = EhealthportalHelper::getActions('immunisation_vaccine_type',$item,'immunisation_vaccine_types');
 	?>
 	<tr>
 		<td>
 			<?php if ($canDo->get('core.edit')): ?>
 				<a href="<?php echo $edit; ?>&id=<?php echo $item->id; ?><?php echo $ref; ?>"><?php echo $displayData->escape($item->name); ?></a>
 				<?php if ($item->checked_out): ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $userChkOut->name, $item->checked_out_time, 'immunisation_vaccine_types.', $canCheckin); ?>
+					<?php echo Html::_('jgrid.checkedout', $i, $userChkOut->name, $item->checked_out_time, 'immunisation_vaccine_types.', $canCheckin); ?>
 				<?php endif; ?>
 			<?php else: ?>
 				<?php echo $displayData->escape($item->name); ?>
@@ -112,26 +117,26 @@ $can = Ehealth_portalHelper::getActions('immunisation_vaccine_type');
 		</td>
 		<?php if ($item->published == 1): ?>
 			<td class="center"  data-value="1">
-				<span class="status-metro status-published" title="<?php echo JText::_('COM_EHEALTH_PORTAL_PUBLISHED');  ?>">
-					<?php echo JText::_('COM_EHEALTH_PORTAL_PUBLISHED'); ?>
+				<span class="status-metro status-published" title="<?php echo Text::_('COM_EHEALTHPORTAL_PUBLISHED');  ?>">
+					<?php echo Text::_('COM_EHEALTHPORTAL_PUBLISHED'); ?>
 				</span>
 			</td>
 		<?php elseif ($item->published == 0): ?>
 			<td class="center"  data-value="2">
-				<span class="status-metro status-inactive" title="<?php echo JText::_('COM_EHEALTH_PORTAL_INACTIVE');  ?>">
-					<?php echo JText::_('COM_EHEALTH_PORTAL_INACTIVE'); ?>
+				<span class="status-metro status-inactive" title="<?php echo Text::_('COM_EHEALTHPORTAL_INACTIVE');  ?>">
+					<?php echo Text::_('COM_EHEALTHPORTAL_INACTIVE'); ?>
 				</span>
 			</td>
 		<?php elseif ($item->published == 2): ?>
 			<td class="center"  data-value="3">
-				<span class="status-metro status-archived" title="<?php echo JText::_('COM_EHEALTH_PORTAL_ARCHIVED');  ?>">
-					<?php echo JText::_('COM_EHEALTH_PORTAL_ARCHIVED'); ?>
+				<span class="status-metro status-archived" title="<?php echo Text::_('COM_EHEALTHPORTAL_ARCHIVED');  ?>">
+					<?php echo Text::_('COM_EHEALTHPORTAL_ARCHIVED'); ?>
 				</span>
 			</td>
 		<?php elseif ($item->published == -2): ?>
 			<td class="center"  data-value="4">
-				<span class="status-metro status-trashed" title="<?php echo JText::_('COM_EHEALTH_PORTAL_TRASHED');  ?>">
-					<?php echo JText::_('COM_EHEALTH_PORTAL_TRASHED'); ?>
+				<span class="status-metro status-trashed" title="<?php echo Text::_('COM_EHEALTHPORTAL_TRASHED');  ?>">
+					<?php echo Text::_('COM_EHEALTHPORTAL_TRASHED'); ?>
 				</span>
 			</td>
 		<?php endif; ?>
@@ -141,10 +146,17 @@ $can = Ehealth_portalHelper::getActions('immunisation_vaccine_type');
 	</tr>
 <?php endforeach; ?>
 </tbody>
+<tfoot class="hide-if-no-paging">
+	<tr>
+		<td colspan="5">
+			<div class="pagination pagination-centered"></div>
+		</td>
+	</tr>
+</tfoot>
 </table>
 <?php else: ?>
 	<div class="alert alert-no-items">
-		<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+		<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 	</div>
 <?php endif; ?>
 </div>

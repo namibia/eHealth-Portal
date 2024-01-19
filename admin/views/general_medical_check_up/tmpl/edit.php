@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		edit.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,109 +26,107 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
-JHtml::_('behavior.keepalive');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+Html::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+Html::_('behavior.formvalidator');
+Html::_('formbehavior.chosen', 'select');
+Html::_('behavior.keepalive');
+
 $componentParams = $this->params; // will be removed just use $this->params instead
 ?>
 <script type="text/javascript">
 	// waiting spinner
-	var outerDiv = jQuery('body');
-	jQuery('<div id="loading"></div>')
-		.css("background", "rgba(255, 255, 255, .8) url('components/com_ehealth_portal/assets/images/import.gif') 50% 15% no-repeat")
-		.css("top", outerDiv.position().top - jQuery(window).scrollTop())
-		.css("left", outerDiv.position().left - jQuery(window).scrollLeft())
-		.css("width", outerDiv.width())
-		.css("height", outerDiv.height())
-		.css("position", "fixed")
-		.css("opacity", "0.80")
-		.css("-ms-filter", "progid:DXImageTransform.Microsoft.Alpha(Opacity = 80)")
-		.css("filter", "alpha(opacity = 80)")
-		.css("display", "none")
-		.appendTo(outerDiv);
-	jQuery('#loading').show();
+	var outerDiv = document.querySelector('body');
+	var loadingDiv = document.createElement('div');
+	loadingDiv.id = 'loading';
+	loadingDiv.style.cssText = "background: rgba(255, 255, 255, .8) url('components/com_ehealthportal/assets/images/import.gif') 50% 15% no-repeat; top: " + (outerDiv.getBoundingClientRect().top + window.pageYOffset) + "px; left: " + (outerDiv.getBoundingClientRect().left + window.pageXOffset) + "px; width: " + outerDiv.offsetWidth + "px; height: " + outerDiv.offsetHeight + "px; position: fixed; opacity: 0.80; -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80); filter: alpha(opacity=80); display: none;";
+	outerDiv.appendChild(loadingDiv);
+	loadingDiv.style.display = 'block';
 	// when page is ready remove and show
-	jQuery(window).load(function() {
-		jQuery('#ehealth_portal_loader').fadeIn('fast');
-		jQuery('#loading').hide();
+	window.addEventListener('load', function() {
+		var componentLoader = document.getElementById('ehealthportal_loader');
+		if (componentLoader) componentLoader.style.display = 'block';
+		loadingDiv.style.display = 'none';
 	});
 </script>
-<div id="ehealth_portal_loader" style="display: none;">
-<form action="<?php echo JRoute::_('index.php?option=com_ehealth_portal&layout=edit&id='. (int) $this->item->id . $this->referral); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
+<div id="ehealthportal_loader" style="display: none;">
+<form action="<?php echo Route::_('index.php?option=com_ehealthportal&layout=edit&id='. (int) $this->item->id . $this->referral); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
-	<?php echo JLayoutHelper::render('general_medical_check_up.vital_signs_above', $this); ?>
+	<?php echo LayoutHelper::render('general_medical_check_up.vital_signs_above', $this); ?>
 <div class="form-horizontal">
 
-	<?php echo JHtml::_('bootstrap.startTabSet', 'general_medical_check_upTab', array('active' => 'vital_signs')); ?>
+	<?php echo Html::_('bootstrap.startTabSet', 'general_medical_check_upTab', array('active' => 'vital_signs')); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'general_medical_check_upTab', 'vital_signs', JText::_('COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UP_VITAL_SIGNS', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'general_medical_check_upTab', 'vital_signs', Text::_('COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UP_VITAL_SIGNS', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span6">
-				<?php echo JLayoutHelper::render('general_medical_check_up.vital_signs_left', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.vital_signs_left', $this); ?>
 			</div>
 			<div class="span6">
-				<?php echo JLayoutHelper::render('general_medical_check_up.vital_signs_right', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.vital_signs_right', $this); ?>
 			</div>
 		</div>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('general_medical_check_up.vital_signs_fullwidth', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.vital_signs_fullwidth', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'general_medical_check_upTab', 'diagnosis', JText::_('COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UP_DIAGNOSIS', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'general_medical_check_upTab', 'diagnosis', Text::_('COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UP_DIAGNOSIS', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 		</div>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('general_medical_check_up.diagnosis_fullwidth', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.diagnosis_fullwidth', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'general_medical_check_upTab', 'referrals', JText::_('COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UP_REFERRALS', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'general_medical_check_upTab', 'referrals', Text::_('COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UP_REFERRALS', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span6">
-				<?php echo JLayoutHelper::render('general_medical_check_up.referrals_left', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.referrals_left', $this); ?>
 			</div>
 			<div class="span6">
-				<?php echo JLayoutHelper::render('general_medical_check_up.referrals_right', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.referrals_right', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.addTab', 'general_medical_check_upTab', 'dispensing', JText::_('COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UP_DISPENSING', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'general_medical_check_upTab', 'dispensing', Text::_('COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UP_DISPENSING', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 		</div>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
-				<?php echo JLayoutHelper::render('general_medical_check_up.dispensing_fullwidth', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.dispensing_fullwidth', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 
 	<?php $this->ignore_fieldsets = array('details','metadata','vdmmetadata','accesscontrol'); ?>
 	<?php $this->tab_name = 'general_medical_check_upTab'; ?>
-	<?php echo JLayoutHelper::render('joomla.edit.params', $this); ?>
+	<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 
 	<?php if ($this->canDo->get('core.edit.created_by') || $this->canDo->get('core.edit.created') || $this->canDo->get('core.edit.state') || ($this->canDo->get('core.delete') && $this->canDo->get('core.edit.state'))) : ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'general_medical_check_upTab', 'publishing', JText::_('COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UP_PUBLISHING', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'general_medical_check_upTab', 'publishing', Text::_('COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UP_PUBLISHING', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span6">
-				<?php echo JLayoutHelper::render('general_medical_check_up.publishing', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.publishing', $this); ?>
 			</div>
 			<div class="span6">
-				<?php echo JLayoutHelper::render('general_medical_check_up.publlshing', $this); ?>
+				<?php echo LayoutHelper::render('general_medical_check_up.publlshing', $this); ?>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 	<?php endif; ?>
 
 	<?php if ($this->canDo->get('core.admin')) : ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'general_medical_check_upTab', 'permissions', JText::_('COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UP_PERMISSION', true)); ?>
+	<?php echo Html::_('bootstrap.addTab', 'general_medical_check_upTab', 'permissions', Text::_('COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UP_PERMISSION', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
 			<div class="span12">
 				<fieldset class="adminform">
@@ -143,14 +141,14 @@ $componentParams = $this->params; // will be removed just use $this->params inst
 				</fieldset>
 			</div>
 		</div>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>
+	<?php echo Html::_('bootstrap.endTab'); ?>
 	<?php endif; ?>
 
-	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+	<?php echo Html::_('bootstrap.endTabSet'); ?>
 
 	<div>
 		<input type="hidden" name="task" value="general_medical_check_up.edit" />
-		<?php echo JHtml::_('form.token'); ?>
+		<?php echo Html::_('form.token'); ?>
 	</div>
 </div>
 </form>
@@ -164,7 +162,7 @@ jQuery(document).ready(function($){
   
     function calculateBMI(weight,height) {
     // your calculation here
-    return (parseFloat(weight) / (parseFloat(height * height))).toFixed(2);
+    return (parseFloat(weight) / (parseFloat(Math.pow(height, 2)))).toFixed(2);
 	}
   
 	$("#jform_weight,#jform_height").on('change keyup', function() {

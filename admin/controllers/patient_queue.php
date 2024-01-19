@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		patient_queue.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,17 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
 use Joomla\Utilities\ArrayHelper;
 
 /**
- * Ehealth_portal Patient_queue Controller
+ * Ehealthportal Patient_queue Base Controller
  */
-class Ehealth_portalControllerPatient_queue extends JControllerLegacy
+class EhealthportalControllerPatient_queue extends BaseController
 {
 	public function __construct($config)
 	{
@@ -40,7 +45,7 @@ class Ehealth_portalControllerPatient_queue extends JControllerLegacy
 
 	public function dashboard()
 	{
-		$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal', false));
+		$this->setRedirect(Route::_('index.php?option=com_ehealthportal', false));
 		return;
 	}
 }

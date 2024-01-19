@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fields name="filter">
 		<field
 			type="text"
 			name="search"
 			inputmode="search"
-			label="COM_EHEALTH_PORTAL_FILTER_SEARCH"
-			description="COM_EHEALTH_PORTAL_FILTER_SEARCH_PAYMENTS"
+			label="COM_EHEALTHPORTAL_FILTER_SEARCH"
+			description="COM_EHEALTHPORTAL_FILTER_SEARCH_PAYMENTS"
 			hint="JSEARCH_FILTER"
 		/>
 		<field
 			type="status"
 			name="published"
-			label="COM_EHEALTH_PORTAL_FILTER_PUBLISHED"
-			description="COM_EHEALTH_PORTAL_FILTER_PUBLISHED_PAYMENTS"
+			label="COM_EHEALTHPORTAL_FILTER_PUBLISHED"
+			description="COM_EHEALTHPORTAL_FILTER_PUBLISHED_PAYMENTS"
 			onchange="this.form.submit();"
 		>
 			<option value="">JOPTION_SELECT_PUBLISHED</option>
@@ -33,21 +33,21 @@
 		<field
 			type="paymentsfilterpatient"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_PAYMENT_PATIENT_LABEL"
 			multiple="false"
 			onchange="this.form.submit();"
 		/>
 		<field
 			type="paymentsfilterpaymentcategory"
 			name="payment_category"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_CATEGORY_LABEL"
+			label="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_CATEGORY_LABEL"
 			multiple="false"
 			onchange="this.form.submit();"
 		/>
 		<field
 			type="paymentsfilterpaymentamount"
 			name="payment_amount"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_AMOUNT_LABEL"
+			label="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_AMOUNT_LABEL"
 			class="multiplePaymentsfilterpaymentamount"
 			multiple="true"
 			onchange="this.form.submit();"

@@ -1,13 +1,14 @@
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_payment` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`nonpay_reason` INT(11) NOT NULL DEFAULT 0,
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`payment_amount` VARCHAR(100) NOT NULL DEFAULT '',
 	`payment_category` VARCHAR(255) NOT NULL DEFAULT '',
 	`payment_type` INT(11) NOT NULL DEFAULT 0,
 	`receipt_no` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -20,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -27,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_general_medical_check_up` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_general_medical_check_up` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`bmi` FLOAT(7) NULL DEFAULT 0,
@@ -39,17 +42,18 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_general_medical_check_up` (
 	`complaint` MEDIUMTEXT NOT NULL,
 	`diagnosis` INT(11) NOT NULL DEFAULT 0,
 	`dispensing` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`height` FLOAT(7) NOT NULL DEFAULT 0,
 	`investigations` MEDIUMTEXT NOT NULL,
 	`notes` MEDIUMTEXT NOT NULL,
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`pulse` INT(7) NOT NULL DEFAULT 0,
 	`reason` MEDIUMTEXT NOT NULL,
 	`referral` INT(11) NOT NULL DEFAULT 0,
 	`temp_one` FLOAT(7) NOT NULL DEFAULT 0,
 	`temp_two` FLOAT(7) NOT NULL DEFAULT 0,
 	`weight` FLOAT(7) NOT NULL DEFAULT 0,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -62,6 +66,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_general_medical_check_up` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -69,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_general_medical_check_up` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_antenatal_care` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_antenatal_care` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`caesarean_sections` INT(7) NOT NULL DEFAULT 0,
@@ -78,14 +84,15 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_antenatal_care` (
 	`foetal_lie` INT(11) NOT NULL DEFAULT 0,
 	`foetal_movements` MEDIUMTEXT NOT NULL,
 	`foetal_presentation` INT(11) NOT NULL DEFAULT 0,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`last_menstrual_period` DATE NOT NULL DEFAULT '0000-00-00',
 	`live_births` INT(7) NOT NULL DEFAULT 0,
 	`miscarriages` INT(7) NOT NULL DEFAULT 0,
 	`normal_births` INT(7) NOT NULL DEFAULT 0,
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`pregnancies_excl` INT(7) NOT NULL DEFAULT 0,
 	`still_births` INT(7) NOT NULL DEFAULT 0,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -98,6 +105,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_antenatal_care` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -105,17 +114,16 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_antenatal_care` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_immunisation` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
-	`administration_part` INT(11) NOT NULL DEFAULT 0,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`immunisation` TEXT NOT NULL,
 	`immunisation_up_to_date` VARCHAR(255) NOT NULL DEFAULT '',
-	`immunisation_vaccine_type` INT(11) NOT NULL DEFAULT 0,
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
 	`referral` INT(11) NOT NULL DEFAULT 0,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -128,6 +136,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -135,18 +145,19 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_vmmc` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_vmmc` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`are_you_circumcised` VARCHAR(255) NOT NULL DEFAULT '',
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`info_ben_vmcc` VARCHAR(255) NOT NULL DEFAULT '',
 	`interested_in_vmmc` VARCHAR(255) NOT NULL DEFAULT '',
 	`partner_circumcised` VARCHAR(255) NOT NULL DEFAULT '',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
 	`referral` INT(11) NOT NULL DEFAULT 0,
 	`vmmc_gender` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -159,6 +170,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_vmmc` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -166,10 +179,11 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_vmmc` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_prostate_and_testicular_cancer` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_prostate_and_testicular_cancer` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`ptc_age` VARCHAR(255) NOT NULL DEFAULT '',
 	`ptc_diet` VARCHAR(255) NOT NULL DEFAULT '',
 	`ptc_fam_history` VARCHAR(255) NOT NULL DEFAULT '',
@@ -186,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_prostate_and_testicular_cancer` (
 	`txt_ptc_phy_activity` MEDIUMTEXT NOT NULL,
 	`txt_ptc_urinate` MEDIUMTEXT NOT NULL,
 	`txt_ptc_urine_freq` MEDIUMTEXT NOT NULL,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -199,6 +213,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_prostate_and_testicular_cancer` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -206,14 +222,15 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_prostate_and_testicular_cancer` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_tuberculosis` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_tuberculosis` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`blood_streaked_sputum` VARCHAR(255) NOT NULL DEFAULT '',
 	`date_of_treatment` DATE NOT NULL DEFAULT '0000-00-00',
 	`diagnosed_with_disease` VARCHAR(255) NOT NULL DEFAULT '',
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`pain_in_chest` VARCHAR(255) NOT NULL DEFAULT '',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`persistent_cough` VARCHAR(255) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
 	`recurring_night_sweats` VARCHAR(255) NOT NULL DEFAULT '',
@@ -231,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_tuberculosis` (
 	`treating_dhc` VARCHAR(255) NOT NULL DEFAULT '',
 	`unusual_tiredness` VARCHAR(255) NOT NULL DEFAULT '',
 	`weight_loss_wdieting` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -244,6 +261,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_tuberculosis` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -251,21 +270,22 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_tuberculosis` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_hiv_counseling_and_testing` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_hiv_counseling_and_testing` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`counseling_type` VARCHAR(255) NOT NULL DEFAULT '',
 	`eqa` VARCHAR(255) NOT NULL DEFAULT '',
 	`final_test_result` VARCHAR(255) NOT NULL DEFAULT '',
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`last_test_date` VARCHAR(255) NOT NULL DEFAULT '',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`prev_test_result` VARCHAR(255) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
 	`referral` INT(11) NOT NULL DEFAULT 0,
 	`test_result_one` VARCHAR(255) NOT NULL DEFAULT '',
 	`test_result_two` VARCHAR(255) NOT NULL DEFAULT '',
 	`testing_reason` INT(11) NOT NULL DEFAULT 0,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -278,6 +298,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_hiv_counseling_and_testing` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -285,12 +307,13 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_hiv_counseling_and_testing` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_family_planning` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_family_planning` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`diagnosis` INT(11) NOT NULL DEFAULT 0,
-	`patient` INT(11) NOT NULL DEFAULT 0,
-	`params` text NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -303,6 +326,9 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_family_planning` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_diagnosis` (`diagnosis`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -310,13 +336,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_family_planning` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_health_education` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_health_education` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`education_type` VARCHAR(100) NOT NULL DEFAULT '',
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`health_education_topic` INT(11) NOT NULL DEFAULT 0,
-	`patient` INT(11) NOT NULL DEFAULT 0,
-	`params` text NOT NULL,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -329,6 +356,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_health_education` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -336,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_health_education` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_cervical_cancer` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_cervical_cancer` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`cc_periods` VARCHAR(255) NOT NULL DEFAULT '',
@@ -347,8 +376,9 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_cervical_cancer` (
 	`cc_smoking` VARCHAR(255) NOT NULL DEFAULT '',
 	`cc_v_discharge` VARCHAR(255) NOT NULL DEFAULT '',
 	`cc_viginal_bleeding` VARCHAR(255) NOT NULL DEFAULT '',
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`pap_smear_collection` VARCHAR(255) NOT NULL DEFAULT '',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
 	`referral` INT(11) NOT NULL DEFAULT 0,
 	`txt_cc_periods` MEDIUMTEXT NOT NULL,
@@ -357,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_cervical_cancer` (
 	`txt_cc_smoking` MEDIUMTEXT NOT NULL,
 	`txt_cc_v_discharge` MEDIUMTEXT NOT NULL,
 	`txt_cc_viginal_bleeding` MEDIUMTEXT NOT NULL,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -370,6 +400,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_cervical_cancer` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -377,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_cervical_cancer` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_breast_cancer` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_breast_cancer` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`bc_abnormal_skin` VARCHAR(255) NOT NULL DEFAULT '',
@@ -395,7 +427,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_breast_cancer` (
 	`bc_preg_freq` INT(7) NOT NULL DEFAULT 0,
 	`bc_race` VARCHAR(255) NOT NULL DEFAULT '',
 	`bc_reg_exercise` VARCHAR(255) NOT NULL DEFAULT '',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
 	`referral` INT(11) NOT NULL DEFAULT 0,
 	`txt_bc_abnormal_skin` MEDIUMTEXT NOT NULL,
@@ -404,7 +437,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_breast_cancer` (
 	`txt_bc_inward_nipple` MEDIUMTEXT NOT NULL,
 	`txt_bc_lump_near_breast` MEDIUMTEXT NOT NULL,
 	`txt_bc_nipple_discharge` MEDIUMTEXT NOT NULL,
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -417,6 +450,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_breast_cancer` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -424,18 +459,19 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_breast_cancer` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_test` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_test` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`cholesterol_reading` INT(7) NOT NULL DEFAULT 0,
 	`glucose_first_reading` INT(7) NOT NULL DEFAULT 0,
 	`glucose_second_reading` INT(7) NOT NULL DEFAULT 0,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`haemoglobin_reading` INT(7) NOT NULL DEFAULT 0,
 	`hepatitis_first_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`hepatitis_second_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`malaria_first_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`malaria_second_reading` VARCHAR(255) NOT NULL DEFAULT '',
-	`patient` INT(11) NOT NULL DEFAULT 0,
+	`patient` VARCHAR(36) NOT NULL DEFAULT '',
 	`pregnancy_first_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`pregnancy_second_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`reason` MEDIUMTEXT NOT NULL,
@@ -443,7 +479,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_test` (
 	`syphilis_first_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`syphilis_second_reading` VARCHAR(255) NOT NULL DEFAULT '',
 	`urine_test_result` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -456,6 +492,8 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_test` (
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
+	KEY `idx_patient` (`patient`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
 	KEY `idx_createdby` (`created_by`),
@@ -463,14 +501,45 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_test` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation_vaccine_type` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_foetal_lie` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+	`alias` CHAR(64) NOT NULL DEFAULT '',
+	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`name` VARCHAR(255) NOT NULL DEFAULT '',
+	`params` text NULL,
+	`published` TINYINT(3) NOT NULL DEFAULT 1,
+	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
+	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`version` INT(10) unsigned NOT NULL DEFAULT 1,
+	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
+	`access` INT(10) unsigned NOT NULL DEFAULT 0,
+	`ordering` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY  (`id`),
+	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
+	KEY `idx_alias` (`alias`),
+	KEY `idx_access` (`access`),
+	KEY `idx_checkout` (`checked_out`),
+	KEY `idx_createdby` (`created_by`),
+	KEY `idx_modifiedby` (`modified_by`),
+	KEY `idx_state` (`published`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_immunisation_vaccine_type` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`administration_part` INT(11) NOT NULL DEFAULT 0,
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -484,6 +553,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation_vaccine_type` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -492,13 +562,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation_vaccine_type` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_presentation` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_foetal_engagement` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -512,6 +583,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_presentation` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -520,13 +592,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_presentation` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_lie` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_foetal_presentation` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -540,6 +613,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_lie` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -548,13 +622,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_lie` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_counseling_type` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_testing_reason` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -568,6 +643,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_counseling_type` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -576,13 +652,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_counseling_type` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_engagement` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_counseling_type` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -596,6 +673,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_engagement` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -604,13 +682,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_foetal_engagement` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_health_education_topic` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_health_education_topic` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -624,6 +703,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_health_education_topic` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -632,13 +712,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_health_education_topic` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_testing_reason` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_immunisation_type` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -652,6 +733,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_testing_reason` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -660,42 +742,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_testing_reason` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_clinic` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
-	`alias` CHAR(64) NOT NULL DEFAULT '',
-	`clinic_name` VARCHAR(255) NOT NULL DEFAULT '',
-	`clinic_type` VARCHAR(255) NOT NULL DEFAULT '',
-	`description` TEXT NOT NULL,
-	`params` text NOT NULL,
-	`published` TINYINT(3) NOT NULL DEFAULT 1,
-	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
-	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`version` INT(10) unsigned NOT NULL DEFAULT 1,
-	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
-	`access` INT(10) unsigned NOT NULL DEFAULT 0,
-	`ordering` INT(11) NOT NULL DEFAULT 0,
-	PRIMARY KEY  (`id`),
-	KEY `idx_clinic_name` (`clinic_name`),
-	KEY `idx_alias` (`alias`),
-	KEY `idx_access` (`access`),
-	KEY `idx_checkout` (`checked_out`),
-	KEY `idx_createdby` (`created_by`),
-	KEY `idx_modifiedby` (`modified_by`),
-	KEY `idx_state` (`published`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation_type` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_strength` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -709,6 +763,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation_type` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -717,13 +772,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_immunisation_type` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_unit` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_referral` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -737,6 +793,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_unit` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -745,13 +802,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_unit` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_referral` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_planning_type` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -765,6 +823,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_referral` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -773,13 +832,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_referral` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_planning_type` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_diagnosis_type` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -793,6 +853,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_planning_type` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -801,13 +862,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_planning_type` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_diagnosis_type` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_nonpay_reason` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -821,6 +883,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_diagnosis_type` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -829,13 +892,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_diagnosis_type` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_nonpay_reason` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_medication` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -849,6 +913,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_nonpay_reason` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -857,13 +922,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_nonpay_reason` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_medication` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_payment_type` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -877,6 +943,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_medication` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -885,13 +952,14 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_medication` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment_amount` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_administration_part` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -905,6 +973,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment_amount` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -913,98 +982,15 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment_amount` (
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_administration_part` (
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_site` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
 	`alias` CHAR(64) NOT NULL DEFAULT '',
 	`description` TEXT NOT NULL,
-	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
-	`published` TINYINT(3) NOT NULL DEFAULT 1,
-	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
-	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`version` INT(10) unsigned NOT NULL DEFAULT 1,
-	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
-	`access` INT(10) unsigned NOT NULL DEFAULT 0,
-	`ordering` INT(11) NOT NULL DEFAULT 0,
-	PRIMARY KEY  (`id`),
-	KEY `idx_name` (`name`),
-	KEY `idx_alias` (`alias`),
-	KEY `idx_access` (`access`),
-	KEY `idx_checkout` (`checked_out`),
-	KEY `idx_createdby` (`created_by`),
-	KEY `idx_modifiedby` (`modified_by`),
-	KEY `idx_state` (`published`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_payment_type` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
-	`alias` CHAR(64) NOT NULL DEFAULT '',
-	`description` TEXT NOT NULL,
-	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
-	`published` TINYINT(3) NOT NULL DEFAULT 1,
-	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
-	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`version` INT(10) unsigned NOT NULL DEFAULT 1,
-	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
-	`access` INT(10) unsigned NOT NULL DEFAULT 0,
-	`ordering` INT(11) NOT NULL DEFAULT 0,
-	PRIMARY KEY  (`id`),
-	KEY `idx_name` (`name`),
-	KEY `idx_alias` (`alias`),
-	KEY `idx_access` (`access`),
-	KEY `idx_checkout` (`checked_out`),
-	KEY `idx_createdby` (`created_by`),
-	KEY `idx_modifiedby` (`modified_by`),
-	KEY `idx_state` (`published`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_strength` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
-	`alias` CHAR(64) NOT NULL DEFAULT '',
-	`description` TEXT NOT NULL,
-	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
-	`published` TINYINT(3) NOT NULL DEFAULT 1,
-	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
-	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`version` INT(10) unsigned NOT NULL DEFAULT 1,
-	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
-	`access` INT(10) unsigned NOT NULL DEFAULT 0,
-	`ordering` INT(11) NOT NULL DEFAULT 0,
-	PRIMARY KEY  (`id`),
-	KEY `idx_name` (`name`),
-	KEY `idx_alias` (`alias`),
-	KEY `idx_access` (`access`),
-	KEY `idx_checkout` (`checked_out`),
-	KEY `idx_createdby` (`created_by`),
-	KEY `idx_modifiedby` (`modified_by`),
-	KEY `idx_state` (`published`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_site` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
-	`alias` CHAR(64) NOT NULL DEFAULT '',
-	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
 	`site_name` VARCHAR(255) NOT NULL DEFAULT '',
 	`site_region` VARCHAR(255) NOT NULL DEFAULT '',
-	`params` text NOT NULL,
+	`params` text NULL,
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
@@ -1018,6 +1004,7 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_site` (
 	`ordering` INT(11) NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_site_name` (`site_name`),
+	KEY `idx_guid` (`guid`),
 	KEY `idx_alias` (`alias`),
 	KEY `idx_access` (`access`),
 	KEY `idx_checkout` (`checked_out`),
@@ -1025,5 +1012,72 @@ CREATE TABLE IF NOT EXISTS `#__ehealth_portal_site` (
 	KEY `idx_modifiedby` (`modified_by`),
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_unit` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+	`alias` CHAR(64) NOT NULL DEFAULT '',
+	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`name` VARCHAR(255) NOT NULL DEFAULT '',
+	`params` text NULL,
+	`published` TINYINT(3) NOT NULL DEFAULT 1,
+	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
+	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`version` INT(10) unsigned NOT NULL DEFAULT 1,
+	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
+	`access` INT(10) unsigned NOT NULL DEFAULT 0,
+	`ordering` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY  (`id`),
+	KEY `idx_name` (`name`),
+	KEY `idx_guid` (`guid`),
+	KEY `idx_alias` (`alias`),
+	KEY `idx_access` (`access`),
+	KEY `idx_checkout` (`checked_out`),
+	KEY `idx_createdby` (`created_by`),
+	KEY `idx_modifiedby` (`modified_by`),
+	KEY `idx_state` (`published`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_clinic` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`asset_id` INT(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+	`alias` CHAR(64) NOT NULL DEFAULT '',
+	`clinic_name` VARCHAR(255) NOT NULL DEFAULT '',
+	`clinic_type` VARCHAR(255) NOT NULL DEFAULT '',
+	`description` TEXT NOT NULL,
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`params` text NULL,
+	`published` TINYINT(3) NOT NULL DEFAULT 1,
+	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
+	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`version` INT(10) unsigned NOT NULL DEFAULT 1,
+	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
+	`access` INT(10) unsigned NOT NULL DEFAULT 0,
+	`ordering` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY  (`id`),
+	KEY `idx_clinic_name` (`clinic_name`),
+	KEY `idx_guid` (`guid`),
+	KEY `idx_alias` (`alias`),
+	KEY `idx_access` (`access`),
+	KEY `idx_checkout` (`checked_out`),
+	KEY `idx_createdby` (`created_by`),
+	KEY `idx_modifiedby` (`modified_by`),
+	KEY `idx_state` (`published`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE IF NOT EXISTS `#__ehealthportal_user_map` (
+	`guid` VARCHAR(36) NOT NULL DEFAULT '',
+	`user` int(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`guid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 

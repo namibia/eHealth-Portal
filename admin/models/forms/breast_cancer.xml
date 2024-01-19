@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fieldset name="details">
 		<!-- Default Fields. -->
@@ -16,8 +16,8 @@
 		<field
 			name="created"
 			type="calendar"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_CREATED_DATE_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_CREATED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_CREATED_DATE_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_CREATED_DATE_DESC"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc"
@@ -26,8 +26,8 @@
 		<field
 			name="created_by"
 			type="user"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_CREATED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_CREATED_BY_DESC"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_CREATED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_CREATED_BY_DESC"
 		/>
 		<!-- Published Field. Type: List (joomla) -->
 		<field name="published" type="list" label="JSTATUS"
@@ -44,12 +44,12 @@
 		</field>
 		<!-- Date Modified Field. Type: Calendar (joomla) -->
 		<field name="modified" type="calendar" class="readonly"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_MODIFIED_DATE_LABEL" description="COM_EHEALTH_PORTAL_BREAST_CANCER_MODIFIED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_MODIFIED_DATE_LABEL" description="COM_EHEALTHPORTAL_BREAST_CANCER_MODIFIED_DATE_DESC"
 			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
 		<!-- User Modified Field. Type: User (joomla) -->
 		<field name="modified_by" type="user"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_MODIFIED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_MODIFIED_BY_DESC"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_MODIFIED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_MODIFIED_BY_DESC"
 			class="readonly"
 			readonly="true"
 			filter="unset"
@@ -67,7 +67,7 @@
 			name="ordering"
 			type="number"
 			class="inputbox validate-ordering"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_ORDERING_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_ORDERING_LABEL"
 			description=""
 			default="0"
 			size="6"
@@ -78,8 +78,8 @@
 			name="version"
 			type="text"
 			class="readonly"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_VERSION_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_VERSION_DESC"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_VERSION_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_VERSION_DESC"
 			size="6"
 			readonly="true"
 			filter="unset"
@@ -90,86 +90,87 @@
 		<field
 			name="title"
 			type="hidden"
-			default="ehealth_portal breast_cancer"
+			default="ehealthportal breast_cancer"
 		/>
 		<!-- Dynamic Fields. -->
 		<!-- Patient Field. Type: User. (joomla) -->
 		<field
 			type="user"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_PATIENT_LABEL"
+			required="true"
 		/>
 		<!-- Bc_age_range Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_age_range"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_AGE_RANGE_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_AGE_RANGE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_AGE_RANGE_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_AGE_RANGE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_family_history Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_family_history"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_FAMILY_HISTORY_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_FAMILY_HISTORY_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_FAMILY_HISTORY_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_FAMILY_HISTORY_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_race Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_race"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_RACE_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_RACE_LABEL"
 			class="list_class"
 			multiple="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_WHITE</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_WHITE</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_COLOURED</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_COLOURED</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_BLACK</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_BLACK</option>
 			<option value="3">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_ASIAN</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_ASIAN</option>
 		</field>
 		<!-- Bc_breastfeeding Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_breastfeeding"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_BREASTFEEDING_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_BREASTFEEDING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_BREASTFEEDING_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_BREASTFEEDING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_preg_freq Field. Type: Number. (joomla) -->
 		<field
 			type="number"
 			name="bc_preg_freq"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_PREG_FREQ_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_PREG_FREQ_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
@@ -179,165 +180,165 @@
 		<field
 			type="list"
 			name="bc_preg_age"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_PREG_AGE_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_PREG_AGE_LABEL"
 			class="list_class"
 			multiple="false"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_THIRTY_YEARS</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_THIRTY_YEARS</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_THIRTY_YEARS</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_THIRTY_YEARS</option>
 		</field>
 		<!-- Bc_history_hrt Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_history_hrt"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_HISTORY_HRT_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_HISTORY_HRT_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_HISTORY_HRT_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_HISTORY_HRT_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_reg_exercise Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_reg_exercise"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_REG_EXERCISE_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_REG_EXERCISE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_REG_EXERCISE_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_REG_EXERCISE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_overweight Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_overweight"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_OVERWEIGHT_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_OVERWEIGHT_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_OVERWEIGHT_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_OVERWEIGHT_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_lump_near_breast Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_lump_near_breast"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_LUMP_NEAR_BREAST_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_LUMP_NEAR_BREAST_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_LUMP_NEAR_BREAST_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_LUMP_NEAR_BREAST_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_dimpling Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_dimpling"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_DIMPLING_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_DIMPLING_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_DIMPLING_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_DIMPLING_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_inward_nipple Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_inward_nipple"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_INWARD_NIPPLE_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_INWARD_NIPPLE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_INWARD_NIPPLE_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_INWARD_NIPPLE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_nipple_discharge Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_nipple_discharge"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_NIPPLE_DISCHARGE_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_NIPPLE_DISCHARGE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_NIPPLE_DISCHARGE_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_NIPPLE_DISCHARGE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_abnormal_skin Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_abnormal_skin"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_ABNORMAL_SKIN_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_ABNORMAL_SKIN_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_ABNORMAL_SKIN_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_ABNORMAL_SKIN_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Bc_breast_shape Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="bc_breast_shape"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_BREAST_SHAPE_LABEL"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_BC_BREAST_SHAPE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_BC_BREAST_SHAPE_LABEL"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_BC_BREAST_SHAPE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_YES</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_YES</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_BREAST_CANCER_NO</option>
+				COM_EHEALTHPORTAL_BREAST_CANCER_NO</option>
 		</field>
 		<!-- Referral Field. Type: Referrals. (custom) -->
 		<field
 			type="referrals"
 			name="referral"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_REFERRAL_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_REFERRAL_LABEL"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -347,88 +348,102 @@
 		<field
 			type="textarea"
 			name="reason"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_REASON_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_REASON_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_REASON_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_REASON_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_REASON_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_REASON_HINT"
+		/>
+		<!-- Guid Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="guid"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_GUID_LABEL"
+			size="40"
+			maxlength="40"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_GUID_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			filter="CMD"
+			validate="guid"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_GUID_HINT"
 		/>
 		<!-- Txt_bc_breast_shape Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="txt_bc_breast_shape"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_BREAST_SHAPE_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_BREAST_SHAPE_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_BREAST_SHAPE_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_BREAST_SHAPE_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_BREAST_SHAPE_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_BREAST_SHAPE_HINT"
 		/>
 		<!-- Txt_bc_abnormal_skin Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="txt_bc_abnormal_skin"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_ABNORMAL_SKIN_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_ABNORMAL_SKIN_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_ABNORMAL_SKIN_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_ABNORMAL_SKIN_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_ABNORMAL_SKIN_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_ABNORMAL_SKIN_HINT"
 		/>
 		<!-- Txt_bc_nipple_discharge Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="txt_bc_nipple_discharge"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_NIPPLE_DISCHARGE_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_NIPPLE_DISCHARGE_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_NIPPLE_DISCHARGE_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_NIPPLE_DISCHARGE_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_NIPPLE_DISCHARGE_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_NIPPLE_DISCHARGE_HINT"
 		/>
 		<!-- Txt_bc_dimpling Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="txt_bc_dimpling"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_DIMPLING_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_DIMPLING_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_DIMPLING_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_DIMPLING_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_DIMPLING_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_DIMPLING_HINT"
 		/>
 		<!-- Txt_bc_lump_near_breast Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="txt_bc_lump_near_breast"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_LUMP_NEAR_BREAST_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_LUMP_NEAR_BREAST_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_LUMP_NEAR_BREAST_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_LUMP_NEAR_BREAST_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_LUMP_NEAR_BREAST_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_LUMP_NEAR_BREAST_HINT"
 		/>
 		<!-- Txt_bc_inward_nipple Field. Type: Textarea. (joomla) -->
 		<field
 			type="textarea"
 			name="txt_bc_inward_nipple"
-			label="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_INWARD_NIPPLE_LABEL"
+			label="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_INWARD_NIPPLE_LABEL"
 			rows="5"
 			cols="20"
-			description="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_INWARD_NIPPLE_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_INWARD_NIPPLE_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_BREAST_CANCER_TXT_BC_INWARD_NIPPLE_HINT"
+			hint="COM_EHEALTHPORTAL_BREAST_CANCER_TXT_BC_INWARD_NIPPLE_HINT"
 		/>
 	</fieldset>
-	
+
 	<!-- Access Control Fields. -->
 	<fieldset name="accesscontrol">
 		<!-- Asset Id Field. Type: Hidden (joomla) -->
@@ -446,7 +461,7 @@
 			filter="rules"
 			validate="rules"
 			class="inputbox"
-			component="com_ehealth_portal"
+			component="com_ehealthportal"
 			section="breast_cancer"
 		/>
 	</fieldset>

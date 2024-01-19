@@ -1,0 +1,87 @@
+<updates>
+	<update>
+		<name>eHealth Portal</name>
+		<description>Portal for mobile health clinics</description>
+		<element>com_ehealthportal</element>
+		<type>component</type>
+		<version>1.0.2</version>
+		<infourl title="eHealth Portal!">https://git.vdm.dev/joomla/eHealth-Portal</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/namibia/eHealth-Portal/archive/refs/heads/master.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Llewellyn van der Merwe</maintainer>
+		<maintainerurl>https://git.vdm.dev/joomla/eHealth-Portal</maintainerurl>
+		<targetplatform name="joomla" version="3.*"/>
+	</update>
+	<update>
+		<name>eHealth Portal</name>
+		<description>Portal for mobile health clinics</description>
+		<element>com_ehealthportal</element>
+		<type>component</type>
+		<version>1.0.3</version>
+		<infourl title="eHealth Portal!">https://git.vdm.dev/joomla/eHealth-Portal</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/namibia/eHealth-Portal/archive/refs/heads/master.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Llewellyn van der Merwe</maintainer>
+		<maintainerurl>https://git.vdm.dev/joomla/eHealth-Portal</maintainerurl>
+		<targetplatform name="joomla" version="3.*"/>
+	</update>
+	<update>
+		<name>eHealth Portal</name>
+		<description>Portal for mobile health clinics</description>
+		<element>com_ehealthportal</element>
+		<type>component</type>
+		<version>1.0.4</version>
+		<infourl title="eHealth Portal!">https://git.vdm.dev/joomla/eHealth-Portal</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/namibia/eHealth-Portal/archive/refs/heads/master.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Llewellyn van der Merwe</maintainer>
+		<maintainerurl>https://git.vdm.dev/joomla/eHealth-Portal</maintainerurl>
+		<targetplatform name="joomla" version="3.*"/>
+	</update>
+	<update>
+		<name>eHealth Portal</name>
+		<description>Portal for mobile health clinics</description>
+		<element>com_ehealthportal</element>
+		<type>component</type>
+		<version>1.0.5</version>
+		<infourl title="eHealth Portal!">https://git.vdm.dev/joomla/eHealth-Portal</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/namibia/eHealth-Portal/archive/refs/heads/master.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Llewellyn van der Merwe</maintainer>
+		<maintainerurl>https://git.vdm.dev/joomla/eHealth-Portal</maintainerurl>
+		<targetplatform name="joomla" version="3.*"/>
+	</update>
+	<update>
+		<name>eHealth Portal</name>
+		<description>Portal for mobile health clinics</description>
+		<element>com_ehealthportal</element>
+		<type>component</type>
+		<version>1.0.6</version>
+		<infourl title="eHealth Portal!">https://git.vdm.dev/joomla/eHealth-Portal</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">http://domain.com/demo.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Llewellyn van der Merwe</maintainer>
+		<maintainerurl>https://git.vdm.dev/joomla/eHealth-Portal</maintainerurl>
+		<targetplatform name="joomla" version="3.*"/>
+	</update>
+</updates>

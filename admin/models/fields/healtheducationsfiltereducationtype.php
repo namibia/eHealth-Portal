@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		healtheducationsfiltereducationtype.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,58 +26,62 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+
 // import the list field type
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
 /**
- * Healtheducationsfiltereducationtype Form Field class for the Ehealth_portal component
+ * Healtheducationsfiltereducationtype Form Field class for the Ehealthportal component
  */
 class JFormFieldHealtheducationsfiltereducationtype extends JFormFieldList
 {
 	/**
 	 * The healtheducationsfiltereducationtype field type.
 	 *
-	 * @var		string
+	 * @var        string
 	 */
 	public $type = 'healtheducationsfiltereducationtype';
 
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return	array    An array of JHtml options.
+	 * @return    array    An array of Html options.
 	 */
 	protected function getOptions()
 	{
 		// Get a db connection.
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 
 		// Create a new query object.
 		$query = $db->getQuery(true);
 
 		// Select the text.
 		$query->select($db->quoteName('education_type'));
-		$query->from($db->quoteName('#__ehealth_portal_health_education'));
+		$query->from($db->quoteName('#__ehealthportal_health_education'));
 		$query->order($db->quoteName('education_type') . ' ASC');
 
 		// Reset the query using our newly populated query object.
 		$db->setQuery($query);
 
-		$results = $db->loadColumn();
-		$_filter = array();
-		$_filter[] = JHtml::_('select.option', '', '- ' . JText::_('COM_EHEALTH_PORTAL_FILTER_SELECT_TYPE') . ' -');
+		$_results = $db->loadColumn();
+		$_filter = [];
+		$_filter[] = Html::_('select.option', '', '- ' . Text::_('COM_EHEALTHPORTAL_FILTER_SELECT_TYPE') . ' -');
 
-		if ($results)
+		if ($_results)
 		{
 			// get health_educationsmodel
-			$model = Ehealth_portalHelper::getModel('health_educations');
-			$results = array_unique($results);
-			foreach ($results as $education_type)
+			$_model = EhealthportalHelper::getModel('health_educations');
+			$_results = array_unique($_results);
+			foreach ($_results as $education_type)
 			{
 				// Translate the education_type selection
-				$text = $model->selectionTranslation($education_type,'education_type');
+				$_text = $_model->selectionTranslation($education_type,'education_type');
 				// Now add the education_type and its text to the options array
-				$_filter[] = JHtml::_('select.option', $education_type, JText::_($text));
+				$_filter[] = Html::_('select.option', $education_type, Text::_($_text));
 			}
 		}
 		return $_filter;

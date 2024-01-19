@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		patient_queue.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,21 +26,28 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Model\ItemModel;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Helper\TagsHelper;
 
 /**
- * Ehealth_portal Patient_queue Model
+ * Ehealthportal Patient_queue Item Model
  */
-class Ehealth_portalModelPatient_queue extends JModelItem
+class EhealthportalModelPatient_queue extends ItemModel
 {
 	/**
 	 * Model context string.
 	 *
 	 * @var        string
 	 */
-	protected $_context = 'com_ehealth_portal.patient_queue';
+	protected $_context = 'com_ehealthportal.patient_queue';
 
-        /**
+	/**
 	 * Model user data.
 	 *
 	 * @var        strings
@@ -70,7 +77,7 @@ class Ehealth_portalModelPatient_queue extends JModelItem
 	 */
 	protected function populateState()
 	{
-		$this->app = JFactory::getApplication();
+		$this->app = Factory::getApplication();
 		$this->input = $this->app->input;
 		// Get the item main id
 		$id = $this->input->getInt('id', null);
@@ -89,14 +96,14 @@ class Ehealth_portalModelPatient_queue extends JModelItem
 	 */
 	public function getItem($pk = null)
 	{
-		$this->user	= JFactory::getUser();
+		$this->user    = Factory::getUser();
 		// check if this user has permission to access item
-		if (!$this->user->authorise('patient_queue.access', 'com_ehealth_portal'))
+		if (!$this->user->authorise('patient_queue.access', 'com_ehealthportal'))
 		{
-			$app = JFactory::getApplication();
-			$app->enqueueMessage(JText::_('Not authorised!'), 'error');
+			$app = Factory::getApplication();
+			$app->enqueueMessage(Text::_('Not authorised!'), 'error');
 			// redirect away if not a correct to cPanel/default view
-			$app->redirect('index.php?option=com_ehealth_portal');
+			$app->redirect('index.php?option=com_ehealthportal');
 			return false;
 		}
 		$this->userId = $this->user->get('id');
@@ -107,10 +114,10 @@ class Ehealth_portalModelPatient_queue extends JModelItem
 		$this->initSet = true;
 
 		$pk = (!empty($pk)) ? $pk : (int) $this->getState('patient_queue.id');
-		
+
 		if ($this->_item === null)
 		{
-			$this->_item = array();
+			$this->_item = [];
 		}
 
 		if (!isset($this->_item[$pk]))
@@ -118,7 +125,7 @@ class Ehealth_portalModelPatient_queue extends JModelItem
 			try
 			{
 				// Get a db connection.
-				$db = JFactory::getDbo();
+				$db = Factory::getDbo();
 
 				// Create a new query object.
 				$query = $db->getQuery(true);
@@ -136,10 +143,10 @@ class Ehealth_portalModelPatient_queue extends JModelItem
 
 				if (empty($data))
 				{
-					$app = JFactory::getApplication();
+					$app = Factory::getApplication();
 					// If no data is found redirect to default page and show warning.
-					$app->enqueueMessage(JText::_('COM_EHEALTH_PORTAL_NOT_FOUND_OR_ACCESS_DENIED'), 'warning');
-					$app->redirect('index.php?option=com_ehealth_portal');
+					$app->enqueueMessage(Text::_('COM_EHEALTHPORTAL_NOT_FOUND_OR_ACCESS_DENIED'), 'warning');
+					$app->redirect('index.php?option=com_ehealthportal');
 					return false;
 				}
 
@@ -151,7 +158,7 @@ class Ehealth_portalModelPatient_queue extends JModelItem
 				if ($e->getCode() == 404)
 				{
 					// Need to go thru the error handler to allow Redirect to work.
-					JError::raiseWarning(404, $e->getMessage());
+					JError::raiseError(404, $e->getMessage());
 				}
 				else
 				{

@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		medication.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,26 +26,30 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+
 // import the list field type
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
 /**
- * Medication Form Field class for the Ehealth_portal component
+ * Medication Form Field class for the Ehealthportal component
  */
 class JFormFieldMedication extends JFormFieldList
 {
 	/**
 	 * The medication field type.
 	 *
-	 * @var		string
+	 * @var        string
 	 */
 	public $type = 'medication';
 
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return	array    An array of JHtml options.
+	 * @return    array    An array of Html options.
 	 */
 	protected function getOptions()
 	{
@@ -55,13 +59,13 @@ class JFormFieldMedication extends JFormFieldList
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select($db->quoteName(array('a.id','a.name'),array('id','medication_name')));
-		$query->from($db->quoteName('#__ehealth_portal_medication', 'a'));
+		$query->from($db->quoteName('#__ehealthportal_medication', 'a'));
 		$query->where($db->quoteName('a.published') . ' = 1');
 		$query->order('a.name ASC');
 		// Implement View Level Access (if set in table)
-		if (!$user->authorise('core.options', 'com_ehealth_portal'))
+		if (!$user->authorise('core.options', 'com_ehealthportal'))
 		{
-			$columns = $db->getTableColumns('#__ehealth_portal_medication');
+			$columns = $db->getTableColumns('#__ehealthportal_medication');
 			if(isset($columns['access']))
 			{
 				$groups = implode(',', $user->getAuthorisedViewLevels());

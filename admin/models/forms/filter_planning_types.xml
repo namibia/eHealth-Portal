@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fields name="filter">
 		<field
 			type="text"
 			name="search"
 			inputmode="search"
-			label="COM_EHEALTH_PORTAL_FILTER_SEARCH"
-			description="COM_EHEALTH_PORTAL_FILTER_SEARCH_PLANNING_TYPES"
+			label="COM_EHEALTHPORTAL_FILTER_SEARCH"
+			description="COM_EHEALTHPORTAL_FILTER_SEARCH_PLANNING_TYPES"
 			hint="JSEARCH_FILTER"
 		/>
 		<field
 			type="status"
 			name="published"
-			label="COM_EHEALTH_PORTAL_FILTER_PUBLISHED"
-			description="COM_EHEALTH_PORTAL_FILTER_PUBLISHED_PLANNING_TYPES"
+			label="COM_EHEALTHPORTAL_FILTER_PUBLISHED"
+			description="COM_EHEALTHPORTAL_FILTER_PUBLISHED_PLANNING_TYPES"
 			onchange="this.form.submit();"
 		>
 			<option value="">JOPTION_SELECT_PUBLISHED</option>
@@ -48,10 +48,10 @@
 			<option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
 			<option value="a.published ASC">JSTATUS_ASC</option>
 			<option value="a.published DESC">JSTATUS_DESC</option>
-			<option value="a.name ASC">COM_EHEALTH_PORTAL_FILTER_NAME_ASCENDING</option>
-			<option value="a.name DESC">COM_EHEALTH_PORTAL_FILTER_NAME_DESCENDING</option>
-			<option value="a.description ASC">COM_EHEALTH_PORTAL_FILTER_DESCRIPTION_ASCENDING</option>
-			<option value="a.description DESC">COM_EHEALTH_PORTAL_FILTER_DESCRIPTION_DESCENDING</option>
+			<option value="a.name ASC">COM_EHEALTHPORTAL_FILTER_NAME_ASCENDING</option>
+			<option value="a.name DESC">COM_EHEALTHPORTAL_FILTER_NAME_DESCENDING</option>
+			<option value="a.description ASC">COM_EHEALTHPORTAL_FILTER_DESCRIPTION_ASCENDING</option>
+			<option value="a.description DESC">COM_EHEALTHPORTAL_FILTER_DESCRIPTION_DESCENDING</option>
 			<option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
 			<option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
 		</field>

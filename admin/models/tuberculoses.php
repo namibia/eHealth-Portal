@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		tuberculoses.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,17 +26,26 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Helper\TagsHelper;
+use VDM\Joomla\Utilities\ArrayHelper as UtilitiesArrayHelper;
+use VDM\Joomla\Utilities\ObjectHelper;
+use VDM\Joomla\Utilities\StringHelper;
 
 /**
- * Tuberculoses Model
+ * Tuberculoses List Model
  */
-class Ehealth_portalModelTuberculoses extends JModelList
+class EhealthportalModelTuberculoses extends ListModel
 {
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		if (empty($config['filter_fields']))
-        {
+		{
 			$config['filter_fields'] = array(
 				'a.id','id',
 				'a.published','published',
@@ -64,7 +73,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 
 		// Adjust the context to support modal layouts.
 		if ($layout = $app->input->get('layout'))
@@ -107,7 +116,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		// List state information.
 		parent::populateState($ordering, $direction);
 	}
-	
+
 	/**
 	 * Method to get an array of data items.
 	 *
@@ -115,14 +124,28 @@ class Ehealth_portalModelTuberculoses extends JModelList
 	 */
 	public function getItems()
 	{
-		// check in items
+		// Check in items
 		$this->checkInNow();
 
 		// load parent items
 		$items = parent::getItems();
 
+		// Set values to display correctly.
+		if (UtilitiesArrayHelper::check($items))
+		{
+			// Get the user object if not set.
+			if (!isset($user) || !ObjectHelper::check($user))
+			{
+				$user = Factory::getUser();
+			}
+			foreach ($items as $nr => &$item)
+			{
+				$item->patient = EhealthportalHelper::getGUIDID($item->patient, 'user_map');
+			}
+		}
+
 		// set selection value to a translatable value
-		if (Ehealth_portalHelper::checkArray($items))
+		if (UtilitiesArrayHelper::check($items))
 		{
 			foreach ($items as $nr => &$item)
 			{
@@ -159,7 +182,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 			}
 		}
 
-        
+
 		// return items
 		return $items;
 	}
@@ -175,12 +198,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'recurring_night_sweats')
 		{
 			$recurring_night_sweatsArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($recurring_night_sweatsArray[$value]) && Ehealth_portalHelper::checkString($recurring_night_sweatsArray[$value]))
+			if (isset($recurring_night_sweatsArray[$value]) && StringHelper::check($recurring_night_sweatsArray[$value]))
 			{
 				return $recurring_night_sweatsArray[$value];
 			}
@@ -189,12 +212,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'tb_fever')
 		{
 			$tb_feverArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($tb_feverArray[$value]) && Ehealth_portalHelper::checkString($tb_feverArray[$value]))
+			if (isset($tb_feverArray[$value]) && StringHelper::check($tb_feverArray[$value]))
 			{
 				return $tb_feverArray[$value];
 			}
@@ -203,12 +226,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'persistent_cough')
 		{
 			$persistent_coughArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($persistent_coughArray[$value]) && Ehealth_portalHelper::checkString($persistent_coughArray[$value]))
+			if (isset($persistent_coughArray[$value]) && StringHelper::check($persistent_coughArray[$value]))
 			{
 				return $persistent_coughArray[$value];
 			}
@@ -217,12 +240,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'blood_streaked_sputum')
 		{
 			$blood_streaked_sputumArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($blood_streaked_sputumArray[$value]) && Ehealth_portalHelper::checkString($blood_streaked_sputumArray[$value]))
+			if (isset($blood_streaked_sputumArray[$value]) && StringHelper::check($blood_streaked_sputumArray[$value]))
 			{
 				return $blood_streaked_sputumArray[$value];
 			}
@@ -231,12 +254,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'unusual_tiredness')
 		{
 			$unusual_tirednessArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($unusual_tirednessArray[$value]) && Ehealth_portalHelper::checkString($unusual_tirednessArray[$value]))
+			if (isset($unusual_tirednessArray[$value]) && StringHelper::check($unusual_tirednessArray[$value]))
 			{
 				return $unusual_tirednessArray[$value];
 			}
@@ -245,12 +268,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'pain_in_chest')
 		{
 			$pain_in_chestArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($pain_in_chestArray[$value]) && Ehealth_portalHelper::checkString($pain_in_chestArray[$value]))
+			if (isset($pain_in_chestArray[$value]) && StringHelper::check($pain_in_chestArray[$value]))
 			{
 				return $pain_in_chestArray[$value];
 			}
@@ -259,12 +282,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'shortness_of_breath')
 		{
 			$shortness_of_breathArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($shortness_of_breathArray[$value]) && Ehealth_portalHelper::checkString($shortness_of_breathArray[$value]))
+			if (isset($shortness_of_breathArray[$value]) && StringHelper::check($shortness_of_breathArray[$value]))
 			{
 				return $shortness_of_breathArray[$value];
 			}
@@ -273,11 +296,11 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'diagnosed_with_disease')
 		{
 			$diagnosed_with_diseaseArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($diagnosed_with_diseaseArray[$value]) && Ehealth_portalHelper::checkString($diagnosed_with_diseaseArray[$value]))
+			if (isset($diagnosed_with_diseaseArray[$value]) && StringHelper::check($diagnosed_with_diseaseArray[$value]))
 			{
 				return $diagnosed_with_diseaseArray[$value];
 			}
@@ -286,12 +309,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'tb_exposed')
 		{
 			$tb_exposedArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($tb_exposedArray[$value]) && Ehealth_portalHelper::checkString($tb_exposedArray[$value]))
+			if (isset($tb_exposedArray[$value]) && StringHelper::check($tb_exposedArray[$value]))
 			{
 				return $tb_exposedArray[$value];
 			}
@@ -300,11 +323,11 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'tb_treatment')
 		{
 			$tb_treatmentArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($tb_treatmentArray[$value]) && Ehealth_portalHelper::checkString($tb_treatmentArray[$value]))
+			if (isset($tb_treatmentArray[$value]) && StringHelper::check($tb_treatmentArray[$value]))
 			{
 				return $tb_treatmentArray[$value];
 			}
@@ -313,11 +336,11 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'sputum_collection_one')
 		{
 			$sputum_collection_oneArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($sputum_collection_oneArray[$value]) && Ehealth_portalHelper::checkString($sputum_collection_oneArray[$value]))
+			if (isset($sputum_collection_oneArray[$value]) && StringHelper::check($sputum_collection_oneArray[$value]))
 			{
 				return $sputum_collection_oneArray[$value];
 			}
@@ -326,12 +349,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'sputum_result_one')
 		{
 			$sputum_result_oneArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_POSITIVE',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NEGATIVE',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_INCONCLUSIVE'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_POSITIVE',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NEGATIVE',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_INCONCLUSIVE'
 			);
 			// Now check if value is found in this array
-			if (isset($sputum_result_oneArray[$value]) && Ehealth_portalHelper::checkString($sputum_result_oneArray[$value]))
+			if (isset($sputum_result_oneArray[$value]) && StringHelper::check($sputum_result_oneArray[$value]))
 			{
 				return $sputum_result_oneArray[$value];
 			}
@@ -340,11 +363,11 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'referred_second_sputum')
 		{
 			$referred_second_sputumArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($referred_second_sputumArray[$value]) && Ehealth_portalHelper::checkString($referred_second_sputumArray[$value]))
+			if (isset($referred_second_sputumArray[$value]) && StringHelper::check($referred_second_sputumArray[$value]))
 			{
 				return $referred_second_sputumArray[$value];
 			}
@@ -353,12 +376,12 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'sputum_result_two')
 		{
 			$sputum_result_twoArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_POSITIVE',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NEGATIVE',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_INCONCLUSIVE'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_POSITIVE',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NEGATIVE',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_INCONCLUSIVE'
 			);
 			// Now check if value is found in this array
-			if (isset($sputum_result_twoArray[$value]) && Ehealth_portalHelper::checkString($sputum_result_twoArray[$value]))
+			if (isset($sputum_result_twoArray[$value]) && StringHelper::check($sputum_result_twoArray[$value]))
 			{
 				return $sputum_result_twoArray[$value];
 			}
@@ -367,41 +390,41 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		if ($name === 'weight_loss_wdieting')
 		{
 			$weight_loss_wdietingArray = array(
-				0 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_YES',
-				1 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_NO',
-				2 => 'COM_EHEALTH_PORTAL_TUBERCULOSIS_UNCERTAIN'
+				0 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_YES',
+				1 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_NO',
+				2 => 'COM_EHEALTHPORTAL_TUBERCULOSIS_UNCERTAIN'
 			);
 			// Now check if value is found in this array
-			if (isset($weight_loss_wdietingArray[$value]) && Ehealth_portalHelper::checkString($weight_loss_wdietingArray[$value]))
+			if (isset($weight_loss_wdietingArray[$value]) && StringHelper::check($weight_loss_wdietingArray[$value]))
 			{
 				return $weight_loss_wdietingArray[$value];
 			}
 		}
 		return $value;
 	}
-	
+
 	/**
 	 * Method to build an SQL query to load the list data.
 	 *
-	 * @return	string	An SQL query
+	 * @return    string    An SQL query
 	 */
 	protected function getListQuery()
 	{
 		// Get the user object.
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		// Create a new query object.
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 
 		// Select some fields
 		$query->select('a.*');
 
-		// From the ehealth_portal_item table
-		$query->from($db->quoteName('#__ehealth_portal_tuberculosis', 'a'));
+		// From the ehealthportal_item table
+		$query->from($db->quoteName('#__ehealthportal_tuberculosis', 'a'));
 
-		// From the ehealth_portal_referral table.
+		// From the ehealthportal_referral table.
 		$query->select($db->quoteName('g.name','referral_name'));
-		$query->join('LEFT', $db->quoteName('#__ehealth_portal_referral', 'g') . ' ON (' . $db->quoteName('a.referral') . ' = ' . $db->quoteName('g.id') . ')');
+		$query->join('LEFT', $db->quoteName('#__ehealthportal_referral', 'g') . ' ON (' . $db->quoteName('a.referral') . ' = ' . $db->quoteName('g.id') . ')');
 
 		// Filter by published state
 		$published = $this->getState('filter.published');
@@ -423,7 +446,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		{
 			$query->where('a.access = ' . (int) $_access);
 		}
-		elseif (Ehealth_portalHelper::checkArray($_access))
+		elseif (EhealthportalHelper::checkArray($_access))
 		{
 			// Secure the array for the query
 			$_access = ArrayHelper::toInteger($_access);
@@ -431,7 +454,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 			$query->where('a.access IN (' . implode(',', $_access) . ')');
 		}
 		// Implement View Level Access
-		if (!$user->authorise('core.options', 'com_ehealth_portal'))
+		if (!$user->authorise('core.options', 'com_ehealthportal'))
 		{
 			$groups = implode(',', $user->getAuthorisedViewLevels());
 			$query->where('a.access IN (' . $groups . ')');
@@ -464,7 +487,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 				$query->where('a.patient = ' . (int) $_patient);
 			}
 		}
-		elseif (Ehealth_portalHelper::checkString($_patient))
+		elseif (EhealthportalHelper::checkString($_patient))
 		{
 			$query->where('a.patient = ' . $db->quote($db->escape($_patient)));
 		}
@@ -491,24 +514,24 @@ class Ehealth_portalModelTuberculoses extends JModelList
 	public function getExportData($pks, $user = null)
 	{
 		// setup the query
-		if (($pks_size = Ehealth_portalHelper::checkArray($pks)) !== false || 'bulk' === $pks)
+		if (($pks_size = UtilitiesArrayHelper::check($pks)) !== false || 'bulk' === $pks)
 		{
 			// Set a value to know this is export method. (USE IN CUSTOM CODE TO ALTER OUTCOME)
 			$_export = true;
 			// Get the user object if not set.
-			if (!isset($user) || !Ehealth_portalHelper::checkObject($user))
+			if (!isset($user) || !ObjectHelper::check($user))
 			{
-				$user = JFactory::getUser();
+				$user = Factory::getUser();
 			}
 			// Create a new query object.
-			$db = JFactory::getDBO();
+			$db = Factory::getDBO();
 			$query = $db->getQuery(true);
 
 			// Select some fields
 			$query->select('a.*');
 
-			// From the ehealth_portal_tuberculosis table
-			$query->from($db->quoteName('#__ehealth_portal_tuberculosis', 'a'));
+			// From the ehealthportal_tuberculosis table
+			$query->from($db->quoteName('#__ehealthportal_tuberculosis', 'a'));
 			// The bulk export path
 			if ('bulk' === $pks)
 			{
@@ -527,8 +550,18 @@ class Ehealth_portalModelTuberculoses extends JModelList
 			{
 				$query->where('a.id IN (' . implode(',',$pks) . ')');
 			}
+			// Get global switch to activate text only export
+			$export_text_only = ComponentHelper::getParams('com_ehealthportal')->get('export_text_only', 0);
+			// Add these queries only if text only is required
+			if ($export_text_only)
+			{
+
+				// From the ehealthportal_referral table.
+				$query->select($db->quoteName('g.name','referral'));
+				$query->join('LEFT', $db->quoteName('#__ehealthportal_referral', 'g') . ' ON (' . $db->quoteName('a.referral') . ' = ' . $db->quoteName('g.id') . ')');
+			}
 			// Implement View Level Access
-			if (!$user->authorise('core.options', 'com_ehealth_portal'))
+			if (!$user->authorise('core.options', 'com_ehealthportal'))
 			{
 				$groups = implode(',', $user->getAuthorisedViewLevels());
 				$query->where('a.access IN (' . $groups . ')');
@@ -545,10 +578,11 @@ class Ehealth_portalModelTuberculoses extends JModelList
 				$items = $db->loadObjectList();
 
 				// Set values to display correctly.
-				if (Ehealth_portalHelper::checkArray($items))
+				if (UtilitiesArrayHelper::check($items))
 				{
 					foreach ($items as $nr => &$item)
 					{
+						$item->patient = EhealthportalHelper::getGUIDID($item->patient, 'user_map');
 						// unset the values we don't want exported.
 						unset($item->asset_id);
 						unset($item->checked_out);
@@ -557,10 +591,53 @@ class Ehealth_portalModelTuberculoses extends JModelList
 				}
 				// Add headers to items array.
 				$headers = $this->getExImPortHeaders();
-				if (Ehealth_portalHelper::checkObject($headers))
+				if (ObjectHelper::check($headers))
 				{
 					array_unshift($items,$headers);
 				}
+			// Add these translation only if text only is required
+			if ($export_text_only)
+			{
+
+					// set selection value to a translatable value
+					if (UtilitiesArrayHelper::check($items))
+					{
+						foreach ($items as $nr => &$item)
+						{
+							// convert recurring_night_sweats
+							$item->recurring_night_sweats = $this->selectionTranslation($item->recurring_night_sweats, 'recurring_night_sweats');
+							// convert tb_fever
+							$item->tb_fever = $this->selectionTranslation($item->tb_fever, 'tb_fever');
+							// convert persistent_cough
+							$item->persistent_cough = $this->selectionTranslation($item->persistent_cough, 'persistent_cough');
+							// convert blood_streaked_sputum
+							$item->blood_streaked_sputum = $this->selectionTranslation($item->blood_streaked_sputum, 'blood_streaked_sputum');
+							// convert unusual_tiredness
+							$item->unusual_tiredness = $this->selectionTranslation($item->unusual_tiredness, 'unusual_tiredness');
+							// convert pain_in_chest
+							$item->pain_in_chest = $this->selectionTranslation($item->pain_in_chest, 'pain_in_chest');
+							// convert shortness_of_breath
+							$item->shortness_of_breath = $this->selectionTranslation($item->shortness_of_breath, 'shortness_of_breath');
+							// convert diagnosed_with_disease
+							$item->diagnosed_with_disease = $this->selectionTranslation($item->diagnosed_with_disease, 'diagnosed_with_disease');
+							// convert tb_exposed
+							$item->tb_exposed = $this->selectionTranslation($item->tb_exposed, 'tb_exposed');
+							// convert tb_treatment
+							$item->tb_treatment = $this->selectionTranslation($item->tb_treatment, 'tb_treatment');
+							// convert sputum_collection_one
+							$item->sputum_collection_one = $this->selectionTranslation($item->sputum_collection_one, 'sputum_collection_one');
+							// convert sputum_result_one
+							$item->sputum_result_one = $this->selectionTranslation($item->sputum_result_one, 'sputum_result_one');
+							// convert referred_second_sputum
+							$item->referred_second_sputum = $this->selectionTranslation($item->referred_second_sputum, 'referred_second_sputum');
+							// convert sputum_result_two
+							$item->sputum_result_two = $this->selectionTranslation($item->sputum_result_two, 'sputum_result_two');
+							// convert weight_loss_wdieting
+							$item->weight_loss_wdieting = $this->selectionTranslation($item->weight_loss_wdieting, 'weight_loss_wdieting');
+						}
+					}
+
+			}
 				return $items;
 			}
 		}
@@ -575,10 +652,10 @@ class Ehealth_portalModelTuberculoses extends JModelList
 	public function getExImPortHeaders()
 	{
 		// Get a db connection.
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		// get the columns
-		$columns = $db->getTableColumns("#__ehealth_portal_tuberculosis");
-		if (Ehealth_portalHelper::checkArray($columns))
+		$columns = $db->getTableColumns("#__ehealthportal_tuberculosis");
+		if (UtilitiesArrayHelper::check($columns))
 		{
 			// remove the headers you don't import/export.
 			unset($columns['asset_id']);
@@ -593,7 +670,7 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method to get a store id based on model configuration state.
 	 *
@@ -608,13 +685,13 @@ class Ehealth_portalModelTuberculoses extends JModelList
 		$id .= ':' . $this->getState('filter.published');
 		// Check if the value is an array
 		$_access = $this->getState('filter.access');
-		if (Ehealth_portalHelper::checkArray($_access))
+		if (UtilitiesArrayHelper::check($_access))
 		{
 			$id .= ':' . implode(':', $_access);
 		}
 		// Check if this is only an number or string
 		elseif (is_numeric($_access)
-		 || Ehealth_portalHelper::checkString($_access))
+		 || StringHelper::check($_access))
 		{
 			$id .= ':' . $_access;
 		}
@@ -635,24 +712,26 @@ class Ehealth_portalModelTuberculoses extends JModelList
 	protected function checkInNow()
 	{
 		// Get set check in time
-		$time = JComponentHelper::getParams('com_ehealth_portal')->get('check_in');
+		$time = ComponentHelper::getParams('com_ehealthportal')->get('check_in');
 
 		if ($time)
 		{
 
 			// Get a db connection.
-			$db = JFactory::getDbo();
-			// reset query
+			$db = Factory::getDbo();
+			// Reset query.
 			$query = $db->getQuery(true);
 			$query->select('*');
-			$query->from($db->quoteName('#__ehealth_portal_tuberculosis'));
-			$db->setQuery($query);
+			$query->from($db->quoteName('#__ehealthportal_tuberculosis'));
+			// Only select items that are checked out.
+			$query->where($db->quoteName('checked_out') . '!=0');
+			$db->setQuery($query, 0, 1);
 			$db->execute();
 			if ($db->getNumRows())
 			{
-				// Get Yesterdays date
-				$date = JFactory::getDate()->modify($time)->toSql();
-				// reset query
+				// Get Yesterdays date.
+				$date = Factory::getDate()->modify($time)->toSql();
+				// Reset query.
 				$query = $db->getQuery(true);
 
 				// Fields to update.
@@ -667,8 +746,8 @@ class Ehealth_portalModelTuberculoses extends JModelList
 					$db->quoteName('checked_out_time') . '<\''.$date.'\''
 				);
 
-				// Check table
-				$query->update($db->quoteName('#__ehealth_portal_tuberculosis'))->set($fields)->where($conditions); 
+				// Check table.
+				$query->update($db->quoteName('#__ehealthportal_tuberculosis'))->set($fields)->where($conditions); 
 
 				$db->setQuery($query);
 

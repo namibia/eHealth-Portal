@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		controller.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,17 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use VDM\Joomla\Utilities\ArrayHelper as UtilitiesArrayHelper;
+use VDM\Joomla\Utilities\StringHelper;
 
 /**
- * General Controller of Ehealth_portal component
+ * General Controller of Ehealthportal component
  */
-class Ehealth_portalController extends JControllerLegacy
+class EhealthportalController extends BaseController
 {
 	/**
 	 * Constructor.
@@ -42,10 +47,10 @@ class Ehealth_portalController extends JControllerLegacy
 	 *
 	 * @since   3.0
 	 */
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		// set the default view
-		$config['default_view'] = 'ehealth_portal';
+		$config['default_view'] = 'ehealthportal';
 
 		parent::__construct($config);
 	}
@@ -58,38 +63,38 @@ class Ehealth_portalController extends JControllerLegacy
 	function display($cachable = false, $urlparams = false)
 	{
 		// set default view if not set
-		$view   = $this->input->getCmd('view', 'ehealth_portal');
-		$data	= $this->getViewRelation($view);
-		$layout	= $this->input->get('layout', null, 'WORD');
-		$id    	= $this->input->getInt('id');
+		$view      = $this->input->getCmd('view', 'ehealthportal');
+		$data      = $this->getViewRelation($view);
+		$layout    = $this->input->get('layout', null, 'WORD');
+		$id        = $this->input->getInt('id');
 
 		// Check for edit form.
-		if(Ehealth_portalHelper::checkArray($data))
+		if(UtilitiesArrayHelper::check($data))
 		{
-			if ($data['edit'] && $layout == 'edit' && !$this->checkEditId('com_ehealth_portal.edit.'.$data['view'], $id))
+			if ($data['edit'] && $layout == 'edit' && !$this->checkEditId('com_ehealthportal.edit.'.$data['view'], $id))
 			{
 				// Somehow the person just went to the form - we don't allow that.
-				$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id));
+				$this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id));
 				$this->setMessage($this->getError(), 'error');
 				// check if item was opend from other then its own list view
-				$ref 	= $this->input->getCmd('ref', 0);
-				$refid 	= $this->input->getInt('refid', 0);
+				$ref     = $this->input->getCmd('ref', 0);
+				$refid   = $this->input->getInt('refid', 0);
 				// set redirect
-				if ($refid > 0 && Ehealth_portalHelper::checkString($ref))
+				if ($refid > 0 && StringHelper::check($ref))
 				{
 					// redirect to item of ref
-					$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view='.(string)$ref.'&layout=edit&id='.(int)$refid, false));
+					$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view='.(string)$ref.'&layout=edit&id='.(int)$refid, false));
 				}
-				elseif (Ehealth_portalHelper::checkString($ref))
+				elseif (StringHelper::check($ref))
 				{
 
 					// redirect to ref
-					$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view='.(string)$ref, false));
+					$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view='.(string)$ref, false));
 				}
 				else
 				{
 					// normal redirect back to the list view
-					$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view='.$data['views'], false));
+					$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view='.$data['views'], false));
 				}
 
 				return false;
@@ -102,7 +107,7 @@ class Ehealth_portalController extends JControllerLegacy
 	protected function getViewRelation($view)
 	{
 		// check the we have a value
-		if (Ehealth_portalHelper::checkString($view))
+		if (StringHelper::check($view))
 		{
 			// the view relationships
 			$views = array(
@@ -119,26 +124,25 @@ class Ehealth_portalController extends JControllerLegacy
 				'cervical_cancer' => 'cervical_cancers',
 				'breast_cancer' => 'breast_cancers',
 				'test' => 'tests',
-				'immunisation_vaccine_type' => 'immunisation_vaccine_types',
-				'foetal_presentation' => 'foetal_presentations',
 				'foetal_lie' => 'foetal_lies',
-				'counseling_type' => 'counseling_types',
+				'immunisation_vaccine_type' => 'immunisation_vaccine_types',
 				'foetal_engagement' => 'foetal_engagements',
-				'health_education_topic' => 'health_education_topics',
+				'foetal_presentation' => 'foetal_presentations',
 				'testing_reason' => 'testing_reasons',
-				'clinic' => 'clinics',
+				'counseling_type' => 'counseling_types',
+				'health_education_topic' => 'health_education_topics',
 				'immunisation_type' => 'immunisation_types',
-				'unit' => 'units',
+				'strength' => 'strengths',
 				'referral' => 'referrals',
 				'planning_type' => 'planning_types',
 				'diagnosis_type' => 'diagnosis_types',
 				'nonpay_reason' => 'nonpay_reasons',
 				'medication' => 'medications',
-				'payment_amount' => 'payment_amounts',
-				'administration_part' => 'administration_parts',
 				'payment_type' => 'payment_types',
-				'strength' => 'strengths',
-				'site' => 'sites'
+				'administration_part' => 'administration_parts',
+				'site' => 'sites',
+				'unit' => 'units',
+				'clinic' => 'clinics'
 					);
 			// check if this is a list view
 			if (in_array($view, $views))

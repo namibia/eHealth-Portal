@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		cervical_cancers.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,17 +26,26 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Helper\TagsHelper;
+use VDM\Joomla\Utilities\ArrayHelper as UtilitiesArrayHelper;
+use VDM\Joomla\Utilities\ObjectHelper;
+use VDM\Joomla\Utilities\StringHelper;
 
 /**
- * Cervical_cancers Model
+ * Cervical_cancers List Model
  */
-class Ehealth_portalModelCervical_cancers extends JModelList
+class EhealthportalModelCervical_cancers extends ListModel
 {
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		if (empty($config['filter_fields']))
-        {
+		{
 			$config['filter_fields'] = array(
 				'a.id','id',
 				'a.published','published',
@@ -64,7 +73,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 
 		// Adjust the context to support modal layouts.
 		if ($layout = $app->input->get('layout'))
@@ -107,7 +116,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		// List state information.
 		parent::populateState($ordering, $direction);
 	}
-	
+
 	/**
 	 * Method to get an array of data items.
 	 *
@@ -115,14 +124,28 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 	 */
 	public function getItems()
 	{
-		// check in items
+		// Check in items
 		$this->checkInNow();
 
 		// load parent items
 		$items = parent::getItems();
 
+		// Set values to display correctly.
+		if (UtilitiesArrayHelper::check($items))
+		{
+			// Get the user object if not set.
+			if (!isset($user) || !ObjectHelper::check($user))
+			{
+				$user = Factory::getUser();
+			}
+			foreach ($items as $nr => &$item)
+			{
+				$item->patient = EhealthportalHelper::getGUIDID($item->patient, 'user_map');
+			}
+		}
+
 		// set selection value to a translatable value
-		if (Ehealth_portalHelper::checkArray($items))
+		if (UtilitiesArrayHelper::check($items))
 		{
 			foreach ($items as $nr => &$item)
 			{
@@ -145,7 +168,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 			}
 		}
 
-        
+
 		// return items
 		return $items;
 	}
@@ -161,11 +184,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_viginal_bleeding')
 		{
 			$cc_viginal_bleedingArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_viginal_bleedingArray[$value]) && Ehealth_portalHelper::checkString($cc_viginal_bleedingArray[$value]))
+			if (isset($cc_viginal_bleedingArray[$value]) && StringHelper::check($cc_viginal_bleedingArray[$value]))
 			{
 				return $cc_viginal_bleedingArray[$value];
 			}
@@ -174,11 +197,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_v_discharge')
 		{
 			$cc_v_dischargeArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_v_dischargeArray[$value]) && Ehealth_portalHelper::checkString($cc_v_dischargeArray[$value]))
+			if (isset($cc_v_dischargeArray[$value]) && StringHelper::check($cc_v_dischargeArray[$value]))
 			{
 				return $cc_v_dischargeArray[$value];
 			}
@@ -187,11 +210,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_periods')
 		{
 			$cc_periodsArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_periodsArray[$value]) && Ehealth_portalHelper::checkString($cc_periodsArray[$value]))
+			if (isset($cc_periodsArray[$value]) && StringHelper::check($cc_periodsArray[$value]))
 			{
 				return $cc_periodsArray[$value];
 			}
@@ -200,11 +223,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_smoking')
 		{
 			$cc_smokingArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_smokingArray[$value]) && Ehealth_portalHelper::checkString($cc_smokingArray[$value]))
+			if (isset($cc_smokingArray[$value]) && StringHelper::check($cc_smokingArray[$value]))
 			{
 				return $cc_smokingArray[$value];
 			}
@@ -213,11 +236,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_sex_actve')
 		{
 			$cc_sex_actveArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_sex_actveArray[$value]) && Ehealth_portalHelper::checkString($cc_sex_actveArray[$value]))
+			if (isset($cc_sex_actveArray[$value]) && StringHelper::check($cc_sex_actveArray[$value]))
 			{
 				return $cc_sex_actveArray[$value];
 			}
@@ -226,11 +249,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_sex_partner')
 		{
 			$cc_sex_partnerArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_sex_partnerArray[$value]) && Ehealth_portalHelper::checkString($cc_sex_partnerArray[$value]))
+			if (isset($cc_sex_partnerArray[$value]) && StringHelper::check($cc_sex_partnerArray[$value]))
 			{
 				return $cc_sex_partnerArray[$value];
 			}
@@ -239,11 +262,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'pap_smear_collection')
 		{
 			$pap_smear_collectionArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_YES',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NO'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_YES',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NO'
 			);
 			// Now check if value is found in this array
-			if (isset($pap_smear_collectionArray[$value]) && Ehealth_portalHelper::checkString($pap_smear_collectionArray[$value]))
+			if (isset($pap_smear_collectionArray[$value]) && StringHelper::check($pap_smear_collectionArray[$value]))
 			{
 				return $pap_smear_collectionArray[$value];
 			}
@@ -252,41 +275,41 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		if ($name === 'cc_result')
 		{
 			$cc_resultArray = array(
-				0 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_POSITIVE',
-				1 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_NEGATIVE',
-				2 => 'COM_EHEALTH_PORTAL_CERVICAL_CANCER_INCONCLUSIVE'
+				0 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_POSITIVE',
+				1 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_NEGATIVE',
+				2 => 'COM_EHEALTHPORTAL_CERVICAL_CANCER_INCONCLUSIVE'
 			);
 			// Now check if value is found in this array
-			if (isset($cc_resultArray[$value]) && Ehealth_portalHelper::checkString($cc_resultArray[$value]))
+			if (isset($cc_resultArray[$value]) && StringHelper::check($cc_resultArray[$value]))
 			{
 				return $cc_resultArray[$value];
 			}
 		}
 		return $value;
 	}
-	
+
 	/**
 	 * Method to build an SQL query to load the list data.
 	 *
-	 * @return	string	An SQL query
+	 * @return    string    An SQL query
 	 */
 	protected function getListQuery()
 	{
 		// Get the user object.
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		// Create a new query object.
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 
 		// Select some fields
 		$query->select('a.*');
 
-		// From the ehealth_portal_item table
-		$query->from($db->quoteName('#__ehealth_portal_cervical_cancer', 'a'));
+		// From the ehealthportal_item table
+		$query->from($db->quoteName('#__ehealthportal_cervical_cancer', 'a'));
 
-		// From the ehealth_portal_referral table.
+		// From the ehealthportal_referral table.
 		$query->select($db->quoteName('g.name','referral_name'));
-		$query->join('LEFT', $db->quoteName('#__ehealth_portal_referral', 'g') . ' ON (' . $db->quoteName('a.referral') . ' = ' . $db->quoteName('g.id') . ')');
+		$query->join('LEFT', $db->quoteName('#__ehealthportal_referral', 'g') . ' ON (' . $db->quoteName('a.referral') . ' = ' . $db->quoteName('g.id') . ')');
 
 		// Filter by published state
 		$published = $this->getState('filter.published');
@@ -308,7 +331,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		{
 			$query->where('a.access = ' . (int) $_access);
 		}
-		elseif (Ehealth_portalHelper::checkArray($_access))
+		elseif (EhealthportalHelper::checkArray($_access))
 		{
 			// Secure the array for the query
 			$_access = ArrayHelper::toInteger($_access);
@@ -316,7 +339,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 			$query->where('a.access IN (' . implode(',', $_access) . ')');
 		}
 		// Implement View Level Access
-		if (!$user->authorise('core.options', 'com_ehealth_portal'))
+		if (!$user->authorise('core.options', 'com_ehealthportal'))
 		{
 			$groups = implode(',', $user->getAuthorisedViewLevels());
 			$query->where('a.access IN (' . $groups . ')');
@@ -349,7 +372,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 				$query->where('a.patient = ' . (int) $_patient);
 			}
 		}
-		elseif (Ehealth_portalHelper::checkString($_patient))
+		elseif (EhealthportalHelper::checkString($_patient))
 		{
 			$query->where('a.patient = ' . $db->quote($db->escape($_patient)));
 		}
@@ -376,24 +399,24 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 	public function getExportData($pks, $user = null)
 	{
 		// setup the query
-		if (($pks_size = Ehealth_portalHelper::checkArray($pks)) !== false || 'bulk' === $pks)
+		if (($pks_size = UtilitiesArrayHelper::check($pks)) !== false || 'bulk' === $pks)
 		{
 			// Set a value to know this is export method. (USE IN CUSTOM CODE TO ALTER OUTCOME)
 			$_export = true;
 			// Get the user object if not set.
-			if (!isset($user) || !Ehealth_portalHelper::checkObject($user))
+			if (!isset($user) || !ObjectHelper::check($user))
 			{
-				$user = JFactory::getUser();
+				$user = Factory::getUser();
 			}
 			// Create a new query object.
-			$db = JFactory::getDBO();
+			$db = Factory::getDBO();
 			$query = $db->getQuery(true);
 
 			// Select some fields
 			$query->select('a.*');
 
-			// From the ehealth_portal_cervical_cancer table
-			$query->from($db->quoteName('#__ehealth_portal_cervical_cancer', 'a'));
+			// From the ehealthportal_cervical_cancer table
+			$query->from($db->quoteName('#__ehealthportal_cervical_cancer', 'a'));
 			// The bulk export path
 			if ('bulk' === $pks)
 			{
@@ -412,8 +435,18 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 			{
 				$query->where('a.id IN (' . implode(',',$pks) . ')');
 			}
+			// Get global switch to activate text only export
+			$export_text_only = ComponentHelper::getParams('com_ehealthportal')->get('export_text_only', 0);
+			// Add these queries only if text only is required
+			if ($export_text_only)
+			{
+
+				// From the ehealthportal_referral table.
+				$query->select($db->quoteName('g.name','referral'));
+				$query->join('LEFT', $db->quoteName('#__ehealthportal_referral', 'g') . ' ON (' . $db->quoteName('a.referral') . ' = ' . $db->quoteName('g.id') . ')');
+			}
 			// Implement View Level Access
-			if (!$user->authorise('core.options', 'com_ehealth_portal'))
+			if (!$user->authorise('core.options', 'com_ehealthportal'))
 			{
 				$groups = implode(',', $user->getAuthorisedViewLevels());
 				$query->where('a.access IN (' . $groups . ')');
@@ -430,10 +463,11 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 				$items = $db->loadObjectList();
 
 				// Set values to display correctly.
-				if (Ehealth_portalHelper::checkArray($items))
+				if (UtilitiesArrayHelper::check($items))
 				{
 					foreach ($items as $nr => &$item)
 					{
+						$item->patient = EhealthportalHelper::getGUIDID($item->patient, 'user_map');
 						// unset the values we don't want exported.
 						unset($item->asset_id);
 						unset($item->checked_out);
@@ -442,10 +476,39 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 				}
 				// Add headers to items array.
 				$headers = $this->getExImPortHeaders();
-				if (Ehealth_portalHelper::checkObject($headers))
+				if (ObjectHelper::check($headers))
 				{
 					array_unshift($items,$headers);
 				}
+			// Add these translation only if text only is required
+			if ($export_text_only)
+			{
+
+					// set selection value to a translatable value
+					if (UtilitiesArrayHelper::check($items))
+					{
+						foreach ($items as $nr => &$item)
+						{
+							// convert cc_viginal_bleeding
+							$item->cc_viginal_bleeding = $this->selectionTranslation($item->cc_viginal_bleeding, 'cc_viginal_bleeding');
+							// convert cc_v_discharge
+							$item->cc_v_discharge = $this->selectionTranslation($item->cc_v_discharge, 'cc_v_discharge');
+							// convert cc_periods
+							$item->cc_periods = $this->selectionTranslation($item->cc_periods, 'cc_periods');
+							// convert cc_smoking
+							$item->cc_smoking = $this->selectionTranslation($item->cc_smoking, 'cc_smoking');
+							// convert cc_sex_actve
+							$item->cc_sex_actve = $this->selectionTranslation($item->cc_sex_actve, 'cc_sex_actve');
+							// convert cc_sex_partner
+							$item->cc_sex_partner = $this->selectionTranslation($item->cc_sex_partner, 'cc_sex_partner');
+							// convert pap_smear_collection
+							$item->pap_smear_collection = $this->selectionTranslation($item->pap_smear_collection, 'pap_smear_collection');
+							// convert cc_result
+							$item->cc_result = $this->selectionTranslation($item->cc_result, 'cc_result');
+						}
+					}
+
+			}
 				return $items;
 			}
 		}
@@ -460,10 +523,10 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 	public function getExImPortHeaders()
 	{
 		// Get a db connection.
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		// get the columns
-		$columns = $db->getTableColumns("#__ehealth_portal_cervical_cancer");
-		if (Ehealth_portalHelper::checkArray($columns))
+		$columns = $db->getTableColumns("#__ehealthportal_cervical_cancer");
+		if (UtilitiesArrayHelper::check($columns))
 		{
 			// remove the headers you don't import/export.
 			unset($columns['asset_id']);
@@ -478,7 +541,7 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method to get a store id based on model configuration state.
 	 *
@@ -493,13 +556,13 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 		$id .= ':' . $this->getState('filter.published');
 		// Check if the value is an array
 		$_access = $this->getState('filter.access');
-		if (Ehealth_portalHelper::checkArray($_access))
+		if (UtilitiesArrayHelper::check($_access))
 		{
 			$id .= ':' . implode(':', $_access);
 		}
 		// Check if this is only an number or string
 		elseif (is_numeric($_access)
-		 || Ehealth_portalHelper::checkString($_access))
+		 || StringHelper::check($_access))
 		{
 			$id .= ':' . $_access;
 		}
@@ -520,24 +583,26 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 	protected function checkInNow()
 	{
 		// Get set check in time
-		$time = JComponentHelper::getParams('com_ehealth_portal')->get('check_in');
+		$time = ComponentHelper::getParams('com_ehealthportal')->get('check_in');
 
 		if ($time)
 		{
 
 			// Get a db connection.
-			$db = JFactory::getDbo();
-			// reset query
+			$db = Factory::getDbo();
+			// Reset query.
 			$query = $db->getQuery(true);
 			$query->select('*');
-			$query->from($db->quoteName('#__ehealth_portal_cervical_cancer'));
-			$db->setQuery($query);
+			$query->from($db->quoteName('#__ehealthportal_cervical_cancer'));
+			// Only select items that are checked out.
+			$query->where($db->quoteName('checked_out') . '!=0');
+			$db->setQuery($query, 0, 1);
 			$db->execute();
 			if ($db->getNumRows())
 			{
-				// Get Yesterdays date
-				$date = JFactory::getDate()->modify($time)->toSql();
-				// reset query
+				// Get Yesterdays date.
+				$date = Factory::getDate()->modify($time)->toSql();
+				// Reset query.
 				$query = $db->getQuery(true);
 
 				// Fields to update.
@@ -552,8 +617,8 @@ class Ehealth_portalModelCervical_cancers extends JModelList
 					$db->quoteName('checked_out_time') . '<\''.$date.'\''
 				);
 
-				// Check table
-				$query->update($db->quoteName('#__ehealth_portal_cervical_cancer'))->set($fields)->where($conditions); 
+				// Check table.
+				$query->update($db->quoteName('#__ehealthportal_cervical_cancer'))->set($fields)->where($conditions); 
 
 				$db->setQuery($query);
 

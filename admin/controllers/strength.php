@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		strength.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,19 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
+use Joomla\CMS\Uri\Uri;
 
 /**
- * Strength Controller
+ * Strength Form Controller
  */
-class Ehealth_portalControllerStrength extends JControllerForm
+class EhealthportalControllerStrength extends FormController
 {
 	/**
 	 * Current or most recently performed task.
@@ -49,13 +56,13 @@ class Ehealth_portalControllerStrength extends JControllerForm
 	 *
 	 * @since   1.6
 	 */
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		$this->view_list = 'Strengths'; // safeguard for setting the return view listing to the main view.
 		parent::__construct($config);
 	}
 
-        /**
+	/**
 	 * Method override to check if you can add a new record.
 	 *
 	 * @param   array  $data  An array of input data.
@@ -64,18 +71,18 @@ class Ehealth_portalControllerStrength extends JControllerForm
 	 *
 	 * @since   1.6
 	 */
-	protected function allowAdd($data = array())
+	protected function allowAdd($data = [])
 	{
 		// Get user object.
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		// Access check.
-		$access = $user->authorise('strength.access', 'com_ehealth_portal');
+		$access = $user->authorise('strength.access', 'com_ehealthportal');
 		if (!$access)
 		{
 			return false;
 		}
 
-		// In the absense of better information, revert to the component permissions.
+		// In the absence of better information, revert to the component permissions.
 		return parent::allowAdd($data);
 	}
 
@@ -89,10 +96,10 @@ class Ehealth_portalControllerStrength extends JControllerForm
 	 *
 	 * @since   1.6
 	 */
-	protected function allowEdit($data = array(), $key = 'id')
+	protected function allowEdit($data = [], $key = 'id')
 	{
 		// get user object.
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		// get record id.
 		$recordId = (int) isset($data[$key]) ? $data[$key] : 0;
 
@@ -100,10 +107,10 @@ class Ehealth_portalControllerStrength extends JControllerForm
 		if ($recordId)
 		{
 			// The record has been set. Check the record permissions.
-			$permission = $user->authorise('core.edit', 'com_ehealth_portal.strength.' . (int) $recordId);
+			$permission = $user->authorise('core.edit', 'com_ehealthportal.strength.' . (int) $recordId);
 			if (!$permission)
 			{
-				if ($user->authorise('core.edit.own', 'com_ehealth_portal.strength.' . $recordId))
+				if ($user->authorise('core.edit.own', 'com_ehealthportal.strength.' . $recordId))
 				{
 					// Now test the owner is the user.
 					$ownerId = (int) isset($data['created_by']) ? $data['created_by'] : 0;
@@ -122,7 +129,7 @@ class Ehealth_portalControllerStrength extends JControllerForm
 					// If the owner matches 'me' then allow.
 					if ($ownerId == $user->id)
 					{
-						if ($user->authorise('core.edit.own', 'com_ehealth_portal'))
+						if ($user->authorise('core.edit.own', 'com_ehealthportal'))
 						{
 							return true;
 						}
@@ -156,12 +163,12 @@ class Ehealth_portalControllerStrength extends JControllerForm
 
 		// set the referral options
 		if ($refid && $ref)
-                {
-			$append = '&ref=' . (string)$ref . '&refid='. (int)$refid . $append;
+		{
+			$append = '&ref=' . (string) $ref . '&refid='. (int) $refid . $append;
 		}
 		elseif ($ref)
 		{
-			$append = '&ref='. (string)$ref . $append;
+			$append = '&ref='. (string) $ref . $append;
 		}
 
 		return $append;
@@ -178,13 +185,13 @@ class Ehealth_portalControllerStrength extends JControllerForm
 	 */
 	public function batch($model = null)
 	{
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
 		// Set the model
-		$model = $this->getModel('Strength', '', array());
+		$model = $this->getModel('Strength', '', []);
 
 		// Preset the redirect
-		$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view=strengths' . $this->getRedirectToListAppend(), false));
+		$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view=strengths' . $this->getRedirectToListAppend(), false));
 
 		return parent::batch($model);
 	}
@@ -209,13 +216,13 @@ class Ehealth_portalControllerStrength extends JControllerForm
 
 		$cancel = parent::cancel($key);
 
-		if (!is_null($return) && JUri::isInternal(base64_decode($return)))
+		if (!is_null($return) && Uri::isInternal(base64_decode($return)))
 		{
 			$redirect = base64_decode($return);
 
 			// Redirect to the return value.
 			$this->setRedirect(
-				JRoute::_(
+				Route::_(
 					$redirect, false
 				)
 			);
@@ -226,7 +233,7 @@ class Ehealth_portalControllerStrength extends JControllerForm
 
 			// Redirect to the item screen.
 			$this->setRedirect(
-				JRoute::_(
+				Route::_(
 					'index.php?option=' . $this->option . $redirect, false
 				)
 			);
@@ -237,7 +244,7 @@ class Ehealth_portalControllerStrength extends JControllerForm
 
 			// Redirect to the list screen.
 			$this->setRedirect(
-				JRoute::_(
+				Route::_(
 					'index.php?option=' . $this->option . $redirect, false
 				)
 			);
@@ -263,7 +270,7 @@ class Ehealth_portalControllerStrength extends JControllerForm
 
 		// Check if there is a return value
 		$return = $this->input->get('return', null, 'base64');
-		$canReturn = (!is_null($return) && JUri::isInternal(base64_decode($return)));
+		$canReturn = (!is_null($return) && Uri::isInternal(base64_decode($return)));
 
 		if ($this->ref || $this->refid || $canReturn)
 		{
@@ -281,29 +288,29 @@ class Ehealth_portalControllerStrength extends JControllerForm
 
 			// Redirect to the return value.
 			$this->setRedirect(
-				JRoute::_(
+				Route::_(
 					$redirect, false
 				)
 			);
 		}
 		elseif ($this->refid && $this->ref)
 		{
-			$redirect = '&view=' . (string)$this->ref . '&layout=edit&id=' . (int)$this->refid;
+			$redirect = '&view=' . (string) $this->ref . '&layout=edit&id=' . (int) $this->refid;
 
 			// Redirect to the item screen.
 			$this->setRedirect(
-				JRoute::_(
+				Route::_(
 					'index.php?option=' . $this->option . $redirect, false
 				)
 			);
 		}
 		elseif ($this->ref)
 		{
-			$redirect = '&view=' . (string)$this->ref;
+			$redirect = '&view=' . (string) $this->ref;
 
 			// Redirect to the list screen.
 			$this->setRedirect(
-				JRoute::_(
+				Route::_(
 					'index.php?option=' . $this->option . $redirect, false
 				)
 			);
@@ -315,16 +322,15 @@ class Ehealth_portalControllerStrength extends JControllerForm
 	 * Function that allows child controller access to model data
 	 * after the data has been saved.
 	 *
-	 * @param   JModel  &$model     The data model object.
-	 * @param   array   $validData  The validated data.
+	 * @param   BaseDatabaseModel  &$model     The data model object.
+	 * @param   array              $validData  The validated data.
 	 *
 	 * @return  void
 	 *
 	 * @since   11.1
 	 */
-	protected function postSaveHook(JModelLegacy $model, $validData = array())
+	protected function postSaveHook(BaseDatabaseModel $model, $validData = [])
 	{
 		return;
 	}
-
 }

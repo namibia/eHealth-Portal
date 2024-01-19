@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		default.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,13 +26,19 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::_('jquery.framework');
-JHtml::_('bootstrap.tooltip');
-JHtml::_('script', 'system/core.js', false, true);
-JHtml::_('behavior.keepalive');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+use VDM\Joomla\Utilities\ArrayHelper;
+use VDM\Joomla\Utilities\StringHelper;
+Html::_('jquery.framework');
+Html::_('bootstrap.tooltip');
+Html::_('script', 'system/core.js', false, true);
+Html::_('behavior.keepalive');
+
 ?>
 <script type="text/javascript">
-<?php if ($this->hasPackage && Ehealth_portalHelper::checkArray($this->headerList)) : ?>
+<?php if ($this->hasPackage && ArrayHelper::check($this->headerList)) : ?>
 	Joomla.continueImport = function()
 	{
 		var form = document.getElementById('adminForm');
@@ -49,7 +55,7 @@ JHtml::_('behavior.keepalive');
 		// do field validation
 		if (error)
 		{
-			alert("<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_MSG_PLEASE_SELECT_ALL_COLUMNS', true); ?>");
+			alert("<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_MSG_PLEASE_SELECT_ALL_COLUMNS', true); ?>");
 		}
 		else
 		{
@@ -67,7 +73,7 @@ JHtml::_('behavior.keepalive');
 		// do field validation
 		if (form.import_package.value == "")
 		{
-			alert("<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_MSG_PLEASE_SELECT_A_FILE', true); ?>");
+			alert("<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_MSG_PLEASE_SELECT_A_FILE', true); ?>");
 		}
 		else
 		{
@@ -84,7 +90,7 @@ JHtml::_('behavior.keepalive');
 
 		// do field validation
 		if (form.import_directory.value == ""){
-			alert("<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_MSG_PLEASE_SELECT_A_DIRECTORY', true); ?>");
+			alert("<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_MSG_PLEASE_SELECT_A_DIRECTORY', true); ?>");
 		}
 		else
 		{
@@ -102,7 +108,7 @@ JHtml::_('behavior.keepalive');
 		// do field validation
 		if (form.import_url.value == "" || form.import_url.value == "http://")
 		{
-			alert("<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_MSG_ENTER_A_URL', true); ?>");
+			alert("<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_MSG_ENTER_A_URL', true); ?>");
 		}
 		else
 		{
@@ -119,7 +125,7 @@ jQuery(document).ready(function($) {
 	var outerDiv = $('body');
 
 	$('<div id="loading"></div>')
-		.css("background", "rgba(255, 255, 255, .8) url('components/com_ehealth_portal/assets/images/import.gif') 50% 15% no-repeat")
+		.css("background", "rgba(255, 255, 255, .8) url('components/com_ehealthportal/assets/images/import.gif') 50% 15% no-repeat")
 		.css("top", outerDiv.position().top - $(window).scrollTop())
 		.css("left", outerDiv.position().left - $(window).scrollLeft())
 		.css("width", outerDiv.width())
@@ -135,7 +141,7 @@ jQuery(document).ready(function($) {
 </script>
 
 <div id="installer-import" class="clearfix">
-<form enctype="multipart/form-data" action="<?php echo JRoute::_('index.php?option=com_ehealth_portal&view=import');?>" method="post" name="adminForm" id="adminForm" class="form-horizontal form-validate">
+<form enctype="multipart/form-data" action="<?php echo Route::_('index.php?option=com_ehealthportal&view=import');?>" method="post" name="adminForm" id="adminForm" class="form-horizontal form-validate">
 
 	<?php if (!empty( $this->sidebar)) : ?>
 		<div id="j-sidebar-container" class="span2">
@@ -146,13 +152,13 @@ jQuery(document).ready(function($) {
 		<div id="j-main-container">
 	<?php endif;?>
 
-	<?php if ($this->hasPackage && Ehealth_portalHelper::checkArray($this->headerList) && Ehealth_portalHelper::checkArray($this->headers)) : ?>
+	<?php if ($this->hasPackage && ArrayHelper::check($this->headerList) && ArrayHelper::check($this->headers)) : ?>
 		<fieldset class="uploadform">
-			<legend><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_LINK_FILE_TO_TABLE_COLUMNS'); ?></legend>
+			<legend><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_LINK_FILE_TO_TABLE_COLUMNS'); ?></legend>
 			<div class="control-group">
-				<label class="control-label" ><h4><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_TABLE_COLUMNS'); ?></h4></label>
+				<label class="control-label" ><h4><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_TABLE_COLUMNS'); ?></h4></label>
 				<div class="controls">
-					<label class="control-label" ><h4><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_FILE_COLUMNS'); ?></h4></label>
+					<label class="control-label" ><h4><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_FILE_COLUMNS'); ?></h4></label>
 				</div>
 			</div>
 			<?php foreach($this->headerList as $name => $title): ?>
@@ -160,72 +166,72 @@ jQuery(document).ready(function($) {
 					<label for="<?php echo $name; ?>" class="control-label" ><?php echo $title; ?></label>
 					<div class="controls">
 					<select  name="<?php echo $name; ?>"  id="vdm_<?php echo $name; ?>" required class="required input_box" >
-						<option value=""><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_PLEASE_SELECT_COLUMN'); ?></option>
-						<option value="IGNORE"><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_IGNORE_COLUMN'); ?></option>
+						<option value=""><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_PLEASE_SELECT_COLUMN'); ?></option>
+						<option value="IGNORE"><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_IGNORE_COLUMN'); ?></option>
 						<?php foreach($this->headers as $value => $option): ?>
 							<?php $selected = (strtolower($option) ==  strtolower ($title) || strtolower($option) == strtolower($name))? 'selected="selected"':''; ?>
-							<option value="<?php echo Ehealth_portalHelper::htmlEscape($value); ?>" class="required" <?php echo $selected ?>><?php echo Ehealth_portalHelper::htmlEscape($option); ?></option>
+							<option value="<?php echo StringHelper::html($value); ?>" class="required" <?php echo $selected ?>><?php echo StringHelper::html($option); ?></option>
 						<?php endforeach; ?>
 					</select>
 					</div>
 				</div>
 			<?php endforeach; ?>
 			<div class="form-actions">
-				<input class="btn btn-primary" type="button" value="<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_CONTINUE'); ?>" onclick="Joomla.continueImport()" />
+				<input class="btn btn-primary" type="button" value="<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_CONTINUE'); ?>" onclick="Joomla.continueImport()" />
 			</div>
 		</fieldset>
 		<input type="hidden" name="gettype" value="continue" />
 	<?php else: ?>
-		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'upload')); ?>
-		
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'upload', JText::_('COM_EHEALTH_PORTAL_IMPORT_FROM_UPLOAD', true)); ?>
+		<?php echo Html::_('bootstrap.startTabSet', 'myTab', array('active' => 'upload')); ?>
+
+		<?php echo Html::_('bootstrap.addTab', 'myTab', 'upload', Text::_('COM_EHEALTHPORTAL_IMPORT_FROM_UPLOAD', true)); ?>
 			<fieldset class="uploadform">
-				<legend><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_UPDATE_DATA'); ?></legend>
+				<legend><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_UPDATE_DATA'); ?></legend>
 				<div class="control-group">
-					<label for="import_package" class="control-label"><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_SELECT_FILE'); ?></label>
+					<label for="import_package" class="control-label"><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_SELECT_FILE'); ?></label>
 					<div class="controls">
 						<input class="input_box" id="import_package" name="import_package" type="file" size="57" />
 					</div>
 				</div>
 				<div class="form-actions">
-					<input class="btn btn-primary" type="button" value="<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_UPLOAD_BOTTON'); ?>" onclick="Joomla.submitbutton()" />&nbsp;&nbsp;&nbsp;<small><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_FORMATS_ACCEPTED'); ?> (.csv .xls .ods)</small>
+					<input class="btn btn-primary" type="button" value="<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_UPLOAD_BOTTON'); ?>" onclick="Joomla.submitbutton()" />&nbsp;&nbsp;&nbsp;<small><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_FORMATS_ACCEPTED'); ?> (.csv .xls .ods)</small>
 				</div>
 			</fieldset>
-		<?php echo JHtml::_('bootstrap.endTab'); ?>
-		
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'directory', JText::_('COM_EHEALTH_PORTAL_IMPORT_FROM_DIRECTORY', true)); ?>
+		<?php echo Html::_('bootstrap.endTab'); ?>
+
+		<?php echo Html::_('bootstrap.addTab', 'myTab', 'directory', Text::_('COM_EHEALTHPORTAL_IMPORT_FROM_DIRECTORY', true)); ?>
 			<fieldset class="uploadform">
-				<legend><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_UPDATE_DATA'); ?></legend>
+				<legend><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_UPDATE_DATA'); ?></legend>
 				<div class="control-group">
-					<label for="import_directory" class="control-label"><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_SELECT_FILE_DIRECTORY'); ?></label>
+					<label for="import_directory" class="control-label"><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_SELECT_FILE_DIRECTORY'); ?></label>
 					<div class="controls">
 						<input type="text" id="import_directory" name="import_directory" class="span5 input_box" size="70" value="<?php echo $this->state->get('import.directory'); ?>" />
 					</div>
 				</div>
 				<div class="form-actions">
-					<input type="button" class="btn btn-primary" value="<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_GET_BOTTON'); ?>" onclick="Joomla.submitbutton3()" />&nbsp;&nbsp;&nbsp;<small><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_FORMATS_ACCEPTED'); ?> (.csv .xls .ods)</small>
+					<input type="button" class="btn btn-primary" value="<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_GET_BOTTON'); ?>" onclick="Joomla.submitbutton3()" />&nbsp;&nbsp;&nbsp;<small><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_FORMATS_ACCEPTED'); ?> (.csv .xls .ods)</small>
 				</div>
 				</fieldset>
-		<?php echo JHtml::_('bootstrap.endTab'); ?>
+		<?php echo Html::_('bootstrap.endTab'); ?>
 
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'url', JText::_('COM_EHEALTH_PORTAL_IMPORT_FROM_URL', true)); ?>
+		<?php echo Html::_('bootstrap.addTab', 'myTab', 'url', Text::_('COM_EHEALTHPORTAL_IMPORT_FROM_URL', true)); ?>
 			<fieldset class="uploadform">
-				<legend><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_UPDATE_DATA'); ?></legend>
+				<legend><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_UPDATE_DATA'); ?></legend>
 				<div class="control-group">
-					<label for="import_url" class="control-label"><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_SELECT_FILE_URL'); ?></label>
+					<label for="import_url" class="control-label"><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_SELECT_FILE_URL'); ?></label>
 					<div class="controls">
 						<input type="text" id="import_url" name="import_url" class="span5 input_box" size="70" value="http://" />
 					</div>
 				</div>
 				<div class="form-actions">
-					<input type="button" class="btn btn-primary" value="<?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_GET_BOTTON'); ?>" onclick="Joomla.submitbutton4()" />&nbsp;&nbsp;&nbsp;<small><?php echo JText::_('COM_EHEALTH_PORTAL_IMPORT_FORMATS_ACCEPTED'); ?> (.csv .xls .ods)</small>
+					<input type="button" class="btn btn-primary" value="<?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_GET_BOTTON'); ?>" onclick="Joomla.submitbutton4()" />&nbsp;&nbsp;&nbsp;<small><?php echo Text::_('COM_EHEALTHPORTAL_IMPORT_FORMATS_ACCEPTED'); ?> (.csv .xls .ods)</small>
 				</div>
 			</fieldset>
-		<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+		<?php echo Html::_('bootstrap.endTab'); ?>
+		<?php echo Html::_('bootstrap.endTabSet'); ?>
 		<input type="hidden" name="gettype" value="upload" />
 	<?php endif; ?>
 	<input type="hidden" name="task" value="import.import" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?php echo Html::_('form.token'); ?>
 </form>
 </div>

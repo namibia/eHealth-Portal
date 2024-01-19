@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fieldset name="details">
 		<!-- Default Fields. -->
@@ -16,8 +16,8 @@
 		<field
 			name="created"
 			type="calendar"
-			label="COM_EHEALTH_PORTAL_PAYMENT_CREATED_DATE_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_CREATED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_PAYMENT_CREATED_DATE_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_CREATED_DATE_DESC"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc"
@@ -26,8 +26,8 @@
 		<field
 			name="created_by"
 			type="user"
-			label="COM_EHEALTH_PORTAL_PAYMENT_CREATED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_CREATED_BY_DESC"
+			label="COM_EHEALTHPORTAL_PAYMENT_CREATED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_CREATED_BY_DESC"
 		/>
 		<!-- Published Field. Type: List (joomla) -->
 		<field name="published" type="list" label="JSTATUS"
@@ -44,12 +44,12 @@
 		</field>
 		<!-- Date Modified Field. Type: Calendar (joomla) -->
 		<field name="modified" type="calendar" class="readonly"
-			label="COM_EHEALTH_PORTAL_PAYMENT_MODIFIED_DATE_LABEL" description="COM_EHEALTH_PORTAL_PAYMENT_MODIFIED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_PAYMENT_MODIFIED_DATE_LABEL" description="COM_EHEALTHPORTAL_PAYMENT_MODIFIED_DATE_DESC"
 			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
 		<!-- User Modified Field. Type: User (joomla) -->
 		<field name="modified_by" type="user"
-			label="COM_EHEALTH_PORTAL_PAYMENT_MODIFIED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_MODIFIED_BY_DESC"
+			label="COM_EHEALTHPORTAL_PAYMENT_MODIFIED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_MODIFIED_BY_DESC"
 			class="readonly"
 			readonly="true"
 			filter="unset"
@@ -67,7 +67,7 @@
 			name="ordering"
 			type="number"
 			class="inputbox validate-ordering"
-			label="COM_EHEALTH_PORTAL_PAYMENT_ORDERING_LABEL"
+			label="COM_EHEALTHPORTAL_PAYMENT_ORDERING_LABEL"
 			description=""
 			default="0"
 			size="6"
@@ -78,8 +78,8 @@
 			name="version"
 			type="text"
 			class="readonly"
-			label="COM_EHEALTH_PORTAL_PAYMENT_VERSION_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_VERSION_DESC"
+			label="COM_EHEALTHPORTAL_PAYMENT_VERSION_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_VERSION_DESC"
 			size="6"
 			readonly="true"
 			filter="unset"
@@ -90,21 +90,22 @@
 		<field
 			name="title"
 			type="hidden"
-			default="ehealth_portal payment"
+			default="ehealthportal payment"
 		/>
 		<!-- Dynamic Fields. -->
 		<!-- Patient Field. Type: User. (joomla) -->
 		<field
 			type="user"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_PAYMENT_PATIENT_LABEL"
+			required="true"
 		/>
 		<!-- Payment_category Field. Type: List. (joomla) -->
 		<field
 			type="list"
 			name="payment_category"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_CATEGORY_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_CATEGORY_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_CATEGORY_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_CATEGORY_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
@@ -112,16 +113,16 @@
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_PAYMENT_DEBT_PAYMENT</option>
+				COM_EHEALTHPORTAL_PAYMENT_DEBT_PAYMENT</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_PAYMENT_RECEIVE_PAYMENT</option>
+				COM_EHEALTHPORTAL_PAYMENT_RECEIVE_PAYMENT</option>
 		</field>
 		<!-- Payment_type Field. Type: Paymenttype. (custom) -->
 		<field
 			type="paymenttype"
 			name="payment_type"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_TYPE_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_TYPE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_TYPE_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_TYPE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -131,28 +132,28 @@
 		<field
 			type="list"
 			name="payment_amount"
-			label="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_AMOUNT_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_PAYMENT_AMOUNT_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_AMOUNT_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_PAYMENT_AMOUNT_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			required="true"
 			default="0">
 			<!-- Option Set. -->
 			<option value="0">
-				COM_EHEALTH_PORTAL_PAYMENT_SELECT_AMOUNT_N</option>
+				COM_EHEALTHPORTAL_PAYMENT_SELECT_AMOUNT_N</option>
 			<option value="1">
-				COM_EHEALTH_PORTAL_PAYMENT_ZERO</option>
+				COM_EHEALTHPORTAL_PAYMENT_ZERO</option>
 			<option value="2">
-				COM_EHEALTH_PORTAL_PAYMENT_TEN</option>
+				COM_EHEALTHPORTAL_PAYMENT_TEN</option>
 			<option value="3">
-				COM_EHEALTH_PORTAL_PAYMENT_SEVENTY_FIVE</option>
+				COM_EHEALTHPORTAL_PAYMENT_SEVENTY_FIVE</option>
 		</field>
 		<!-- Nonpay_reason Field. Type: Nonpayreason. (custom) -->
 		<field
 			type="nonpayreason"
 			name="nonpay_reason"
-			label="COM_EHEALTH_PORTAL_PAYMENT_NONPAY_REASON_LABEL"
-			description="COM_EHEALTH_PORTAL_PAYMENT_NONPAY_REASON_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_PAYMENT_NONPAY_REASON_LABEL"
+			description="COM_EHEALTHPORTAL_PAYMENT_NONPAY_REASON_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -162,20 +163,34 @@
 		<field
 			type="text"
 			name="receipt_no"
-			label="COM_EHEALTH_PORTAL_PAYMENT_RECEIPT_NO_LABEL"
+			label="COM_EHEALTHPORTAL_PAYMENT_RECEIPT_NO_LABEL"
 			size="40"
 			maxlength="150"
-			description="COM_EHEALTH_PORTAL_PAYMENT_RECEIPT_NO_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_PAYMENT_RECEIPT_NO_DESCRIPTION"
 			class="text_area"
 			readonly="false"
 			disabled="false"
 			required="true"
 			filter="STRING"
-			message="COM_EHEALTH_PORTAL_PAYMENT_RECEIPT_NO_MESSAGE"
-			hint="COM_EHEALTH_PORTAL_PAYMENT_RECEIPT_NO_HINT"
+			message="COM_EHEALTHPORTAL_PAYMENT_RECEIPT_NO_MESSAGE"
+			hint="COM_EHEALTHPORTAL_PAYMENT_RECEIPT_NO_HINT"
+		/>
+		<!-- Guid Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="guid"
+			label="COM_EHEALTHPORTAL_PAYMENT_GUID_LABEL"
+			size="40"
+			maxlength="40"
+			description="COM_EHEALTHPORTAL_PAYMENT_GUID_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			filter="CMD"
+			validate="guid"
+			hint="COM_EHEALTHPORTAL_PAYMENT_GUID_HINT"
 		/>
 	</fieldset>
-	
+
 	<!-- Access Control Fields. -->
 	<fieldset name="accesscontrol">
 		<!-- Asset Id Field. Type: Hidden (joomla) -->
@@ -193,7 +208,7 @@
 			filter="rules"
 			validate="rules"
 			class="inputbox"
-			component="com_ehealth_portal"
+			component="com_ehealthportal"
 			section="payment"
 		/>
 	</fieldset>

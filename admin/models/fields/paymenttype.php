@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		paymenttype.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,19 +26,23 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper as Html;
+
 // import the list field type
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
 /**
- * Paymenttype Form Field class for the Ehealth_portal component
+ * Paymenttype Form Field class for the Ehealthportal component
  */
 class JFormFieldPaymenttype extends JFormFieldList
 {
 	/**
 	 * The paymenttype field type.
 	 *
-	 * @var		string
+	 * @var        string
 	 */
 	public $type = 'paymenttype';
 
@@ -62,7 +66,7 @@ class JFormFieldPaymenttype extends JFormFieldList
 			$script = array();
 			$button_code_name = $this->getAttribute('name');
 			// get the input from url
-			$app = JFactory::getApplication();
+			$app = Factory::getApplication();
 			$jinput = $app->input;
 			// get the view name & id
 			$values = $jinput->getArray(array(
@@ -78,7 +82,7 @@ class JFormFieldPaymenttype extends JFormFieldList
 				$ref = '&amp;ref=' . $values['view'] . '&amp;refid=' . $values['id'];
 				$refJ = '&ref=' . $values['view'] . '&refid=' . $values['id'];
 				// get the return value.
-				$_uri = (string) JUri::getInstance();
+				$_uri = (string) \Joomla\CMS\Uri\Uri::getInstance();
 				$_return = urlencode(base64_encode($_uri));
 				// load return value.
 				$ref .= '&amp;return=' . $_return;
@@ -91,20 +95,20 @@ class JFormFieldPaymenttype extends JFormFieldList
 			$button_label = preg_replace("/[^A-Za-z ]/", '', $button_label);
 			$button_label = ucfirst(strtolower($button_label));
 			// get user object
-			$user = JFactory::getUser();
+			$user = Factory::getUser();
 			// only add if user allowed to create payment_type
-			if ($user->authorise('core.create', 'com_ehealth_portal') && $app->isAdmin()) // TODO for now only in admin area.
+			if ($user->authorise('core.create', 'com_ehealthportal') && $app->isClient('administrator')) // TODO for now only in admin area.
 			{
 				// build Create button
-				$button[] = '<a id="'.$button_code_name.'Create" class="btn btn-small btn-success hasTooltip" title="'.JText::sprintf('COM_EHEALTH_PORTAL_CREATE_NEW_S', $button_label).'" style="border-radius: 0px 4px 4px 0px; padding: 4px 4px 4px 7px;"
-					href="index.php?option=com_ehealth_portal&amp;view=payment_type&amp;layout=edit'.$ref.'" >
+				$button[] = '<a id="'.$button_code_name.'Create" class="btn btn-small btn-success hasTooltip" title="'.Text::sprintf('COM_EHEALTHPORTAL_CREATE_NEW_S', $button_label).'" style="border-radius: 0px 4px 4px 0px; padding: 4px 4px 4px 7px;"
+					href="index.php?option=com_ehealthportal&amp;view=payment_type&amp;layout=edit'.$ref.'" >
 					<span class="icon-new icon-white"></span></a>';
 			}
 			// only add if user allowed to edit payment_type
-			if ($user->authorise('core.edit', 'com_ehealth_portal') && $app->isAdmin()) // TODO for now only in admin area.
+			if ($user->authorise('core.edit', 'com_ehealthportal') && $app->isClient('administrator')) // TODO for now only in admin area.
 			{
 				// build edit button
-				$button[] = '<a id="'.$button_code_name.'Edit" class="btn btn-small hasTooltip" title="'.JText::sprintf('COM_EHEALTH_PORTAL_EDIT_S', $button_label).'" style="display: none; padding: 4px 4px 4px 7px;" href="#" >
+				$button[] = '<a id="'.$button_code_name.'Edit" class="btn btn-small hasTooltip" title="'.Text::sprintf('COM_EHEALTHPORTAL_EDIT_S', $button_label).'" style="display: none; padding: 4px 4px 4px 7px;" href="#" >
 					<span class="icon-edit"></span></a>';
 				// build script
 				$script[] = "
@@ -123,7 +127,7 @@ class JFormFieldPaymenttype extends JFormFieldList
 							jQuery('#".$button_code_name."Create').hide();
 							// show edit button
 							jQuery('#".$button_code_name."Edit').show();
-							var url = 'index.php?option=com_ehealth_portal&view=payment_types&task=payment_type.edit&id='+value+'".$refJ."';
+							var url = 'index.php?option=com_ehealthportal&view=payment_types&task=payment_type.edit&id='+value+'".$refJ."';
 							jQuery('#".$button_code_name."Edit').attr('href', url);
 						} else {
 							// show the create button
@@ -137,7 +141,7 @@ class JFormFieldPaymenttype extends JFormFieldList
 			if (is_array($button) && count($button) > 0)
 			{
 				// Load the needed script.
-				$document = JFactory::getDocument();
+				$document = Factory::getDocument();
 				$document->addScriptDeclaration(implode(' ',$script));
 				// return the button attached to input field.
 				return '<div class="input-append">' .$html . implode('',$button).'</div>';
@@ -149,7 +153,7 @@ class JFormFieldPaymenttype extends JFormFieldList
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return	array    An array of JHtml options.
+	 * @return    array    An array of Html options.
 	 */
 	protected function getOptions()
 	{
@@ -159,13 +163,13 @@ class JFormFieldPaymenttype extends JFormFieldList
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select($db->quoteName(array('a.id','a.name'),array('id','payment_type_name')));
-		$query->from($db->quoteName('#__ehealth_portal_payment_type', 'a'));
+		$query->from($db->quoteName('#__ehealthportal_payment_type', 'a'));
 		$query->where($db->quoteName('a.published') . ' = 1');
 		$query->order('a.name ASC');
 		// Implement View Level Access (if set in table)
-		if (!$user->authorise('core.options', 'com_ehealth_portal'))
+		if (!$user->authorise('core.options', 'com_ehealthportal'))
 		{
-			$columns = $db->getTableColumns('#__ehealth_portal_payment_type');
+			$columns = $db->getTableColumns('#__ehealthportal_payment_type');
 			if(isset($columns['access']))
 			{
 				$groups = implode(',', $user->getAuthorisedViewLevels());

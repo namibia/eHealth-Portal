@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		planning_type.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,14 +26,23 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Filter\InputFilter;
+use Joomla\CMS\Filter\OutputFilter;
+use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Table\Table;
+use Joomla\CMS\UCM\UCMType;
 use Joomla\Registry\Registry;
 use Joomla\String\StringHelper;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Helper\TagsHelper;
+use VDM\Joomla\Utilities\ArrayHelper as UtilitiesArrayHelper;
 
 /**
- * Ehealth_portal Planning_type Model
+ * Ehealthportal Planning_type Admin Model
  */
-class Ehealth_portalModelPlanning_type extends JModelAdmin
+class EhealthportalModelPlanning_type extends AdminModel
 {
 	/**
 	 * The tab layout fields array.
@@ -56,7 +65,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 * @var        string    The prefix to use with controller messages.
 	 * @since   1.6
 	 */
-	protected $text_prefix = 'COM_EHEALTH_PORTAL';
+	protected $text_prefix = 'COM_EHEALTHPORTAL';
 
 	/**
 	 * The type alias for this content type.
@@ -64,7 +73,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 * @var      string
 	 * @since    3.2
 	 */
-	public $typeAlias = 'com_ehealth_portal.planning_type';
+	public $typeAlias = 'com_ehealthportal.planning_type';
 
 	/**
 	 * Returns a Table object, always creating it
@@ -73,18 +82,18 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 * @param   string  $prefix  A prefix for the table class name. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A database object
+	 * @return  Table  A database object
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'planning_type', $prefix = 'Ehealth_portalTable', $config = array())
+	public function getTable($type = 'planning_type', $prefix = 'EhealthportalTable', $config = [])
 	{
 		// add table path for when model gets used from other component
-		$this->addTablePath(JPATH_ADMINISTRATOR . '/components/com_ehealth_portal/tables');
+		$this->addTablePath(JPATH_ADMINISTRATOR . '/components/com_ehealthportal/tables');
 		// get instance of the table
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
-    
+
 	/**
 	 * Method to get a single record.
 	 *
@@ -113,12 +122,6 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				$registry->loadString($item->metadata);
 				$item->metadata = $registry->toArray();
 			}
-			
-			if (!empty($item->id))
-			{
-				$item->tags = new JHelperTags;
-				$item->tags->getTagIds($item->id, 'com_ehealth_portal.planning_type');
-			}
 		}
 
 		return $item;
@@ -135,7 +138,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getForm($data = array(), $loadData = true, $options = array('control' => 'jform'))
+	public function getForm($data = [], $loadData = true, $options = array('control' => 'jform'))
 	{
 		// set load data option
 		$options['load_data'] = $loadData;
@@ -155,14 +158,14 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		}
 
 		// Get the form.
-		$form = $this->loadForm('com_ehealth_portal.planning_type', 'planning_type', $options, $clear, $xpath);
+		$form = $this->loadForm('com_ehealthportal.planning_type', 'planning_type', $options, $clear, $xpath);
 
 		if (empty($form))
 		{
 			return false;
 		}
 
-		$jinput = JFactory::getApplication()->input;
+		$jinput = Factory::getApplication()->input;
 
 		// The front end calls this model and uses a_id to avoid id clashes so we need to check for that first.
 		if ($jinput->get('a_id'))
@@ -175,12 +178,12 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			$id = $jinput->get('id', 0, 'INT');
 		}
 
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 
 		// Check for existing item.
 		// Modify the form based on Edit State access controls.
-		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_ehealth_portal.planning_type.' . (int) $id))
-			|| ($id == 0 && !$user->authorise('core.edit.state', 'com_ehealth_portal')))
+		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_ehealthportal.planning_type.' . (int) $id))
+			|| ($id == 0 && !$user->authorise('core.edit.state', 'com_ehealthportal')))
 		{
 			// Disable fields for display.
 			$form->setFieldAttribute('ordering', 'disabled', 'true');
@@ -196,7 +199,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			$form->setValue('created_by', null, $user->id);
 		}
 		// Modify the form based on Edit Creaded By access controls.
-		if (!$user->authorise('core.edit.created_by', 'com_ehealth_portal'))
+		if (!$user->authorise('core.edit.created_by', 'com_ehealthportal'))
 		{
 			// Disable fields for display.
 			$form->setFieldAttribute('created_by', 'disabled', 'true');
@@ -206,7 +209,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			$form->setFieldAttribute('created_by', 'filter', 'unset');
 		}
 		// Modify the form based on Edit Creaded Date access controls.
-		if (!$user->authorise('core.edit.created', 'com_ehealth_portal'))
+		if (!$user->authorise('core.edit.created', 'com_ehealthportal'))
 		{
 			// Disable fields for display.
 			$form->setFieldAttribute('created', 'disabled', 'true');
@@ -214,8 +217,8 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			$form->setFieldAttribute('created', 'filter', 'unset');
 		}
 		// Modify the form based on Edit Name access controls.
-		if ($id != 0 && (!$user->authorise('planning_type.edit.name', 'com_ehealth_portal.planning_type.' . (int) $id))
-			|| ($id == 0 && !$user->authorise('planning_type.edit.name', 'com_ehealth_portal')))
+		if ($id != 0 && (!$user->authorise('planning_type.edit.name', 'com_ehealthportal.planning_type.' . (int) $id))
+			|| ($id == 0 && !$user->authorise('planning_type.edit.name', 'com_ehealthportal')))
 		{
 			// Disable fields for display.
 			$form->setFieldAttribute('name', 'disabled', 'true');
@@ -231,8 +234,8 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			}
 		}
 		// Modify the form based on Edit Description access controls.
-		if ($id != 0 && (!$user->authorise('planning_type.edit.description', 'com_ehealth_portal.planning_type.' . (int) $id))
-			|| ($id == 0 && !$user->authorise('planning_type.edit.description', 'com_ehealth_portal')))
+		if ($id != 0 && (!$user->authorise('planning_type.edit.description', 'com_ehealthportal.planning_type.' . (int) $id))
+			|| ($id == 0 && !$user->authorise('planning_type.edit.description', 'com_ehealthportal')))
 		{
 			// Disable fields for display.
 			$form->setFieldAttribute('description', 'disabled', 'true');
@@ -264,19 +267,26 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				$form->setValue($redirectedField, null, $redirectedValue);
 			}
 		}
+
+		// Only load the GUID if new item (or empty)
+		if (0 == $id || !($val = $form->getValue('guid')))
+		{
+			$form->setValue('guid', null, EhealthportalHelper::GUID());
+		}
+
 		return $form;
 	}
 
 	/**
 	 * Method to get the script that have to be included on the form
 	 *
-	 * @return string	script files
+	 * @return string    script files
 	 */
 	public function getScript()
 	{
-		return 'media/com_ehealth_portal/js/planning_type.js';
+		return 'media/com_ehealthportal/js/planning_type.js';
 	}
-    
+
 	/**
 	 * Method to test whether a record can be deleted.
 	 *
@@ -295,9 +305,9 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				return;
 			}
 
-			$user = JFactory::getUser();
+			$user = Factory::getUser();
 			// The record has been set. Check the record permissions.
-			return $user->authorise('core.delete', 'com_ehealth_portal.planning_type.' . (int) $record->id);
+			return $user->authorise('core.delete', 'com_ehealthportal.planning_type.' . (int) $record->id);
 		}
 		return false;
 	}
@@ -313,42 +323,42 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 */
 	protected function canEditState($record)
 	{
-		$user = JFactory::getUser();
-		$recordId = (!empty($record->id)) ? $record->id : 0;
+		$user = Factory::getUser();
+		$recordId = $record->id ??  0;
 
 		if ($recordId)
 		{
 			// The record has been set. Check the record permissions.
-			$permission = $user->authorise('core.edit.state', 'com_ehealth_portal.planning_type.' . (int) $recordId);
+			$permission = $user->authorise('core.edit.state', 'com_ehealthportal.planning_type.' . (int) $recordId);
 			if (!$permission && !is_null($permission))
 			{
 				return false;
 			}
 		}
-		// In the absense of better information, revert to the component permissions.
+		// In the absence of better information, revert to the component permissions.
 		return parent::canEditState($record);
 	}
-    
+
 	/**
 	 * Method override to check if you can edit an existing record.
 	 *
-	 * @param	array	$data	An array of input data.
-	 * @param	string	$key	The name of the key for the primary key.
+	 * @param    array    $data   An array of input data.
+	 * @param    string   $key    The name of the key for the primary key.
 	 *
-	 * @return	boolean
-	 * @since	2.5
+	 * @return    boolean
+	 * @since    2.5
 	 */
-	protected function allowEdit($data = array(), $key = 'id')
+	protected function allowEdit($data = [], $key = 'id')
 	{
 		// Check specific edit permission then general edit permission.
 
-		return JFactory::getUser()->authorise('core.edit', 'com_ehealth_portal.planning_type.'. ((int) isset($data[$key]) ? $data[$key] : 0)) or parent::allowEdit($data, $key);
+		return Factory::getUser()->authorise('core.edit', 'com_ehealthportal.planning_type.'. ((int) isset($data[$key]) ? $data[$key] : 0)) or parent::allowEdit($data, $key);
 	}
-    
+
 	/**
 	 * Prepare and sanitise the table data prior to saving.
 	 *
-	 * @param   JTable  $table  A JTable object.
+	 * @param   Table  $table  A Table object.
 	 *
 	 * @return  void
 	 *
@@ -356,19 +366,19 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 */
 	protected function prepareTable($table)
 	{
-		$date = JFactory::getDate();
-		$user = JFactory::getUser();
-		
+		$date = Factory::getDate();
+		$user = Factory::getUser();
+
 		if (isset($table->name))
 		{
 			$table->name = htmlspecialchars_decode($table->name, ENT_QUOTES);
 		}
-		
+
 		if (isset($table->alias) && empty($table->alias))
 		{
 			$table->generateAlias();
 		}
-		
+
 		if (empty($table->id))
 		{
 			$table->created = $date->toSql();
@@ -380,10 +390,10 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			// Set ordering to the last item if not set
 			if (empty($table->ordering))
 			{
-				$db = JFactory::getDbo();
+				$db = Factory::getDbo();
 				$query = $db->getQuery(true)
 					->select('MAX(ordering)')
-					->from($db->quoteName('#__ehealth_portal_planning_type'));
+					->from($db->quoteName('#__ehealthportal_planning_type'));
 				$db->setQuery($query);
 				$max = $db->loadResult();
 
@@ -395,7 +405,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			$table->modified = $date->toSql();
 			$table->modified_by = $user->id;
 		}
-        
+
 		if (!empty($table->id))
 		{
 			// Increment the items version number.
@@ -410,16 +420,16 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	protected function loadFormData() 
+	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_ehealth_portal.edit.planning_type.data', array());
+		$data = Factory::getApplication()->getUserState('com_ehealthportal.edit.planning_type.data', []);
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 			// run the perprocess of the data
-			$this->preprocessData('com_ehealth_portal.planning_type', $data);
+			$this->preprocessData('com_ehealthportal.planning_type', $data);
 		}
 
 		return $data;
@@ -434,9 +444,9 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 */
 	protected function getUniqueFields()
 	{
-		return false;
+		return array('guid');
 	}
-	
+
 	/**
 	 * Method to delete one or more records.
 	 *
@@ -452,7 +462,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		{
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -472,10 +482,10 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		{
 			return false;
 		}
-		
+
 		return true;
-        }
-    
+	}
+
 	/**
 	 * Method to perform batch operations on an item or a set of items.
 	 *
@@ -501,30 +511,30 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 
 		if (empty($pks))
 		{
-			$this->setError(JText::_('JGLOBAL_NO_ITEM_SELECTED'));
+			$this->setError(Text::_('JGLOBAL_NO_ITEM_SELECTED'));
 			return false;
 		}
 
 		$done = false;
 
 		// Set some needed variables.
-		$this->user			= JFactory::getUser();
-		$this->table			= $this->getTable();
-		$this->tableClassName		= get_class($this->table);
-		$this->contentType		= new JUcmType;
-		$this->type			= $this->contentType->getTypeByTable($this->tableClassName);
-		$this->canDo			= Ehealth_portalHelper::getActions('planning_type');
-		$this->batchSet			= true;
+		$this->user = Factory::getUser();
+		$this->table = $this->getTable();
+		$this->tableClassName = get_class($this->table);
+		$this->contentType = new UCMType;
+		$this->type = $this->contentType->getTypeByTable($this->tableClassName);
+		$this->canDo = EhealthportalHelper::getActions('planning_type');
+		$this->batchSet = true;
 
 		if (!$this->canDo->get('core.batch'))
 		{
-			$this->setError(JText::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
+			$this->setError(Text::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
 			return false;
 		}
-        
+
 		if ($this->type == false)
 		{
-			$type = new JUcmType;
+			$type = new UCMType;
 			$this->type = $type->getTypeByAlias($this->typeAlias);
 		}
 
@@ -561,8 +571,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 
 		if (!$done)
 		{
-			$this->setError(JText::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
-
+			$this->setError(Text::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
 			return false;
 		}
 
@@ -588,13 +597,13 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		if (empty($this->batchSet))
 		{
 			// Set some needed variables.
-			$this->user 		= JFactory::getUser();
+			$this->user 		= Factory::getUser();
 			$this->table 		= $this->getTable();
 			$this->tableClassName	= get_class($this->table);
-			$this->canDo		= Ehealth_portalHelper::getActions('planning_type');
+			$this->canDo		= EhealthportalHelper::getActions('planning_type');
 		}
 
-		if (!$this->canDo->get('core.create') || !$this->canDo->get('core.batch'))
+		if (!$this->canDo->get('core.create') && !$this->canDo->get('planning_type.batch'))
 		{
 			return false;
 		}
@@ -614,7 +623,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				$values['published'] = 0;
 		}
 
-		$newIds = array();
+		$newIds = [];
 		// Parent exists so let's proceed
 		while (!empty($pks))
 		{
@@ -627,7 +636,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			if (!$this->user->authorise('core.edit', $contexts[$pk]))
 			{
 				// Not fatal error
-				$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
+				$this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
 				continue;
 			}
 
@@ -643,14 +652,14 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				else
 				{
 					// Not fatal error
-					$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
+					$this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
 					continue;
 				}
 			}
 			list($this->table->name, $this->table->alias) = $this->_generateNewTitle($this->table->alias, $this->table->name);
 
 			// insert all set values
-			if (Ehealth_portalHelper::checkArray($values))
+			if (EhealthportalHelper::checkArray($values))
 			{
 				foreach ($values as $key => $value)
 				{
@@ -662,7 +671,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			}
 
 			// update all unique fields
-			if (Ehealth_portalHelper::checkArray($uniqueFields))
+			if (EhealthportalHelper::checkArray($uniqueFields))
 			{
 				foreach ($uniqueFields as $uniqueField)
 				{
@@ -726,15 +735,15 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		if (empty($this->batchSet))
 		{
 			// Set some needed variables.
-			$this->user		= JFactory::getUser();
+			$this->user		= Factory::getUser();
 			$this->table		= $this->getTable();
 			$this->tableClassName	= get_class($this->table);
-			$this->canDo		= Ehealth_portalHelper::getActions('planning_type');
+			$this->canDo		= EhealthportalHelper::getActions('planning_type');
 		}
 
-		if (!$this->canDo->get('core.edit') && !$this->canDo->get('core.batch'))
+		if (!$this->canDo->get('core.edit') && !$this->canDo->get('planning_type.batch'))
 		{
-			$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
+			$this->setError(Text::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
 			return false;
 		}
 
@@ -751,7 +760,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		{
 			if (!$this->user->authorise('core.edit', $contexts[$pk]))
 			{
-				$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
+				$this->setError(Text::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
 				return false;
 			}
 
@@ -767,13 +776,13 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				else
 				{
 					// Not fatal error
-					$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
+					$this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
 					continue;
 				}
 			}
 
 			// insert all set values.
-			if (Ehealth_portalHelper::checkArray($values))
+			if (EhealthportalHelper::checkArray($values))
 			{
 				foreach ($values as $key => $value)
 				{
@@ -817,7 +826,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 
 		return true;
 	}
-	
+
 	/**
 	 * Method to save the form data.
 	 *
@@ -829,23 +838,38 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 */
 	public function save($data)
 	{
-		$input	= JFactory::getApplication()->input;
-		$filter	= JFilterInput::getInstance();
-        
+		$input    = Factory::getApplication()->input;
+		$filter   = InputFilter::getInstance();
+
 		// set the metadata to the Item Data
 		if (isset($data['metadata']) && isset($data['metadata']['author']))
 		{
 			$data['metadata']['author'] = $filter->clean($data['metadata']['author'], 'TRIM');
-            
-			$metadata = new JRegistry;
+
+			$metadata = new Registry;
 			$metadata->loadArray($data['metadata']);
 			$data['metadata'] = (string) $metadata;
 		}
-        
+
+
+		// Set the GUID if empty or not valid
+		if (empty($data['guid']) && $data['id'] > 0)
+		{
+			// get the existing one
+			$data['guid'] = (string) EhealthportalHelper::getVar('planning_type', $data['id'], 'id', 'guid');
+		}
+		// Set the GUID if empty or not valid
+		while (!EhealthportalHelper::validGUID($data['guid'], "planning_type", $data['id']))
+		{
+			// must always be set
+			$data['guid'] = (string) EhealthportalHelper::GUID();
+		}
+
+
 		// Set the Params Items to data
 		if (isset($data['params']) && is_array($data['params']))
 		{
-			$params = new JRegistry;
+			$params = new Registry;
 			$params->loadArray($data['params']);
 			$data['params'] = (string) $params;
 		}
@@ -878,27 +902,27 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		{
 			if ($data['alias'] == null || empty($data['alias']))
 			{
-				if (JFactory::getConfig()->get('unicodeslugs') == 1)
+				if (Factory::getConfig()->get('unicodeslugs') == 1)
 				{
-					$data['alias'] = JFilterOutput::stringURLUnicodeSlug($data['name']);
+					$data['alias'] = OutputFilter::stringURLUnicodeSlug($data['name']);
 				}
 				else
 				{
-					$data['alias'] = JFilterOutput::stringURLSafe($data['name']);
+					$data['alias'] = OutputFilter::stringURLSafe($data['name']);
 				}
 
-				$table = JTable::getInstance('planning_type', 'ehealth_portalTable');
+				$table = clone $this->getTable();
 
 				if ($table->load(array('alias' => $data['alias'])) && ($table->id != $data['id'] || $data['id'] == 0))
 				{
-					$msg = JText::_('COM_EHEALTH_PORTAL_PLANNING_TYPE_SAVE_WARNING');
+					$msg = Text::_('COM_EHEALTHPORTAL_PLANNING_TYPE_SAVE_WARNING');
 				}
 
 				$data['alias'] = $this->_generateNewTitle($data['alias']);
 
 				if (isset($msg))
 				{
-					JFactory::getApplication()->enqueueMessage($msg, 'warning');
+					Factory::getApplication()->enqueueMessage($msg, 'warning');
 				}
 			}
 		}
@@ -908,7 +932,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		{
 			// Automatic handling of other unique fields
 			$uniqueFields = $this->getUniqueFields();
-			if (Ehealth_portalHelper::checkArray($uniqueFields))
+			if (UtilitiesArrayHelper::check($uniqueFields))
 			{
 				foreach ($uniqueFields as $uniqueField)
 				{
@@ -916,14 +940,14 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 				}
 			}
 		}
-		
+
 		if (parent::save($data))
 		{
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method to generate a unique value.
 	 *
@@ -936,7 +960,6 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 	 */
 	protected function generateUnique($field,$value)
 	{
-
 		// set field value unique
 		$table = $this->getTable();
 
@@ -963,10 +986,10 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 		// Alter the title/s & alias
 		$table = $this->getTable();
 
-		while ($table->load(array('alias' => $alias)))
+		while ($table->load(['alias' => $alias]))
 		{
 			// Check if this is an array of titles
-			if (Ehealth_portalHelper::checkArray($title))
+			if (UtilitiesArrayHelper::check($title))
 			{
 				foreach($title as $nr => &$_title)
 				{
@@ -981,7 +1004,7 @@ class Ehealth_portalModelPlanning_type extends JModelAdmin
 			$alias = StringHelper::increment($alias, 'dash');
 		}
 		// Check if this is an array of titles
-		if (Ehealth_portalHelper::checkArray($title))
+		if (UtilitiesArrayHelper::check($title))
 		{
 			$title[] = $alias;
 			return $title;

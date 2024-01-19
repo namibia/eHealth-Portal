@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_ehealth_portal/models/rules"
-	addfieldpath="/administrator/components/com_ehealth_portal/models/fields"
+	addrulepath="/administrator/components/com_ehealthportal/models/rules"
+	addfieldpath="/administrator/components/com_ehealthportal/models/fields"
 >
 	<fieldset name="details">
 		<!-- Default Fields. -->
@@ -16,8 +16,8 @@
 		<field
 			name="created"
 			type="calendar"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_CREATED_DATE_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_CREATED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_CREATED_DATE_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_CREATED_DATE_DESC"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc"
@@ -26,8 +26,8 @@
 		<field
 			name="created_by"
 			type="user"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_CREATED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_CREATED_BY_DESC"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_CREATED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_CREATED_BY_DESC"
 		/>
 		<!-- Published Field. Type: List (joomla) -->
 		<field name="published" type="list" label="JSTATUS"
@@ -44,12 +44,12 @@
 		</field>
 		<!-- Date Modified Field. Type: Calendar (joomla) -->
 		<field name="modified" type="calendar" class="readonly"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_MODIFIED_DATE_LABEL" description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_MODIFIED_DATE_DESC"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_MODIFIED_DATE_LABEL" description="COM_EHEALTHPORTAL_ANTENATAL_CARE_MODIFIED_DATE_DESC"
 			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
 		<!-- User Modified Field. Type: User (joomla) -->
 		<field name="modified_by" type="user"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_MODIFIED_BY_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_MODIFIED_BY_DESC"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_MODIFIED_BY_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_MODIFIED_BY_DESC"
 			class="readonly"
 			readonly="true"
 			filter="unset"
@@ -67,7 +67,7 @@
 			name="ordering"
 			type="number"
 			class="inputbox validate-ordering"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_ORDERING_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_ORDERING_LABEL"
 			description=""
 			default="0"
 			size="6"
@@ -78,8 +78,8 @@
 			name="version"
 			type="text"
 			class="readonly"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_VERSION_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_VERSION_DESC"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_VERSION_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_VERSION_DESC"
 			size="6"
 			readonly="true"
 			filter="unset"
@@ -90,21 +90,22 @@
 		<field
 			name="title"
 			type="hidden"
-			default="ehealth_portal antenatal_care"
+			default="ehealthportal antenatal_care"
 		/>
 		<!-- Dynamic Fields. -->
 		<!-- Patient Field. Type: User. (joomla) -->
 		<field
 			type="user"
 			name="patient"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_PATIENT_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_PATIENT_LABEL"
+			required="true"
 		/>
 		<!-- Foetal_lie Field. Type: Foetallie. (custom) -->
 		<field
 			type="foetallie"
 			name="foetal_lie"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_LIE_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_LIE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_LIE_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_LIE_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -114,8 +115,8 @@
 		<field
 			type="foetalpresentation"
 			name="foetal_presentation"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_PRESENTATION_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_PRESENTATION_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_PRESENTATION_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_PRESENTATION_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -125,8 +126,8 @@
 		<field
 			type="foetalengagement"
 			name="foetal_engagement"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_ENGAGEMENT_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_ENGAGEMENT_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_ENGAGEMENT_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_ENGAGEMENT_DESCRIPTION"
 			class="list_class"
 			multiple="false"
 			default="0"
@@ -136,8 +137,8 @@
 		<field
 			type="number"
 			name="foetal_heart_rate"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_HEART_RATE_LABEL"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_HEART_RATE_DESCRIPTION"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_HEART_RATE_LABEL"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_HEART_RATE_DESCRIPTION"
 			class="text_area"
 			min="1"
 			max="300"
@@ -147,19 +148,33 @@
 		<field
 			type="textarea"
 			name="foetal_movements"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_MOVEMENTS_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_MOVEMENTS_LABEL"
 			rows="11"
 			cols="10"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_MOVEMENTS_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_MOVEMENTS_DESCRIPTION"
 			class="text_area span12"
 			filter="HTML"
-			hint="COM_EHEALTH_PORTAL_ANTENATAL_CARE_FOETAL_MOVEMENTS_HINT"
+			hint="COM_EHEALTHPORTAL_ANTENATAL_CARE_FOETAL_MOVEMENTS_HINT"
+		/>
+		<!-- Guid Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="guid"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_GUID_LABEL"
+			size="40"
+			maxlength="40"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_GUID_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			filter="CMD"
+			validate="guid"
+			hint="COM_EHEALTHPORTAL_ANTENATAL_CARE_GUID_HINT"
 		/>
 		<!-- Caesarean_sections Field. Type: Number. (joomla) -->
 		<field
 			type="number"
 			name="caesarean_sections"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_CAESAREAN_SECTIONS_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_CAESAREAN_SECTIONS_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
@@ -169,16 +184,16 @@
 		<field
 			type="calendar"
 			name="last_menstrual_period"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_LAST_MENSTRUAL_PERIOD_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_LAST_MENSTRUAL_PERIOD_LABEL"
 			default="NOW"
-			description="COM_EHEALTH_PORTAL_ANTENATAL_CARE_LAST_MENSTRUAL_PERIOD_DESCRIPTION"
+			description="COM_EHEALTHPORTAL_ANTENATAL_CARE_LAST_MENSTRUAL_PERIOD_DESCRIPTION"
 			format="%d-%m-%Y"
 		/>
 		<!-- Normal_births Field. Type: Number. (joomla) -->
 		<field
 			type="number"
 			name="normal_births"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_NORMAL_BIRTHS_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_NORMAL_BIRTHS_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
@@ -188,7 +203,7 @@
 		<field
 			type="number"
 			name="still_births"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_STILL_BIRTHS_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_STILL_BIRTHS_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
@@ -198,7 +213,7 @@
 		<field
 			type="number"
 			name="miscarriages"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_MISCARRIAGES_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_MISCARRIAGES_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
@@ -208,7 +223,7 @@
 		<field
 			type="number"
 			name="live_births"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_LIVE_BIRTHS_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_LIVE_BIRTHS_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
@@ -218,14 +233,14 @@
 		<field
 			type="number"
 			name="pregnancies_excl"
-			label="COM_EHEALTH_PORTAL_ANTENATAL_CARE_PREGNANCIES_EXCL_LABEL"
+			label="COM_EHEALTHPORTAL_ANTENATAL_CARE_PREGNANCIES_EXCL_LABEL"
 			class="text_area"
 			min="0"
 			max="100"
 			step="1"
 		/>
 	</fieldset>
-	
+
 	<!-- Access Control Fields. -->
 	<fieldset name="accesscontrol">
 		<!-- Asset Id Field. Type: Hidden (joomla) -->
@@ -243,7 +258,7 @@
 			filter="rules"
 			validate="rules"
 			class="inputbox"
-			component="com_ehealth_portal"
+			component="com_ehealthportal"
 			section="antenatal_care"
 		/>
 	</fieldset>

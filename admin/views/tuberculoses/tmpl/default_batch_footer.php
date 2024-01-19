@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		default_batch_footer.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,14 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Language\Text;
+
 ?>
 <!-- clear the batch values if cancel -->
 <button class="btn" type="button" onclick="" data-dismiss="modal">
-	<?php echo JText::_('JCANCEL'); ?>
+	<?php echo Text::_('JCANCEL'); ?>
 </button>
 <!-- post the batch values if process -->
 <button class="btn btn-success" type="submit" onclick="Joomla.submitbutton('tuberculosis.batch');">
-	<?php echo JText::_('JGLOBAL_BATCH_PROCESS'); ?>
+	<?php echo Text::_('JGLOBAL_BATCH_PROCESS'); ?>
 </button>

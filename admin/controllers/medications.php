@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		medications.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,19 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
+use VDM\Joomla\Utilities\ArrayHelper as UtilitiesArrayHelper;
+use VDM\Joomla\Utilities\ObjectHelper;
 
 /**
- * Medications Controller
+ * Medications Admin Controller
  */
-class Ehealth_portalControllerMedications extends JControllerAdmin
+class EhealthportalControllerMedications extends AdminController
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -39,7 +46,7 @@ class Ehealth_portalControllerMedications extends JControllerAdmin
 	 * @var    string
 	 * @since  1.6
 	 */
-	protected $text_prefix = 'COM_EHEALTH_PORTAL_MEDICATIONS';
+	protected $text_prefix = 'COM_EHEALTHPORTAL_MEDICATIONS';
 
 	/**
 	 * Method to get a model object, loading it if required.
@@ -52,7 +59,7 @@ class Ehealth_portalControllerMedications extends JControllerAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'Medication', $prefix = 'Ehealth_portalModel', $config = array('ignore_request' => true))
+	public function getModel($name = 'Medication', $prefix = 'EhealthportalModel', $config = array('ignore_request' => true))
 	{
 		return parent::getModel($name, $prefix, $config);
 	}
@@ -60,13 +67,13 @@ class Ehealth_portalControllerMedications extends JControllerAdmin
 	public function exportData()
 	{
 		// Check for request forgeries
-		JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
+		Session::checkToken() or die(Text::_('JINVALID_TOKEN'));
 		// check if export is allowed for this user.
-		$user = JFactory::getUser();
-		if ($user->authorise('medication.export', 'com_ehealth_portal') && $user->authorise('core.export', 'com_ehealth_portal'))
+		$user = Factory::getUser();
+		if ($user->authorise('medication.export', 'com_ehealthportal') && $user->authorise('core.export', 'com_ehealthportal'))
 		{
 			// Get the input
-			$input = JFactory::getApplication()->input;
+			$input = Factory::getApplication()->input;
 			$pks = $input->post->get('cid', array(), 'array');
 			// Sanitize the input
 			$pks = ArrayHelper::toInteger($pks);
@@ -74,16 +81,16 @@ class Ehealth_portalControllerMedications extends JControllerAdmin
 			$model = $this->getModel('Medications');
 			// get the data to export
 			$data = $model->getExportData($pks);
-			if (Ehealth_portalHelper::checkArray($data))
+			if (UtilitiesArrayHelper::check($data))
 			{
 				// now set the data to the spreadsheet
-				$date = JFactory::getDate();
-				Ehealth_portalHelper::xls($data,'Medications_'.$date->format('jS_F_Y'),'Medications exported ('.$date->format('jS F, Y').')','medications');
+				$date = Factory::getDate();
+				EhealthportalHelper::xls($data,'Medications_'.$date->format('jS_F_Y'),'Medications exported ('.$date->format('jS F, Y').')','medications');
 			}
 		}
 		// Redirect to the list screen with error.
-		$message = JText::_('COM_EHEALTH_PORTAL_EXPORT_FAILED');
-		$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view=medications', false), $message, 'error');
+		$message = Text::_('COM_EHEALTHPORTAL_EXPORT_FAILED');
+		$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view=medications', false), $message, 'error');
 		return;
 	}
 
@@ -91,32 +98,32 @@ class Ehealth_portalControllerMedications extends JControllerAdmin
 	public function importData()
 	{
 		// Check for request forgeries
-		JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
+		Session::checkToken() or die(Text::_('JINVALID_TOKEN'));
 		// check if import is allowed for this user.
-		$user = JFactory::getUser();
-		if ($user->authorise('medication.import', 'com_ehealth_portal') && $user->authorise('core.import', 'com_ehealth_portal'))
+		$user = Factory::getUser();
+		if ($user->authorise('medication.import', 'com_ehealthportal') && $user->authorise('core.import', 'com_ehealthportal'))
 		{
 			// Get the import model
 			$model = $this->getModel('Medications');
 			// get the headers to import
 			$headers = $model->getExImPortHeaders();
-			if (Ehealth_portalHelper::checkObject($headers))
+			if (ObjectHelper::check($headers))
 			{
 				// Load headers to session.
-				$session = JFactory::getSession();
+				$session = Factory::getSession();
 				$headers = json_encode($headers);
 				$session->set('medication_VDM_IMPORTHEADERS', $headers);
 				$session->set('backto_VDM_IMPORT', 'medications');
 				$session->set('dataType_VDM_IMPORTINTO', 'medication');
 				// Redirect to import view.
-				$message = JText::_('COM_EHEALTH_PORTAL_IMPORT_SELECT_FILE_FOR_MEDICATIONS');
-				$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view=import', false), $message);
+				$message = Text::_('COM_EHEALTHPORTAL_IMPORT_SELECT_FILE_FOR_MEDICATIONS');
+				$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view=import', false), $message);
 				return;
 			}
 		}
 		// Redirect to the list screen with error.
-		$message = JText::_('COM_EHEALTH_PORTAL_IMPORT_FAILED');
-		$this->setRedirect(JRoute::_('index.php?option=com_ehealth_portal&view=medications', false), $message, 'error');
+		$message = Text::_('COM_EHEALTHPORTAL_IMPORT_FAILED');
+		$this->setRedirect(Route::_('index.php?option=com_ehealthportal&view=medications', false), $message, 'error');
 		return;
 	}
 }

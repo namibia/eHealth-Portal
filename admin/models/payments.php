@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
-	@created		13th August, 2020
+	@version		3.0.0
+	@build			19th January, 2024
+	@created		19th January, 2024
 	@package		eHealth Portal
 	@subpackage		payments.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,17 +26,26 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Helper\TagsHelper;
+use VDM\Joomla\Utilities\ArrayHelper as UtilitiesArrayHelper;
+use VDM\Joomla\Utilities\ObjectHelper;
+use VDM\Joomla\Utilities\StringHelper;
 
 /**
- * Payments Model
+ * Payments List Model
  */
-class Ehealth_portalModelPayments extends JModelList
+class EhealthportalModelPayments extends ListModel
 {
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		if (empty($config['filter_fields']))
-        {
+		{
 			$config['filter_fields'] = array(
 				'a.id','id',
 				'a.published','published',
@@ -66,7 +75,7 @@ class Ehealth_portalModelPayments extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 
 		// Adjust the context to support modal layouts.
 		if ($layout = $app->input->get('layout'))
@@ -123,7 +132,7 @@ class Ehealth_portalModelPayments extends JModelList
 		// List state information.
 		parent::populateState($ordering, $direction);
 	}
-	
+
 	/**
 	 * Method to get an array of data items.
 	 *
@@ -131,14 +140,28 @@ class Ehealth_portalModelPayments extends JModelList
 	 */
 	public function getItems()
 	{
-		// check in items
+		// Check in items
 		$this->checkInNow();
 
 		// load parent items
 		$items = parent::getItems();
 
+		// Set values to display correctly.
+		if (UtilitiesArrayHelper::check($items))
+		{
+			// Get the user object if not set.
+			if (!isset($user) || !ObjectHelper::check($user))
+			{
+				$user = Factory::getUser();
+			}
+			foreach ($items as $nr => &$item)
+			{
+				$item->patient = EhealthportalHelper::getGUIDID($item->patient, 'user_map');
+			}
+		}
+
 		// set selection value to a translatable value
-		if (Ehealth_portalHelper::checkArray($items))
+		if (UtilitiesArrayHelper::check($items))
 		{
 			foreach ($items as $nr => &$item)
 			{
@@ -149,7 +172,7 @@ class Ehealth_portalModelPayments extends JModelList
 			}
 		}
 
-        
+
 		// return items
 		return $items;
 	}
@@ -165,11 +188,11 @@ class Ehealth_portalModelPayments extends JModelList
 		if ($name === 'payment_category')
 		{
 			$payment_categoryArray = array(
-				0 => 'COM_EHEALTH_PORTAL_PAYMENT_DEBT_PAYMENT',
-				1 => 'COM_EHEALTH_PORTAL_PAYMENT_RECEIVE_PAYMENT'
+				0 => 'COM_EHEALTHPORTAL_PAYMENT_DEBT_PAYMENT',
+				1 => 'COM_EHEALTHPORTAL_PAYMENT_RECEIVE_PAYMENT'
 			);
 			// Now check if value is found in this array
-			if (isset($payment_categoryArray[$value]) && Ehealth_portalHelper::checkString($payment_categoryArray[$value]))
+			if (isset($payment_categoryArray[$value]) && StringHelper::check($payment_categoryArray[$value]))
 			{
 				return $payment_categoryArray[$value];
 			}
@@ -178,46 +201,46 @@ class Ehealth_portalModelPayments extends JModelList
 		if ($name === 'payment_amount')
 		{
 			$payment_amountArray = array(
-				0 => 'COM_EHEALTH_PORTAL_PAYMENT_SELECT_AMOUNT_N',
-				1 => 'COM_EHEALTH_PORTAL_PAYMENT_ZERO',
-				2 => 'COM_EHEALTH_PORTAL_PAYMENT_TEN',
-				3 => 'COM_EHEALTH_PORTAL_PAYMENT_SEVENTY_FIVE'
+				0 => 'COM_EHEALTHPORTAL_PAYMENT_SELECT_AMOUNT_N',
+				1 => 'COM_EHEALTHPORTAL_PAYMENT_ZERO',
+				2 => 'COM_EHEALTHPORTAL_PAYMENT_TEN',
+				3 => 'COM_EHEALTHPORTAL_PAYMENT_SEVENTY_FIVE'
 			);
 			// Now check if value is found in this array
-			if (isset($payment_amountArray[$value]) && Ehealth_portalHelper::checkString($payment_amountArray[$value]))
+			if (isset($payment_amountArray[$value]) && StringHelper::check($payment_amountArray[$value]))
 			{
 				return $payment_amountArray[$value];
 			}
 		}
 		return $value;
 	}
-	
+
 	/**
 	 * Method to build an SQL query to load the list data.
 	 *
-	 * @return	string	An SQL query
+	 * @return    string    An SQL query
 	 */
 	protected function getListQuery()
 	{
 		// Get the user object.
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		// Create a new query object.
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 
 		// Select some fields
 		$query->select('a.*');
 
-		// From the ehealth_portal_item table
-		$query->from($db->quoteName('#__ehealth_portal_payment', 'a'));
+		// From the ehealthportal_item table
+		$query->from($db->quoteName('#__ehealthportal_payment', 'a'));
 
-		// From the ehealth_portal_payment_type table.
+		// From the ehealthportal_payment_type table.
 		$query->select($db->quoteName('g.name','payment_type_name'));
-		$query->join('LEFT', $db->quoteName('#__ehealth_portal_payment_type', 'g') . ' ON (' . $db->quoteName('a.payment_type') . ' = ' . $db->quoteName('g.id') . ')');
+		$query->join('LEFT', $db->quoteName('#__ehealthportal_payment_type', 'g') . ' ON (' . $db->quoteName('a.payment_type') . ' = ' . $db->quoteName('g.id') . ')');
 
-		// From the ehealth_portal_nonpay_reason table.
+		// From the ehealthportal_nonpay_reason table.
 		$query->select($db->quoteName('h.name','nonpay_reason_name'));
-		$query->join('LEFT', $db->quoteName('#__ehealth_portal_nonpay_reason', 'h') . ' ON (' . $db->quoteName('a.nonpay_reason') . ' = ' . $db->quoteName('h.id') . ')');
+		$query->join('LEFT', $db->quoteName('#__ehealthportal_nonpay_reason', 'h') . ' ON (' . $db->quoteName('a.nonpay_reason') . ' = ' . $db->quoteName('h.id') . ')');
 
 		// Filter by published state
 		$published = $this->getState('filter.published');
@@ -239,7 +262,7 @@ class Ehealth_portalModelPayments extends JModelList
 		{
 			$query->where('a.access = ' . (int) $_access);
 		}
-		elseif (Ehealth_portalHelper::checkArray($_access))
+		elseif (EhealthportalHelper::checkArray($_access))
 		{
 			// Secure the array for the query
 			$_access = ArrayHelper::toInteger($_access);
@@ -247,7 +270,7 @@ class Ehealth_portalModelPayments extends JModelList
 			$query->where('a.access IN (' . implode(',', $_access) . ')');
 		}
 		// Implement View Level Access
-		if (!$user->authorise('core.options', 'com_ehealth_portal'))
+		if (!$user->authorise('core.options', 'com_ehealthportal'))
 		{
 			$groups = implode(',', $user->getAuthorisedViewLevels());
 			$query->where('a.access IN (' . $groups . ')');
@@ -280,7 +303,7 @@ class Ehealth_portalModelPayments extends JModelList
 				$query->where('a.patient = ' . (int) $_patient);
 			}
 		}
-		elseif (Ehealth_portalHelper::checkString($_patient))
+		elseif (EhealthportalHelper::checkString($_patient))
 		{
 			$query->where('a.patient = ' . $db->quote($db->escape($_patient)));
 		}
@@ -297,7 +320,7 @@ class Ehealth_portalModelPayments extends JModelList
 				$query->where('a.payment_category = ' . (int) $_payment_category);
 			}
 		}
-		elseif (Ehealth_portalHelper::checkString($_payment_category))
+		elseif (EhealthportalHelper::checkString($_payment_category))
 		{
 			$query->where('a.payment_category = ' . $db->quote($db->escape($_payment_category)));
 		}
@@ -314,11 +337,11 @@ class Ehealth_portalModelPayments extends JModelList
 				$query->where('a.payment_amount = ' . (int) $_payment_amount);
 			}
 		}
-		elseif (Ehealth_portalHelper::checkString($_payment_amount))
+		elseif (EhealthportalHelper::checkString($_payment_amount))
 		{
 			$query->where('a.payment_amount = ' . $db->quote($db->escape($_payment_amount)));
 		}
-		elseif (Ehealth_portalHelper::checkArray($_payment_amount))
+		elseif (EhealthportalHelper::checkArray($_payment_amount))
 		{
 			// Secure the array for the query
 			$_payment_amount = array_map( function ($val) use(&$db) {
@@ -333,7 +356,7 @@ class Ehealth_portalModelPayments extends JModelList
 						return (int) $val;
 					}
 				}
-				elseif (Ehealth_portalHelper::checkString($val))
+				elseif (EhealthportalHelper::checkString($val))
 				{
 					return $db->quote($db->escape($val));
 				}
@@ -364,24 +387,24 @@ class Ehealth_portalModelPayments extends JModelList
 	public function getExportData($pks, $user = null)
 	{
 		// setup the query
-		if (($pks_size = Ehealth_portalHelper::checkArray($pks)) !== false || 'bulk' === $pks)
+		if (($pks_size = UtilitiesArrayHelper::check($pks)) !== false || 'bulk' === $pks)
 		{
 			// Set a value to know this is export method. (USE IN CUSTOM CODE TO ALTER OUTCOME)
 			$_export = true;
 			// Get the user object if not set.
-			if (!isset($user) || !Ehealth_portalHelper::checkObject($user))
+			if (!isset($user) || !ObjectHelper::check($user))
 			{
-				$user = JFactory::getUser();
+				$user = Factory::getUser();
 			}
 			// Create a new query object.
-			$db = JFactory::getDBO();
+			$db = Factory::getDBO();
 			$query = $db->getQuery(true);
 
 			// Select some fields
 			$query->select('a.*');
 
-			// From the ehealth_portal_payment table
-			$query->from($db->quoteName('#__ehealth_portal_payment', 'a'));
+			// From the ehealthportal_payment table
+			$query->from($db->quoteName('#__ehealthportal_payment', 'a'));
 			// The bulk export path
 			if ('bulk' === $pks)
 			{
@@ -400,8 +423,22 @@ class Ehealth_portalModelPayments extends JModelList
 			{
 				$query->where('a.id IN (' . implode(',',$pks) . ')');
 			}
+			// Get global switch to activate text only export
+			$export_text_only = ComponentHelper::getParams('com_ehealthportal')->get('export_text_only', 0);
+			// Add these queries only if text only is required
+			if ($export_text_only)
+			{
+
+				// From the ehealthportal_payment_type table.
+				$query->select($db->quoteName('g.name','payment_type'));
+				$query->join('LEFT', $db->quoteName('#__ehealthportal_payment_type', 'g') . ' ON (' . $db->quoteName('a.payment_type') . ' = ' . $db->quoteName('g.id') . ')');
+
+				// From the ehealthportal_nonpay_reason table.
+				$query->select($db->quoteName('h.name','nonpay_reason'));
+				$query->join('LEFT', $db->quoteName('#__ehealthportal_nonpay_reason', 'h') . ' ON (' . $db->quoteName('a.nonpay_reason') . ' = ' . $db->quoteName('h.id') . ')');
+			}
 			// Implement View Level Access
-			if (!$user->authorise('core.options', 'com_ehealth_portal'))
+			if (!$user->authorise('core.options', 'com_ehealthportal'))
 			{
 				$groups = implode(',', $user->getAuthorisedViewLevels());
 				$query->where('a.access IN (' . $groups . ')');
@@ -418,10 +455,11 @@ class Ehealth_portalModelPayments extends JModelList
 				$items = $db->loadObjectList();
 
 				// Set values to display correctly.
-				if (Ehealth_portalHelper::checkArray($items))
+				if (UtilitiesArrayHelper::check($items))
 				{
 					foreach ($items as $nr => &$item)
 					{
+						$item->patient = EhealthportalHelper::getGUIDID($item->patient, 'user_map');
 						// unset the values we don't want exported.
 						unset($item->asset_id);
 						unset($item->checked_out);
@@ -430,10 +468,27 @@ class Ehealth_portalModelPayments extends JModelList
 				}
 				// Add headers to items array.
 				$headers = $this->getExImPortHeaders();
-				if (Ehealth_portalHelper::checkObject($headers))
+				if (ObjectHelper::check($headers))
 				{
 					array_unshift($items,$headers);
 				}
+			// Add these translation only if text only is required
+			if ($export_text_only)
+			{
+
+					// set selection value to a translatable value
+					if (UtilitiesArrayHelper::check($items))
+					{
+						foreach ($items as $nr => &$item)
+						{
+							// convert payment_category
+							$item->payment_category = $this->selectionTranslation($item->payment_category, 'payment_category');
+							// convert payment_amount
+							$item->payment_amount = $this->selectionTranslation($item->payment_amount, 'payment_amount');
+						}
+					}
+
+			}
 				return $items;
 			}
 		}
@@ -448,10 +503,10 @@ class Ehealth_portalModelPayments extends JModelList
 	public function getExImPortHeaders()
 	{
 		// Get a db connection.
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		// get the columns
-		$columns = $db->getTableColumns("#__ehealth_portal_payment");
-		if (Ehealth_portalHelper::checkArray($columns))
+		$columns = $db->getTableColumns("#__ehealthportal_payment");
+		if (UtilitiesArrayHelper::check($columns))
 		{
 			// remove the headers you don't import/export.
 			unset($columns['asset_id']);
@@ -466,7 +521,7 @@ class Ehealth_portalModelPayments extends JModelList
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method to get a store id based on model configuration state.
 	 *
@@ -481,13 +536,13 @@ class Ehealth_portalModelPayments extends JModelList
 		$id .= ':' . $this->getState('filter.published');
 		// Check if the value is an array
 		$_access = $this->getState('filter.access');
-		if (Ehealth_portalHelper::checkArray($_access))
+		if (UtilitiesArrayHelper::check($_access))
 		{
 			$id .= ':' . implode(':', $_access);
 		}
 		// Check if this is only an number or string
 		elseif (is_numeric($_access)
-		 || Ehealth_portalHelper::checkString($_access))
+		 || StringHelper::check($_access))
 		{
 			$id .= ':' . $_access;
 		}
@@ -498,13 +553,13 @@ class Ehealth_portalModelPayments extends JModelList
 		$id .= ':' . $this->getState('filter.payment_category');
 		// Check if the value is an array
 		$_payment_amount = $this->getState('filter.payment_amount');
-		if (Ehealth_portalHelper::checkArray($_payment_amount))
+		if (UtilitiesArrayHelper::check($_payment_amount))
 		{
 			$id .= ':' . implode(':', $_payment_amount);
 		}
 		// Check if this is only an number or string
 		elseif (is_numeric($_payment_amount)
-		 || Ehealth_portalHelper::checkString($_payment_amount))
+		 || StringHelper::check($_payment_amount))
 		{
 			$id .= ':' . $_payment_amount;
 		}
@@ -521,24 +576,26 @@ class Ehealth_portalModelPayments extends JModelList
 	protected function checkInNow()
 	{
 		// Get set check in time
-		$time = JComponentHelper::getParams('com_ehealth_portal')->get('check_in');
+		$time = ComponentHelper::getParams('com_ehealthportal')->get('check_in');
 
 		if ($time)
 		{
 
 			// Get a db connection.
-			$db = JFactory::getDbo();
-			// reset query
+			$db = Factory::getDbo();
+			// Reset query.
 			$query = $db->getQuery(true);
 			$query->select('*');
-			$query->from($db->quoteName('#__ehealth_portal_payment'));
-			$db->setQuery($query);
+			$query->from($db->quoteName('#__ehealthportal_payment'));
+			// Only select items that are checked out.
+			$query->where($db->quoteName('checked_out') . '!=0');
+			$db->setQuery($query, 0, 1);
 			$db->execute();
 			if ($db->getNumRows())
 			{
-				// Get Yesterdays date
-				$date = JFactory::getDate()->modify($time)->toSql();
-				// reset query
+				// Get Yesterdays date.
+				$date = Factory::getDate()->modify($time)->toSql();
+				// Reset query.
 				$query = $db->getQuery(true);
 
 				// Fields to update.
@@ -553,8 +610,8 @@ class Ehealth_portalModelPayments extends JModelList
 					$db->quoteName('checked_out_time') . '<\''.$date.'\''
 				);
 
-				// Check table
-				$query->update($db->quoteName('#__ehealth_portal_payment'))->set($fields)->where($conditions); 
+				// Check table.
+				$query->update($db->quoteName('#__ehealthportal_payment'))->set($fields)->where($conditions); 
 
 				$db->setQuery($query);
 
