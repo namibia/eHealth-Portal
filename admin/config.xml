@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		addruleprefix="JCB\Component\Ehealthportal\Administrator\Rule"
-		addfieldprefix="JCB\Component\Ehealthportal\Administrator\Field"
+		addruleprefix="VDM\Component\Ehealthportal\Administrator\Rule"
+		addfieldprefix="VDM\Component\Ehealthportal\Administrator\Field"
 		name="global_config"
 		label="COM_EHEALTHPORTAL_CONFIG_GLOBAL_LABEL"
 		description="COM_EHEALTHPORTAL_CONFIG_GLOBAL_DESC">

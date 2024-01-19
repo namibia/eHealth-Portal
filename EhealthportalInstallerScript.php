@@ -1,27 +1,14 @@
 <?php
-/*--------------------------------------------------------------------------------------------------------|  www.vdm.io  |------/
-    __      __       _     _____                 _                                  _     __  __      _   _               _
-    \ \    / /      | |   |  __ \               | |                                | |   |  \/  |    | | | |             | |
-     \ \  / /_ _ ___| |_  | |  | | _____   _____| | ___  _ __  _ __ ___   ___ _ __ | |_  | \  / | ___| |_| |__   ___   __| |
-      \ \/ / _` / __| __| | |  | |/ _ \ \ / / _ \ |/ _ \| '_ \| '_ ` _ \ / _ \ '_ \| __| | |\/| |/ _ \ __| '_ \ / _ \ / _` |
-       \  / (_| \__ \ |_  | |__| |  __/\ V /  __/ | (_) | |_) | | | | | |  __/ | | | |_  | |  | |  __/ |_| | | | (_) | (_| |
-        \/ \__,_|___/\__| |_____/ \___| \_/ \___|_|\___/| .__/|_| |_| |_|\___|_| |_|\__| |_|  |_|\___|\__|_| |_|\___/ \__,_|
-                                                        | |
-                                                        |_|
-/-------------------------------------------------------------------------------------------------------------------------------/
-
-	@version		4.0.0
-	@build			19th January, 2024
-	@created		13th August, 2020
-	@package		eHealth Portal
-	@subpackage		EhealthportalInstallerScript.php
-	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
-	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
-	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
-
-	Portal for mobile health clinics
-
-/-----------------------------------------------------------------------------------------------------------------------------*/
+/**
+ * @package    eHealth Portal
+ *
+ * @created    13th August, 2020
+ * @author     Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
+ * @copyright  Copyright (C) 2020 Vast Development Method. All rights reserved.
+ * @license    GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Portal for mobile health clinics
+ */
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
@@ -484,7 +471,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.payment',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_payment","key": "id","type": "PaymentTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_payment","key": "id","type": "PaymentTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -501,7 +488,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.general_medical_check_up',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_general_medical_check_up","key": "id","type": "General_medical_check_upTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_general_medical_check_up","key": "id","type": "General_medical_check_upTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -518,7 +505,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.antenatal_care',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_antenatal_care","key": "id","type": "Antenatal_careTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_antenatal_care","key": "id","type": "Antenatal_careTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -535,7 +522,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.immunisation',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_immunisation","key": "id","type": "ImmunisationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_immunisation","key": "id","type": "ImmunisationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -552,7 +539,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.vmmc',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_vmmc","key": "id","type": "VmmcTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_vmmc","key": "id","type": "VmmcTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -569,7 +556,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.prostate_and_testicular_cancer',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_prostate_and_testicular_cancer","key": "id","type": "Prostate_and_testicular_cancerTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_prostate_and_testicular_cancer","key": "id","type": "Prostate_and_testicular_cancerTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -586,7 +573,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.tuberculosis',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_tuberculosis","key": "id","type": "TuberculosisTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_tuberculosis","key": "id","type": "TuberculosisTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -603,7 +590,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.hiv_counseling_and_testing',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_hiv_counseling_and_testing","key": "id","type": "Hiv_counseling_and_testingTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_hiv_counseling_and_testing","key": "id","type": "Hiv_counseling_and_testingTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -620,7 +607,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.family_planning',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_family_planning","key": "id","type": "Family_planningTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_family_planning","key": "id","type": "Family_planningTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -637,7 +624,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.health_education',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_health_education","key": "id","type": "Health_educationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_health_education","key": "id","type": "Health_educationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -654,7 +641,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.cervical_cancer',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_cervical_cancer","key": "id","type": "Cervical_cancerTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_cervical_cancer","key": "id","type": "Cervical_cancerTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -671,7 +658,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.breast_cancer',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_breast_cancer","key": "id","type": "Breast_cancerTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_breast_cancer","key": "id","type": "Breast_cancerTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -688,7 +675,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.test',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_test","key": "id","type": "TestTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_test","key": "id","type": "TestTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -705,7 +692,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.foetal_lie',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_foetal_lie","key": "id","type": "Foetal_lieTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_foetal_lie","key": "id","type": "Foetal_lieTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -722,7 +709,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.immunisation_vaccine_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_immunisation_vaccine_type","key": "id","type": "Immunisation_vaccine_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_immunisation_vaccine_type","key": "id","type": "Immunisation_vaccine_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -739,7 +726,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.foetal_engagement',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_foetal_engagement","key": "id","type": "Foetal_engagementTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_foetal_engagement","key": "id","type": "Foetal_engagementTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -756,7 +743,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.foetal_presentation',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_foetal_presentation","key": "id","type": "Foetal_presentationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_foetal_presentation","key": "id","type": "Foetal_presentationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -773,7 +760,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.testing_reason',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_testing_reason","key": "id","type": "Testing_reasonTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_testing_reason","key": "id","type": "Testing_reasonTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -790,7 +777,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.counseling_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_counseling_type","key": "id","type": "Counseling_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_counseling_type","key": "id","type": "Counseling_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -807,7 +794,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.health_education_topic',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_health_education_topic","key": "id","type": "Health_education_topicTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_health_education_topic","key": "id","type": "Health_education_topicTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -824,7 +811,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.immunisation_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_immunisation_type","key": "id","type": "Immunisation_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_immunisation_type","key": "id","type": "Immunisation_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -841,7 +828,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.strength',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_strength","key": "id","type": "StrengthTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_strength","key": "id","type": "StrengthTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -858,7 +845,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.referral',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_referral","key": "id","type": "ReferralTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_referral","key": "id","type": "ReferralTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -875,7 +862,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.planning_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_planning_type","key": "id","type": "Planning_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_planning_type","key": "id","type": "Planning_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -892,7 +879,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.diagnosis_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_diagnosis_type","key": "id","type": "Diagnosis_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_diagnosis_type","key": "id","type": "Diagnosis_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -909,7 +896,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.nonpay_reason',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_nonpay_reason","key": "id","type": "Nonpay_reasonTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_nonpay_reason","key": "id","type": "Nonpay_reasonTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -926,7 +913,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.medication',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_medication","key": "id","type": "MedicationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_medication","key": "id","type": "MedicationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -943,7 +930,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.payment_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_payment_type","key": "id","type": "Payment_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_payment_type","key": "id","type": "Payment_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -960,7 +947,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.administration_part',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_administration_part","key": "id","type": "Administration_partTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_administration_part","key": "id","type": "Administration_partTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -977,7 +964,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.site',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_site","key": "id","type": "SiteTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_site","key": "id","type": "SiteTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -994,7 +981,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.unit',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_unit","key": "id","type": "UnitTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_unit","key": "id","type": "UnitTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1011,7 +998,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.clinic',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_clinic","key": "id","type": "ClinicTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_clinic","key": "id","type": "ClinicTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1562,7 +1549,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.payment',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_payment","key": "id","type": "PaymentTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_payment","key": "id","type": "PaymentTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1579,7 +1566,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.general_medical_check_up',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_general_medical_check_up","key": "id","type": "General_medical_check_upTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_general_medical_check_up","key": "id","type": "General_medical_check_upTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1596,7 +1583,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.antenatal_care',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_antenatal_care","key": "id","type": "Antenatal_careTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_antenatal_care","key": "id","type": "Antenatal_careTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1613,7 +1600,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.immunisation',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_immunisation","key": "id","type": "ImmunisationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_immunisation","key": "id","type": "ImmunisationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1630,7 +1617,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.vmmc',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_vmmc","key": "id","type": "VmmcTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_vmmc","key": "id","type": "VmmcTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1647,7 +1634,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.prostate_and_testicular_cancer',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_prostate_and_testicular_cancer","key": "id","type": "Prostate_and_testicular_cancerTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_prostate_and_testicular_cancer","key": "id","type": "Prostate_and_testicular_cancerTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1664,7 +1651,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.tuberculosis',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_tuberculosis","key": "id","type": "TuberculosisTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_tuberculosis","key": "id","type": "TuberculosisTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1681,7 +1668,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.hiv_counseling_and_testing',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_hiv_counseling_and_testing","key": "id","type": "Hiv_counseling_and_testingTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_hiv_counseling_and_testing","key": "id","type": "Hiv_counseling_and_testingTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1698,7 +1685,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.family_planning',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_family_planning","key": "id","type": "Family_planningTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_family_planning","key": "id","type": "Family_planningTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1715,7 +1702,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.health_education',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_health_education","key": "id","type": "Health_educationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_health_education","key": "id","type": "Health_educationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1732,7 +1719,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.cervical_cancer',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_cervical_cancer","key": "id","type": "Cervical_cancerTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_cervical_cancer","key": "id","type": "Cervical_cancerTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1749,7 +1736,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.breast_cancer',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_breast_cancer","key": "id","type": "Breast_cancerTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_breast_cancer","key": "id","type": "Breast_cancerTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1766,7 +1753,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.test',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_test","key": "id","type": "TestTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_test","key": "id","type": "TestTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1783,7 +1770,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.foetal_lie',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_foetal_lie","key": "id","type": "Foetal_lieTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_foetal_lie","key": "id","type": "Foetal_lieTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1800,7 +1787,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.immunisation_vaccine_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_immunisation_vaccine_type","key": "id","type": "Immunisation_vaccine_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_immunisation_vaccine_type","key": "id","type": "Immunisation_vaccine_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1817,7 +1804,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.foetal_engagement',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_foetal_engagement","key": "id","type": "Foetal_engagementTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_foetal_engagement","key": "id","type": "Foetal_engagementTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1834,7 +1821,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.foetal_presentation',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_foetal_presentation","key": "id","type": "Foetal_presentationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_foetal_presentation","key": "id","type": "Foetal_presentationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1851,7 +1838,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.testing_reason',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_testing_reason","key": "id","type": "Testing_reasonTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_testing_reason","key": "id","type": "Testing_reasonTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1868,7 +1855,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.counseling_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_counseling_type","key": "id","type": "Counseling_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_counseling_type","key": "id","type": "Counseling_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1885,7 +1872,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.health_education_topic',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_health_education_topic","key": "id","type": "Health_education_topicTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_health_education_topic","key": "id","type": "Health_education_topicTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1902,7 +1889,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.immunisation_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_immunisation_type","key": "id","type": "Immunisation_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_immunisation_type","key": "id","type": "Immunisation_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1919,7 +1906,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.strength',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_strength","key": "id","type": "StrengthTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_strength","key": "id","type": "StrengthTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1936,7 +1923,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.referral',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_referral","key": "id","type": "ReferralTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_referral","key": "id","type": "ReferralTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1953,7 +1940,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.planning_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_planning_type","key": "id","type": "Planning_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_planning_type","key": "id","type": "Planning_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1970,7 +1957,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.diagnosis_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_diagnosis_type","key": "id","type": "Diagnosis_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_diagnosis_type","key": "id","type": "Diagnosis_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -1987,7 +1974,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.nonpay_reason',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_nonpay_reason","key": "id","type": "Nonpay_reasonTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_nonpay_reason","key": "id","type": "Nonpay_reasonTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -2004,7 +1991,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.medication',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_medication","key": "id","type": "MedicationTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_medication","key": "id","type": "MedicationTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -2021,7 +2008,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.payment_type',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_payment_type","key": "id","type": "Payment_typeTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_payment_type","key": "id","type": "Payment_typeTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -2038,7 +2025,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.administration_part',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_administration_part","key": "id","type": "Administration_partTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_administration_part","key": "id","type": "Administration_partTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -2055,7 +2042,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.site',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_site","key": "id","type": "SiteTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_site","key": "id","type": "SiteTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -2072,7 +2059,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.unit',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_unit","key": "id","type": "UnitTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_unit","key": "id","type": "UnitTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings
@@ -2089,7 +2076,7 @@ class Com_EhealthportalInstallerScript implements InstallerScriptInterface
 				// typeAlias
 				'com_ehealthportal.clinic',
 				// table
-				'{"special": {"dbtable": "#__ehealthportal_clinic","key": "id","type": "ClinicTable","prefix": "JCB\Component\Ehealthportal\Administrator\Table"}}',
+				'{"special": {"dbtable": "#__ehealthportal_clinic","key": "id","type": "ClinicTable","prefix": "VDM\Component\Ehealthportal\Administrator\Table"}}',
 				// rules
 				'',
 				// fieldMappings

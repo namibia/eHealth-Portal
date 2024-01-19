@@ -1,27 +1,14 @@
 <?php
-/*--------------------------------------------------------------------------------------------------------|  www.vdm.io  |------/
-    __      __       _     _____                 _                                  _     __  __      _   _               _
-    \ \    / /      | |   |  __ \               | |                                | |   |  \/  |    | | | |             | |
-     \ \  / /_ _ ___| |_  | |  | | _____   _____| | ___  _ __  _ __ ___   ___ _ __ | |_  | \  / | ___| |_| |__   ___   __| |
-      \ \/ / _` / __| __| | |  | |/ _ \ \ / / _ \ |/ _ \| '_ \| '_ ` _ \ / _ \ '_ \| __| | |\/| |/ _ \ __| '_ \ / _ \ / _` |
-       \  / (_| \__ \ |_  | |__| |  __/\ V /  __/ | (_) | |_) | | | | | |  __/ | | | |_  | |  | |  __/ |_| | | | (_) | (_| |
-        \/ \__,_|___/\__| |_____/ \___| \_/ \___|_|\___/| .__/|_| |_| |_|\___|_| |_|\__| |_|  |_|\___|\__|_| |_|\___/ \__,_|
-                                                        | |
-                                                        |_|
-/-------------------------------------------------------------------------------------------------------------------------------/
-
-	@version		4.0.0
-	@build			19th January, 2024
-	@created		13th August, 2020
-	@package		eHealth Portal
-	@subpackage		provider.php
-	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
-	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
-	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
-
-	Portal for mobile health clinics
-
-/-----------------------------------------------------------------------------------------------------------------------------*/
+/**
+ * @package    eHealth Portal
+ *
+ * @created    13th August, 2020
+ * @author     Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
+ * @copyright  Copyright (C) 2020 Vast Development Method. All rights reserved.
+ * @license    GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Portal for mobile health clinics
+ */
 
 // No direct access to this file
 \defined('_JEXEC') or die;
@@ -80,13 +67,13 @@ use Joomla\CMS\Extension\Service\Provider\MVCFactory;
 use Joomla\CMS\Extension\Service\Provider\RouterFactory;
 use Joomla\CMS\HTML\Registry;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
-use JCB\Component\Ehealthportal\Administrator\Extension\EhealthportalComponent;
-// (soon) use JCB\Component\Ehealthportal\Administrator\Helper\AssociationsHelper;
+use VDM\Component\Ehealthportal\Administrator\Extension\EhealthportalComponent;
+// (soon) use VDM\Component\Ehealthportal\Administrator\Helper\AssociationsHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
 /**
- * The JCB Ehealthportal service provider.
+ * The VDM Ehealthportal service provider.
  *
  * @since  4.0.0
  */
@@ -105,10 +92,10 @@ return new class () implements ServiceProviderInterface
 	{
 		// (soon) $container->set(AssociationExtensionInterface::class, new AssociationsHelper());
 
-		$container->registerServiceProvider(new CategoryFactory('\\JCB\\Component\\Ehealthportal'));
-		$container->registerServiceProvider(new MVCFactory('\\JCB\\Component\\Ehealthportal'));
-		$container->registerServiceProvider(new ComponentDispatcherFactory('\\JCB\\Component\\Ehealthportal'));
-		$container->registerServiceProvider(new RouterFactory('\\JCB\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new CategoryFactory('\\VDM\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new MVCFactory('\\VDM\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\VDM\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new RouterFactory('\\VDM\\Component\\Ehealthportal'));
 
 		$container->set(
 			ComponentInterface::class,
