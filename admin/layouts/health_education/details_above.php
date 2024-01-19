@@ -10,12 +10,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
+	@version		4.0.0
+	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
 	@subpackage		details_above.php
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@
 /-----------------------------------------------------------------------------------------------------------------------------*/
 
 // No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 // get the form
 $form = $displayData->getForm();
@@ -39,21 +39,29 @@ $layout_path_array = explode('.', $this->getLayoutId());
 $fields_tab_layout = 'fields_' . $layout_path_array[1];
 
 // get the fields
-$fields = $displayData->get($fields_tab_layout) ?: array(
+$fields = $displayData->get($fields_tab_layout) ?: [
 	'patient',
 	'education_type'
-);
+];
 
-$hiddenFields = $displayData->get('hidden_fields') ?: array();
+// Ensure $fields is treated as an array and count its size.
+$size = count((array) $fields);
+
+// Use a ternary operator to determine the class.
+// If there are 1 to 4 fields, set the class to divide the 12-grid column equally among the fields.
+// For more than 4 fields, default to four columns (3-grid each) for medium and larger screens.
+$css_class = ($size > 0 && $size <= 4) ? 'col-12 col-md-' . round(12 / $size) : 'col-12 col-md-3';
+
+$hiddenFields = $displayData->get('hidden_fields') ?: [];
 
 ?>
 <?php if ($fields && count((array) $fields)) :?>
-<div class="form-inline form-inline-header">
+<div class="row title-alias form-vertical mb-3">
 	<?php foreach($fields as $field): ?>
 		<?php if (in_array($field, $hiddenFields)) : ?>
 			<?php $form->setFieldAttribute($field, 'type', 'hidden'); ?>
 		<?php endif; ?>
-		<?php echo $form->renderField($field, null, null, array('class' => 'control-wrapper-' . $field)); ?>
+		<?php echo $form->renderField($field, null, null, ['class' => $css_class . ' control-wrapper-' . $field]); ?>
 	<?php endforeach; ?>
 </div>
 <?php endif; ?>

@@ -1,425 +1,414 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<access component="com_ehealth_portal">
+<access component="com_ehealthportal">
 	<section name="component">
 		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
 		<action name="core.options" title="JACTION_OPTIONS" description="JACTION_OPTIONS_COMPONENT_DESC" />
 		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
-		<action name="core.export" title="COM_EHEALTH_PORTAL_EXPORT_DATA" description="COM_EHEALTH_PORTAL_EXPORT_DATA_DESC" />
-		<action name="core.import" title="COM_EHEALTH_PORTAL_IMPORT_DATA" description="COM_EHEALTH_PORTAL_IMPORT_DATA_DESC" />
-		<action name="core.batch" title="COM_EHEALTH_PORTAL_USE_BATCH" description="COM_EHEALTH_PORTAL_USE_BATCH_DESC" />
-		<action name="core.version" title="COM_EHEALTH_PORTAL_EDIT_VERSIONS" description="COM_EHEALTH_PORTAL_EDIT_VERSIONS_DESC" />
+		<action name="core.export" title="COM_EHEALTHPORTAL_EXPORT_DATA" description="COM_EHEALTHPORTAL_EXPORT_DATA_DESC" />
+		<action name="core.import" title="COM_EHEALTHPORTAL_IMPORT_DATA" description="COM_EHEALTHPORTAL_IMPORT_DATA_DESC" />
+		<action name="core.batch" title="COM_EHEALTHPORTAL_USE_BATCH" description="COM_EHEALTHPORTAL_USE_BATCH_DESC" />
+		<action name="core.version" title="COM_EHEALTHPORTAL_EDIT_VERSIONS" description="COM_EHEALTHPORTAL_EDIT_VERSIONS_DESC" />
 		<action name="core.create" title="JACTION_CREATE" description="JACTION_CREATE_COMPONENT_DESC" />
 		<action name="core.delete" title="JACTION_DELETE" description="JACTION_DELETE_COMPONENT_DESC" />
 		<action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC" />
 		<action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_ACCESS_EDITSTATE_DESC" />
 		<action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC" />
-		<action name="core.edit.created_by" title="COM_EHEALTH_PORTAL_EDIT_CREATED_BY" description="COM_EHEALTH_PORTAL_EDIT_CREATED_BY_DESC" />
-		<action name="core.edit.created" title="COM_EHEALTH_PORTAL_EDIT_CREATED_DATE" description="COM_EHEALTH_PORTAL_EDIT_CREATED_DATE_DESC" />
-		<action name="administration_part.access" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_ACCESS" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_ACCESS_DESC" />
-		<action name="administration_part.batch" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_BATCH_USE" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_BATCH_USE_DESC" />
-		<action name="administration_part.edit.description" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION_DESC" />
-		<action name="administration_part.edit.name" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_NAME" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_NAME_DESC" />
-		<action name="administration_part.version" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_VERSION_DESC" />
-		<action name="administration_part.export" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EXPORT" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EXPORT_DESC" />
-		<action name="administration_part.import" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_IMPORT" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_IMPORT_DESC" />
-		<action name="administration_part.submenu" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_SUBMENU" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_SUBMENU_DESC" />
-		<action name="antenatal_care.access" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_ACCESS" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_ACCESS_DESC" />
-		<action name="antenatal_care.batch" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_BATCH_USE" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_BATCH_USE_DESC" />
-		<action name="antenatal_care.dashboard_add" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_DASHBOARD_ADD_DESC" />
-		<action name="antenatal_care.dashboard_list" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_DASHBOARD_LIST_DESC" />
-		<action name="antenatal_care.version" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_EDIT_VERSION_DESC" />
-		<action name="antenatal_care.export" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_EXPORT" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_EXPORT_DESC" />
-		<action name="antenatal_care.import" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_IMPORT" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_IMPORT_DESC" />
-		<action name="antenatal_care.submenu" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_SUBMENU" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_SUBMENU_DESC" />
-		<action name="breast_cancer.access" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_ACCESS" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_ACCESS_DESC" />
-		<action name="breast_cancer.batch" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_BATCH_USE" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_BATCH_USE_DESC" />
-		<action name="breast_cancer.dashboard_add" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_DASHBOARD_ADD_DESC" />
-		<action name="breast_cancer.dashboard_list" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_DASHBOARD_LIST_DESC" />
-		<action name="breast_cancer.version" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_EDIT_VERSION_DESC" />
-		<action name="breast_cancer.export" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_EXPORT" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_EXPORT_DESC" />
-		<action name="breast_cancer.import" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_IMPORT" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_IMPORT_DESC" />
-		<action name="breast_cancer.submenu" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_SUBMENU" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_SUBMENU_DESC" />
-		<action name="cervical_cancer.access" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_ACCESS" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_ACCESS_DESC" />
-		<action name="cervical_cancer.batch" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_BATCH_USE" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_BATCH_USE_DESC" />
-		<action name="cervical_cancer.dashboard_add" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_DASHBOARD_ADD_DESC" />
-		<action name="cervical_cancer.dashboard_list" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_DASHBOARD_LIST_DESC" />
-		<action name="cervical_cancer.version" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_EDIT_VERSION_DESC" />
-		<action name="cervical_cancer.export" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_EXPORT" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_EXPORT_DESC" />
-		<action name="cervical_cancer.import" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_IMPORT" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_IMPORT_DESC" />
-		<action name="cervical_cancer.submenu" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_SUBMENU" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_SUBMENU_DESC" />
-		<action name="clinic.access" title="COM_EHEALTH_PORTAL_CLINICS_ACCESS" description="COM_EHEALTH_PORTAL_CLINICS_ACCESS_DESC" />
-		<action name="clinic.batch" title="COM_EHEALTH_PORTAL_CLINICS_BATCH_USE" description="COM_EHEALTH_PORTAL_CLINICS_BATCH_USE_DESC" />
-		<action name="clinic.edit.clinic_name" title="COM_EHEALTH_PORTAL_CLINICS_EDIT_CLINIC_NAME" description="COM_EHEALTH_PORTAL_CLINICS_EDIT_CLINIC_NAME_DESC" />
-		<action name="clinic.edit.description" title="COM_EHEALTH_PORTAL_CLINICS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_CLINICS_EDIT_DESCRIPTION_DESC" />
-		<action name="clinic.version" title="COM_EHEALTH_PORTAL_CLINICS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_CLINICS_EDIT_VERSION_DESC" />
-		<action name="clinic.export" title="COM_EHEALTH_PORTAL_CLINICS_EXPORT" description="COM_EHEALTH_PORTAL_CLINICS_EXPORT_DESC" />
-		<action name="clinic.import" title="COM_EHEALTH_PORTAL_CLINICS_IMPORT" description="COM_EHEALTH_PORTAL_CLINICS_IMPORT_DESC" />
-		<action name="counseling_type.access" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_ACCESS" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_ACCESS_DESC" />
-		<action name="counseling_type.batch" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_BATCH_USE" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_BATCH_USE_DESC" />
-		<action name="counseling_type.edit.description" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="counseling_type.edit.name" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_NAME_DESC" />
-		<action name="counseling_type.version" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_VERSION_DESC" />
-		<action name="counseling_type.export" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EXPORT" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EXPORT_DESC" />
-		<action name="counseling_type.import" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_IMPORT" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_IMPORT_DESC" />
-		<action name="diagnosis_type.access" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_ACCESS" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_ACCESS_DESC" />
-		<action name="diagnosis_type.batch" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_BATCH_USE" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_BATCH_USE_DESC" />
-		<action name="diagnosis_type.edit.description" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="diagnosis_type.edit.name" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_NAME_DESC" />
-		<action name="diagnosis_type.version" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_VERSION_DESC" />
-		<action name="diagnosis_type.export" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EXPORT" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EXPORT_DESC" />
-		<action name="diagnosis_type.import" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_IMPORT" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_IMPORT_DESC" />
-		<action name="family_planning.access" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_ACCESS" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_ACCESS_DESC" />
-		<action name="family_planning.batch" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_BATCH_USE" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_BATCH_USE_DESC" />
-		<action name="family_planning.dashboard_add" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_DASHBOARD_ADD_DESC" />
-		<action name="family_planning.dashboard_list" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_DASHBOARD_LIST_DESC" />
-		<action name="family_planning.edit.diagnosis" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS_DESC" />
-		<action name="family_planning.version" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_VERSION_DESC" />
-		<action name="family_planning.export" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EXPORT" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EXPORT_DESC" />
-		<action name="family_planning.import" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_IMPORT" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_IMPORT_DESC" />
-		<action name="family_planning.submenu" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_SUBMENU" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_SUBMENU_DESC" />
-		<action name="foetal_engagement.access" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_ACCESS" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_ACCESS_DESC" />
-		<action name="foetal_engagement.batch" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_BATCH_USE" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_BATCH_USE_DESC" />
-		<action name="foetal_engagement.edit.description" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION_DESC" />
-		<action name="foetal_engagement.edit.name" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME_DESC" />
-		<action name="foetal_engagement.version" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION_DESC" />
-		<action name="foetal_engagement.export" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EXPORT" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EXPORT_DESC" />
-		<action name="foetal_engagement.import" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_IMPORT" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_IMPORT_DESC" />
-		<action name="foetal_lie.access" title="COM_EHEALTH_PORTAL_FOETAL_LIES_ACCESS" description="COM_EHEALTH_PORTAL_FOETAL_LIES_ACCESS_DESC" />
-		<action name="foetal_lie.batch" title="COM_EHEALTH_PORTAL_FOETAL_LIES_BATCH_USE" description="COM_EHEALTH_PORTAL_FOETAL_LIES_BATCH_USE_DESC" />
-		<action name="foetal_lie.edit.description" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_DESCRIPTION_DESC" />
-		<action name="foetal_lie.edit.name" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_NAME" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_NAME_DESC" />
-		<action name="foetal_lie.version" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_VERSION_DESC" />
-		<action name="foetal_lie.export" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EXPORT" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EXPORT_DESC" />
-		<action name="foetal_lie.import" title="COM_EHEALTH_PORTAL_FOETAL_LIES_IMPORT" description="COM_EHEALTH_PORTAL_FOETAL_LIES_IMPORT_DESC" />
-		<action name="foetal_presentation.access" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_ACCESS" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_ACCESS_DESC" />
-		<action name="foetal_presentation.batch" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_BATCH_USE" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_BATCH_USE_DESC" />
-		<action name="foetal_presentation.edit.description" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION_DESC" />
-		<action name="foetal_presentation.edit.name" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_NAME_DESC" />
-		<action name="foetal_presentation.version" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION_DESC" />
-		<action name="foetal_presentation.export" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EXPORT" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EXPORT_DESC" />
-		<action name="foetal_presentation.import" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_IMPORT" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_IMPORT_DESC" />
-		<action name="general_medical_check_up.access" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_ACCESS" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_ACCESS_DESC" />
-		<action name="general_medical_check_up.batch" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_BATCH_USE" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_BATCH_USE_DESC" />
-		<action name="general_medical_check_up.dashboard_add" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_ADD_DESC" />
-		<action name="general_medical_check_up.dashboard_list" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_LIST_DESC" />
-		<action name="general_medical_check_up.edit.patient" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT_DESC" />
-		<action name="general_medical_check_up.version" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION_DESC" />
-		<action name="general_medical_check_up.export" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EXPORT" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EXPORT_DESC" />
-		<action name="general_medical_check_up.import" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_IMPORT" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_IMPORT_DESC" />
-		<action name="general_medical_check_up.submenu" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_SUBMENU" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_SUBMENU_DESC" />
-		<action name="health_education_topic.access" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_ACCESS" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_ACCESS_DESC" />
-		<action name="health_education_topic.batch" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_BATCH_USE" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_BATCH_USE_DESC" />
-		<action name="health_education_topic.edit.description" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION_DESC" />
-		<action name="health_education_topic.edit.name" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME_DESC" />
-		<action name="health_education_topic.version" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION_DESC" />
-		<action name="health_education_topic.export" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EXPORT" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EXPORT_DESC" />
-		<action name="health_education_topic.import" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_IMPORT" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_IMPORT_DESC" />
-		<action name="health_education.access" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_ACCESS" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_ACCESS_DESC" />
-		<action name="health_education.batch" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_BATCH_USE" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_BATCH_USE_DESC" />
-		<action name="health_education.dashboard_add" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_DASHBOARD_ADD_DESC" />
-		<action name="health_education.dashboard_list" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_DASHBOARD_LIST_DESC" />
-		<action name="health_education.edit.health_education_topic" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC_DESC" />
-		<action name="health_education.version" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_VERSION_DESC" />
-		<action name="health_education.export" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EXPORT" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EXPORT_DESC" />
-		<action name="health_education.import" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_IMPORT" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_IMPORT_DESC" />
-		<action name="health_education.submenu" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_SUBMENU" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_SUBMENU_DESC" />
-		<action name="hiv_counseling_and_testing.access" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_ACCESS" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_ACCESS_DESC" />
-		<action name="hiv_counseling_and_testing.batch" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_BATCH_USE" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_BATCH_USE_DESC" />
-		<action name="hiv_counseling_and_testing.dashboard_add" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_ADD_DESC" />
-		<action name="hiv_counseling_and_testing.dashboard_list" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_LIST_DESC" />
-		<action name="hiv_counseling_and_testing.version" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION_DESC" />
-		<action name="hiv_counseling_and_testing.export" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_EXPORT" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_EXPORT_DESC" />
-		<action name="hiv_counseling_and_testing.import" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_IMPORT" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_IMPORT_DESC" />
-		<action name="hiv_counseling_and_testing.submenu" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_SUBMENU" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_SUBMENU_DESC" />
-		<action name="immunisation_type.access" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_ACCESS" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_ACCESS_DESC" />
-		<action name="immunisation_type.batch" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_BATCH_USE" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_BATCH_USE_DESC" />
-		<action name="immunisation_type.edit.description" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="immunisation_type.edit.name" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_NAME_DESC" />
-		<action name="immunisation_type.version" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_VERSION_DESC" />
-		<action name="immunisation_type.export" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EXPORT" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EXPORT_DESC" />
-		<action name="immunisation_type.import" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_IMPORT" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_IMPORT_DESC" />
-		<action name="immunisation_vaccine_type.access" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_ACCESS" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_ACCESS_DESC" />
-		<action name="immunisation_vaccine_type.batch" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_BATCH_USE" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_BATCH_USE_DESC" />
-		<action name="immunisation_vaccine_type.edit.description" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="immunisation_vaccine_type.edit.name" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME_DESC" />
-		<action name="immunisation_vaccine_type.version" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION_DESC" />
-		<action name="immunisation_vaccine_type.export" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EXPORT" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EXPORT_DESC" />
-		<action name="immunisation_vaccine_type.import" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_IMPORT" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_IMPORT_DESC" />
-		<action name="immunisation_vaccine_type.submenu" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_SUBMENU" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_SUBMENU_DESC" />
-		<action name="immunisation.access" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_ACCESS" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_ACCESS_DESC" />
-		<action name="immunisation.batch" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_BATCH_USE" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_BATCH_USE_DESC" />
-		<action name="immunisation.dashboard_add" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_DASHBOARD_ADD_DESC" />
-		<action name="immunisation.dashboard_list" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_DASHBOARD_LIST_DESC" />
-		<action name="immunisation.edit.patient" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_PATIENT_DESC" />
-		<action name="immunisation.version" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_VERSION_DESC" />
-		<action name="immunisation.export" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_EXPORT" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_EXPORT_DESC" />
-		<action name="immunisation.import" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_IMPORT" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_IMPORT_DESC" />
-		<action name="immunisation.submenu" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_SUBMENU" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_SUBMENU_DESC" />
-		<action name="medication.access" title="COM_EHEALTH_PORTAL_MEDICATIONS_ACCESS" description="COM_EHEALTH_PORTAL_MEDICATIONS_ACCESS_DESC" />
-		<action name="medication.batch" title="COM_EHEALTH_PORTAL_MEDICATIONS_BATCH_USE" description="COM_EHEALTH_PORTAL_MEDICATIONS_BATCH_USE_DESC" />
-		<action name="medication.edit.description" title="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_DESCRIPTION_DESC" />
-		<action name="medication.edit.name" title="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_NAME_DESC" />
-		<action name="medication.version" title="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_VERSION_DESC" />
-		<action name="medication.export" title="COM_EHEALTH_PORTAL_MEDICATIONS_EXPORT" description="COM_EHEALTH_PORTAL_MEDICATIONS_EXPORT_DESC" />
-		<action name="medication.import" title="COM_EHEALTH_PORTAL_MEDICATIONS_IMPORT" description="COM_EHEALTH_PORTAL_MEDICATIONS_IMPORT_DESC" />
-		<action name="medication.submenu" title="COM_EHEALTH_PORTAL_MEDICATIONS_SUBMENU" description="COM_EHEALTH_PORTAL_MEDICATIONS_SUBMENU_DESC" />
-		<action name="nonpay_reason.access" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_ACCESS" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_ACCESS_DESC" />
-		<action name="nonpay_reason.batch" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_BATCH_USE" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_BATCH_USE_DESC" />
-		<action name="nonpay_reason.edit.description" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_DESCRIPTION_DESC" />
-		<action name="nonpay_reason.edit.name" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_NAME_DESC" />
-		<action name="nonpay_reason.version" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_VERSION_DESC" />
-		<action name="nonpay_reason.export" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EXPORT" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EXPORT_DESC" />
-		<action name="nonpay_reason.import" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_IMPORT" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_IMPORT_DESC" />
-		<action name="patient_queue.access" title="COM_EHEALTH_PORTAL_PATIENT_QUEUE_ACCESS" description="COM_EHEALTH_PORTAL_PATIENT_QUEUE_ACCESS_DESC" />
-		<action name="patient_queue.dashboard_list" title="COM_EHEALTH_PORTAL_PATIENT_QUEUE_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_PATIENT_QUEUE_DASHBOARD_LIST_DESC" />
-		<action name="patient_queue.submenu" title="COM_EHEALTH_PORTAL_PATIENT_QUEUE_SUBMENU" description="COM_EHEALTH_PORTAL_PATIENT_QUEUE_SUBMENU_DESC" />
-		<action name="payment_amount.access" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_ACCESS" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_ACCESS_DESC" />
-		<action name="payment_amount.batch" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_BATCH_USE" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_BATCH_USE_DESC" />
-		<action name="payment_amount.edit.description" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_DESCRIPTION_DESC" />
-		<action name="payment_amount.edit.name" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_NAME" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_NAME_DESC" />
-		<action name="payment_amount.version" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_VERSION_DESC" />
-		<action name="payment_amount.export" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EXPORT" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EXPORT_DESC" />
-		<action name="payment_amount.import" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_IMPORT" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_IMPORT_DESC" />
-		<action name="payment_type.access" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_ACCESS" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_ACCESS_DESC" />
-		<action name="payment_type.batch" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_BATCH_USE" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_BATCH_USE_DESC" />
-		<action name="payment_type.edit.description" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="payment_type.edit.name" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_NAME_DESC" />
-		<action name="payment_type.version" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_VERSION_DESC" />
-		<action name="payment_type.export" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EXPORT" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EXPORT_DESC" />
-		<action name="payment_type.import" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_IMPORT" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_IMPORT_DESC" />
-		<action name="payment.access" title="COM_EHEALTH_PORTAL_PAYMENTS_ACCESS" description="COM_EHEALTH_PORTAL_PAYMENTS_ACCESS_DESC" />
-		<action name="payment.batch" title="COM_EHEALTH_PORTAL_PAYMENTS_BATCH_USE" description="COM_EHEALTH_PORTAL_PAYMENTS_BATCH_USE_DESC" />
-		<action name="payment.dashboard_add" title="COM_EHEALTH_PORTAL_PAYMENTS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_PAYMENTS_DASHBOARD_ADD_DESC" />
-		<action name="payment.dashboard_list" title="COM_EHEALTH_PORTAL_PAYMENTS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_PAYMENTS_DASHBOARD_LIST_DESC" />
-		<action name="payment.edit.patient" title="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_PATIENT_DESC" />
-		<action name="payment.version" title="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_VERSION_DESC" />
-		<action name="payment.export" title="COM_EHEALTH_PORTAL_PAYMENTS_EXPORT" description="COM_EHEALTH_PORTAL_PAYMENTS_EXPORT_DESC" />
-		<action name="payment.import" title="COM_EHEALTH_PORTAL_PAYMENTS_IMPORT" description="COM_EHEALTH_PORTAL_PAYMENTS_IMPORT_DESC" />
-		<action name="payment.submenu" title="COM_EHEALTH_PORTAL_PAYMENTS_SUBMENU" description="COM_EHEALTH_PORTAL_PAYMENTS_SUBMENU_DESC" />
-		<action name="planning_type.access" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_ACCESS" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_ACCESS_DESC" />
-		<action name="planning_type.batch" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_BATCH_USE" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_BATCH_USE_DESC" />
-		<action name="planning_type.edit.description" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="planning_type.edit.name" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_NAME_DESC" />
-		<action name="planning_type.version" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_VERSION_DESC" />
-		<action name="planning_type.export" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EXPORT" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EXPORT_DESC" />
-		<action name="planning_type.import" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_IMPORT" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_IMPORT_DESC" />
-		<action name="prostate_and_testicular_cancer.access" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_ACCESS" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_ACCESS_DESC" />
-		<action name="prostate_and_testicular_cancer.batch" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_BATCH_USE" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_BATCH_USE_DESC" />
-		<action name="prostate_and_testicular_cancer.dashboard_add" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_ADD_DESC" />
-		<action name="prostate_and_testicular_cancer.dashboard_list" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_LIST_DESC" />
-		<action name="prostate_and_testicular_cancer.version" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION_DESC" />
-		<action name="prostate_and_testicular_cancer.export" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EXPORT" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EXPORT_DESC" />
-		<action name="prostate_and_testicular_cancer.import" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_IMPORT" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_IMPORT_DESC" />
-		<action name="prostate_and_testicular_cancer.submenu" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_SUBMENU" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_SUBMENU_DESC" />
-		<action name="referral.access" title="COM_EHEALTH_PORTAL_REFERRALS_ACCESS" description="COM_EHEALTH_PORTAL_REFERRALS_ACCESS_DESC" />
-		<action name="referral.batch" title="COM_EHEALTH_PORTAL_REFERRALS_BATCH_USE" description="COM_EHEALTH_PORTAL_REFERRALS_BATCH_USE_DESC" />
-		<action name="referral.edit.description" title="COM_EHEALTH_PORTAL_REFERRALS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_REFERRALS_EDIT_DESCRIPTION_DESC" />
-		<action name="referral.edit.name" title="COM_EHEALTH_PORTAL_REFERRALS_EDIT_NAME" description="COM_EHEALTH_PORTAL_REFERRALS_EDIT_NAME_DESC" />
-		<action name="referral.version" title="COM_EHEALTH_PORTAL_REFERRALS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_REFERRALS_EDIT_VERSION_DESC" />
-		<action name="referral.export" title="COM_EHEALTH_PORTAL_REFERRALS_EXPORT" description="COM_EHEALTH_PORTAL_REFERRALS_EXPORT_DESC" />
-		<action name="referral.import" title="COM_EHEALTH_PORTAL_REFERRALS_IMPORT" description="COM_EHEALTH_PORTAL_REFERRALS_IMPORT_DESC" />
-		<action name="referral.submenu" title="COM_EHEALTH_PORTAL_REFERRALS_SUBMENU" description="COM_EHEALTH_PORTAL_REFERRALS_SUBMENU_DESC" />
-		<action name="site.access" title="COM_EHEALTH_PORTAL_SITES_ACCESS" description="COM_EHEALTH_PORTAL_SITES_ACCESS_DESC" />
-		<action name="site.batch" title="COM_EHEALTH_PORTAL_SITES_BATCH_USE" description="COM_EHEALTH_PORTAL_SITES_BATCH_USE_DESC" />
-		<action name="site.edit.description" title="COM_EHEALTH_PORTAL_SITES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_SITES_EDIT_DESCRIPTION_DESC" />
-		<action name="site.edit.site_name" title="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_NAME" description="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_NAME_DESC" />
-		<action name="site.edit.site_region" title="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_REGION" description="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_REGION_DESC" />
-		<action name="site.version" title="COM_EHEALTH_PORTAL_SITES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_SITES_EDIT_VERSION_DESC" />
-		<action name="site.export" title="COM_EHEALTH_PORTAL_SITES_EXPORT" description="COM_EHEALTH_PORTAL_SITES_EXPORT_DESC" />
-		<action name="site.import" title="COM_EHEALTH_PORTAL_SITES_IMPORT" description="COM_EHEALTH_PORTAL_SITES_IMPORT_DESC" />
-		<action name="strength.access" title="COM_EHEALTH_PORTAL_STRENGTHS_ACCESS" description="COM_EHEALTH_PORTAL_STRENGTHS_ACCESS_DESC" />
-		<action name="strength.batch" title="COM_EHEALTH_PORTAL_STRENGTHS_BATCH_USE" description="COM_EHEALTH_PORTAL_STRENGTHS_BATCH_USE_DESC" />
-		<action name="strength.edit.description" title="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_DESCRIPTION_DESC" />
-		<action name="strength.edit.name" title="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_NAME" description="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_NAME_DESC" />
-		<action name="strength.version" title="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_VERSION_DESC" />
-		<action name="strength.export" title="COM_EHEALTH_PORTAL_STRENGTHS_EXPORT" description="COM_EHEALTH_PORTAL_STRENGTHS_EXPORT_DESC" />
-		<action name="strength.import" title="COM_EHEALTH_PORTAL_STRENGTHS_IMPORT" description="COM_EHEALTH_PORTAL_STRENGTHS_IMPORT_DESC" />
-		<action name="strength.submenu" title="COM_EHEALTH_PORTAL_STRENGTHS_SUBMENU" description="COM_EHEALTH_PORTAL_STRENGTHS_SUBMENU_DESC" />
-		<action name="testing_reason.access" title="COM_EHEALTH_PORTAL_TESTING_REASONS_ACCESS" description="COM_EHEALTH_PORTAL_TESTING_REASONS_ACCESS_DESC" />
-		<action name="testing_reason.batch" title="COM_EHEALTH_PORTAL_TESTING_REASONS_BATCH_USE" description="COM_EHEALTH_PORTAL_TESTING_REASONS_BATCH_USE_DESC" />
-		<action name="testing_reason.edit.description" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_DESCRIPTION_DESC" />
-		<action name="testing_reason.edit.name" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_NAME_DESC" />
-		<action name="testing_reason.version" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_VERSION_DESC" />
-		<action name="testing_reason.export" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EXPORT" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EXPORT_DESC" />
-		<action name="testing_reason.import" title="COM_EHEALTH_PORTAL_TESTING_REASONS_IMPORT" description="COM_EHEALTH_PORTAL_TESTING_REASONS_IMPORT_DESC" />
-		<action name="test.access" title="COM_EHEALTH_PORTAL_TESTS_ACCESS" description="COM_EHEALTH_PORTAL_TESTS_ACCESS_DESC" />
-		<action name="test.batch" title="COM_EHEALTH_PORTAL_TESTS_BATCH_USE" description="COM_EHEALTH_PORTAL_TESTS_BATCH_USE_DESC" />
-		<action name="test.dashboard_add" title="COM_EHEALTH_PORTAL_TESTS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_TESTS_DASHBOARD_ADD_DESC" />
-		<action name="test.dashboard_list" title="COM_EHEALTH_PORTAL_TESTS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_TESTS_DASHBOARD_LIST_DESC" />
-		<action name="test.version" title="COM_EHEALTH_PORTAL_TESTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_TESTS_EDIT_VERSION_DESC" />
-		<action name="test.export" title="COM_EHEALTH_PORTAL_TESTS_EXPORT" description="COM_EHEALTH_PORTAL_TESTS_EXPORT_DESC" />
-		<action name="test.import" title="COM_EHEALTH_PORTAL_TESTS_IMPORT" description="COM_EHEALTH_PORTAL_TESTS_IMPORT_DESC" />
-		<action name="test.submenu" title="COM_EHEALTH_PORTAL_TESTS_SUBMENU" description="COM_EHEALTH_PORTAL_TESTS_SUBMENU_DESC" />
-		<action name="tuberculosis.access" title="COM_EHEALTH_PORTAL_TUBERCULOSES_ACCESS" description="COM_EHEALTH_PORTAL_TUBERCULOSES_ACCESS_DESC" />
-		<action name="tuberculosis.batch" title="COM_EHEALTH_PORTAL_TUBERCULOSES_BATCH_USE" description="COM_EHEALTH_PORTAL_TUBERCULOSES_BATCH_USE_DESC" />
-		<action name="tuberculosis.dashboard_add" title="COM_EHEALTH_PORTAL_TUBERCULOSES_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_TUBERCULOSES_DASHBOARD_ADD_DESC" />
-		<action name="tuberculosis.dashboard_list" title="COM_EHEALTH_PORTAL_TUBERCULOSES_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_TUBERCULOSES_DASHBOARD_LIST_DESC" />
-		<action name="tuberculosis.edit.patient" title="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_PATIENT_DESC" />
-		<action name="tuberculosis.version" title="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_VERSION_DESC" />
-		<action name="tuberculosis.export" title="COM_EHEALTH_PORTAL_TUBERCULOSES_EXPORT" description="COM_EHEALTH_PORTAL_TUBERCULOSES_EXPORT_DESC" />
-		<action name="tuberculosis.import" title="COM_EHEALTH_PORTAL_TUBERCULOSES_IMPORT" description="COM_EHEALTH_PORTAL_TUBERCULOSES_IMPORT_DESC" />
-		<action name="tuberculosis.submenu" title="COM_EHEALTH_PORTAL_TUBERCULOSES_SUBMENU" description="COM_EHEALTH_PORTAL_TUBERCULOSES_SUBMENU_DESC" />
-		<action name="unit.access" title="COM_EHEALTH_PORTAL_UNITS_ACCESS" description="COM_EHEALTH_PORTAL_UNITS_ACCESS_DESC" />
-		<action name="unit.batch" title="COM_EHEALTH_PORTAL_UNITS_BATCH_USE" description="COM_EHEALTH_PORTAL_UNITS_BATCH_USE_DESC" />
-		<action name="unit.edit.description" title="COM_EHEALTH_PORTAL_UNITS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_UNITS_EDIT_DESCRIPTION_DESC" />
-		<action name="unit.edit.name" title="COM_EHEALTH_PORTAL_UNITS_EDIT_NAME" description="COM_EHEALTH_PORTAL_UNITS_EDIT_NAME_DESC" />
-		<action name="unit.version" title="COM_EHEALTH_PORTAL_UNITS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_UNITS_EDIT_VERSION_DESC" />
-		<action name="unit.export" title="COM_EHEALTH_PORTAL_UNITS_EXPORT" description="COM_EHEALTH_PORTAL_UNITS_EXPORT_DESC" />
-		<action name="unit.import" title="COM_EHEALTH_PORTAL_UNITS_IMPORT" description="COM_EHEALTH_PORTAL_UNITS_IMPORT_DESC" />
-		<action name="unit.submenu" title="COM_EHEALTH_PORTAL_UNITS_SUBMENU" description="COM_EHEALTH_PORTAL_UNITS_SUBMENU_DESC" />
-		<action name="vmmc.access" title="COM_EHEALTH_PORTAL_VMMCS_ACCESS" description="COM_EHEALTH_PORTAL_VMMCS_ACCESS_DESC" />
-		<action name="vmmc.batch" title="COM_EHEALTH_PORTAL_VMMCS_BATCH_USE" description="COM_EHEALTH_PORTAL_VMMCS_BATCH_USE_DESC" />
-		<action name="vmmc.dashboard_add" title="COM_EHEALTH_PORTAL_VMMCS_DASHBOARD_ADD" description="COM_EHEALTH_PORTAL_VMMCS_DASHBOARD_ADD_DESC" />
-		<action name="vmmc.dashboard_list" title="COM_EHEALTH_PORTAL_VMMCS_DASHBOARD_LIST" description="COM_EHEALTH_PORTAL_VMMCS_DASHBOARD_LIST_DESC" />
-		<action name="vmmc.version" title="COM_EHEALTH_PORTAL_VMMCS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_VMMCS_EDIT_VERSION_DESC" />
-		<action name="vmmc.export" title="COM_EHEALTH_PORTAL_VMMCS_EXPORT" description="COM_EHEALTH_PORTAL_VMMCS_EXPORT_DESC" />
-		<action name="vmmc.import" title="COM_EHEALTH_PORTAL_VMMCS_IMPORT" description="COM_EHEALTH_PORTAL_VMMCS_IMPORT_DESC" />
-		<action name="vmmc.submenu" title="COM_EHEALTH_PORTAL_VMMCS_SUBMENU" description="COM_EHEALTH_PORTAL_VMMCS_SUBMENU_DESC" />
+		<action name="core.edit.created_by" title="COM_EHEALTHPORTAL_EDIT_CREATED_BY" description="COM_EHEALTHPORTAL_EDIT_CREATED_BY_DESC" />
+		<action name="core.edit.created" title="COM_EHEALTHPORTAL_EDIT_CREATED_DATE" description="COM_EHEALTHPORTAL_EDIT_CREATED_DATE_DESC" />
+		<action name="administration_part.access" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_ACCESS" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_ACCESS_DESC" />
+		<action name="administration_part.batch" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_BATCH_USE" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_BATCH_USE_DESC" />
+		<action name="administration_part.edit.description" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION_DESC" />
+		<action name="administration_part.edit.name" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_NAME" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_NAME_DESC" />
+		<action name="administration_part.version" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_VERSION_DESC" />
+		<action name="administration_part.export" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EXPORT" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EXPORT_DESC" />
+		<action name="administration_part.import" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_IMPORT" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_IMPORT_DESC" />
+		<action name="administration_part.submenu" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_SUBMENU" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_SUBMENU_DESC" />
+		<action name="antenatal_care.access" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_ACCESS" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_ACCESS_DESC" />
+		<action name="antenatal_care.batch" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_BATCH_USE" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_BATCH_USE_DESC" />
+		<action name="antenatal_care.dashboard_add" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_DASHBOARD_ADD_DESC" />
+		<action name="antenatal_care.dashboard_list" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_DASHBOARD_LIST_DESC" />
+		<action name="antenatal_care.version" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_EDIT_VERSION" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_EDIT_VERSION_DESC" />
+		<action name="antenatal_care.export" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_EXPORT" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_EXPORT_DESC" />
+		<action name="antenatal_care.import" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_IMPORT" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_IMPORT_DESC" />
+		<action name="antenatal_care.submenu" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_SUBMENU" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_SUBMENU_DESC" />
+		<action name="breast_cancer.access" title="COM_EHEALTHPORTAL_BREAST_CANCERS_ACCESS" description="COM_EHEALTHPORTAL_BREAST_CANCERS_ACCESS_DESC" />
+		<action name="breast_cancer.batch" title="COM_EHEALTHPORTAL_BREAST_CANCERS_BATCH_USE" description="COM_EHEALTHPORTAL_BREAST_CANCERS_BATCH_USE_DESC" />
+		<action name="breast_cancer.dashboard_add" title="COM_EHEALTHPORTAL_BREAST_CANCERS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_BREAST_CANCERS_DASHBOARD_ADD_DESC" />
+		<action name="breast_cancer.dashboard_list" title="COM_EHEALTHPORTAL_BREAST_CANCERS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_BREAST_CANCERS_DASHBOARD_LIST_DESC" />
+		<action name="breast_cancer.version" title="COM_EHEALTHPORTAL_BREAST_CANCERS_EDIT_VERSION" description="COM_EHEALTHPORTAL_BREAST_CANCERS_EDIT_VERSION_DESC" />
+		<action name="breast_cancer.export" title="COM_EHEALTHPORTAL_BREAST_CANCERS_EXPORT" description="COM_EHEALTHPORTAL_BREAST_CANCERS_EXPORT_DESC" />
+		<action name="breast_cancer.import" title="COM_EHEALTHPORTAL_BREAST_CANCERS_IMPORT" description="COM_EHEALTHPORTAL_BREAST_CANCERS_IMPORT_DESC" />
+		<action name="breast_cancer.submenu" title="COM_EHEALTHPORTAL_BREAST_CANCERS_SUBMENU" description="COM_EHEALTHPORTAL_BREAST_CANCERS_SUBMENU_DESC" />
+		<action name="cervical_cancer.access" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_ACCESS" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_ACCESS_DESC" />
+		<action name="cervical_cancer.batch" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_BATCH_USE" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_BATCH_USE_DESC" />
+		<action name="cervical_cancer.dashboard_add" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_DASHBOARD_ADD_DESC" />
+		<action name="cervical_cancer.dashboard_list" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_DASHBOARD_LIST_DESC" />
+		<action name="cervical_cancer.version" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_EDIT_VERSION" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_EDIT_VERSION_DESC" />
+		<action name="cervical_cancer.export" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_EXPORT" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_EXPORT_DESC" />
+		<action name="cervical_cancer.import" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_IMPORT" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_IMPORT_DESC" />
+		<action name="cervical_cancer.submenu" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_SUBMENU" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_SUBMENU_DESC" />
+		<action name="clinic.access" title="COM_EHEALTHPORTAL_CLINICS_ACCESS" description="COM_EHEALTHPORTAL_CLINICS_ACCESS_DESC" />
+		<action name="clinic.batch" title="COM_EHEALTHPORTAL_CLINICS_BATCH_USE" description="COM_EHEALTHPORTAL_CLINICS_BATCH_USE_DESC" />
+		<action name="clinic.edit.clinic_name" title="COM_EHEALTHPORTAL_CLINICS_EDIT_CLINIC_NAME" description="COM_EHEALTHPORTAL_CLINICS_EDIT_CLINIC_NAME_DESC" />
+		<action name="clinic.edit.description" title="COM_EHEALTHPORTAL_CLINICS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_CLINICS_EDIT_DESCRIPTION_DESC" />
+		<action name="clinic.version" title="COM_EHEALTHPORTAL_CLINICS_EDIT_VERSION" description="COM_EHEALTHPORTAL_CLINICS_EDIT_VERSION_DESC" />
+		<action name="clinic.export" title="COM_EHEALTHPORTAL_CLINICS_EXPORT" description="COM_EHEALTHPORTAL_CLINICS_EXPORT_DESC" />
+		<action name="clinic.import" title="COM_EHEALTHPORTAL_CLINICS_IMPORT" description="COM_EHEALTHPORTAL_CLINICS_IMPORT_DESC" />
+		<action name="counseling_type.access" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_ACCESS" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_ACCESS_DESC" />
+		<action name="counseling_type.batch" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_BATCH_USE" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_BATCH_USE_DESC" />
+		<action name="counseling_type.edit.description" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="counseling_type.edit.name" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_NAME_DESC" />
+		<action name="counseling_type.version" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_VERSION_DESC" />
+		<action name="counseling_type.export" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EXPORT" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EXPORT_DESC" />
+		<action name="counseling_type.import" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_IMPORT" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_IMPORT_DESC" />
+		<action name="diagnosis_type.access" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_ACCESS" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_ACCESS_DESC" />
+		<action name="diagnosis_type.batch" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_BATCH_USE" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_BATCH_USE_DESC" />
+		<action name="diagnosis_type.edit.description" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="diagnosis_type.edit.name" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_NAME_DESC" />
+		<action name="diagnosis_type.version" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_VERSION_DESC" />
+		<action name="diagnosis_type.export" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EXPORT" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EXPORT_DESC" />
+		<action name="diagnosis_type.import" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_IMPORT" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_IMPORT_DESC" />
+		<action name="family_planning.access" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_ACCESS" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_ACCESS_DESC" />
+		<action name="family_planning.batch" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_BATCH_USE" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_BATCH_USE_DESC" />
+		<action name="family_planning.dashboard_add" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_DASHBOARD_ADD_DESC" />
+		<action name="family_planning.dashboard_list" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_DASHBOARD_LIST_DESC" />
+		<action name="family_planning.edit.diagnosis" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS_DESC" />
+		<action name="family_planning.version" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_VERSION" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_VERSION_DESC" />
+		<action name="family_planning.export" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EXPORT" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EXPORT_DESC" />
+		<action name="family_planning.import" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_IMPORT" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_IMPORT_DESC" />
+		<action name="family_planning.submenu" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_SUBMENU" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_SUBMENU_DESC" />
+		<action name="foetal_engagement.access" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_ACCESS" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_ACCESS_DESC" />
+		<action name="foetal_engagement.batch" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_BATCH_USE" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_BATCH_USE_DESC" />
+		<action name="foetal_engagement.edit.description" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION_DESC" />
+		<action name="foetal_engagement.edit.name" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME_DESC" />
+		<action name="foetal_engagement.version" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION_DESC" />
+		<action name="foetal_engagement.export" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EXPORT" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EXPORT_DESC" />
+		<action name="foetal_engagement.import" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_IMPORT" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_IMPORT_DESC" />
+		<action name="foetal_lie.access" title="COM_EHEALTHPORTAL_FOETAL_LIES_ACCESS" description="COM_EHEALTHPORTAL_FOETAL_LIES_ACCESS_DESC" />
+		<action name="foetal_lie.batch" title="COM_EHEALTHPORTAL_FOETAL_LIES_BATCH_USE" description="COM_EHEALTHPORTAL_FOETAL_LIES_BATCH_USE_DESC" />
+		<action name="foetal_lie.edit.description" title="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_DESCRIPTION_DESC" />
+		<action name="foetal_lie.edit.name" title="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_NAME" description="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_NAME_DESC" />
+		<action name="foetal_lie.version" title="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_VERSION" description="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_VERSION_DESC" />
+		<action name="foetal_lie.export" title="COM_EHEALTHPORTAL_FOETAL_LIES_EXPORT" description="COM_EHEALTHPORTAL_FOETAL_LIES_EXPORT_DESC" />
+		<action name="foetal_lie.import" title="COM_EHEALTHPORTAL_FOETAL_LIES_IMPORT" description="COM_EHEALTHPORTAL_FOETAL_LIES_IMPORT_DESC" />
+		<action name="foetal_presentation.access" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_ACCESS" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_ACCESS_DESC" />
+		<action name="foetal_presentation.batch" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_BATCH_USE" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_BATCH_USE_DESC" />
+		<action name="foetal_presentation.edit.description" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION_DESC" />
+		<action name="foetal_presentation.edit.name" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_NAME" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_NAME_DESC" />
+		<action name="foetal_presentation.version" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION_DESC" />
+		<action name="foetal_presentation.export" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EXPORT" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EXPORT_DESC" />
+		<action name="foetal_presentation.import" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_IMPORT" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_IMPORT_DESC" />
+		<action name="general_medical_check_up.access" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_ACCESS" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_ACCESS_DESC" />
+		<action name="general_medical_check_up.batch" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_BATCH_USE" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_BATCH_USE_DESC" />
+		<action name="general_medical_check_up.dashboard_add" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_ADD_DESC" />
+		<action name="general_medical_check_up.dashboard_list" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_DASHBOARD_LIST_DESC" />
+		<action name="general_medical_check_up.edit.patient" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT_DESC" />
+		<action name="general_medical_check_up.version" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION_DESC" />
+		<action name="general_medical_check_up.export" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EXPORT" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EXPORT_DESC" />
+		<action name="general_medical_check_up.import" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_IMPORT" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_IMPORT_DESC" />
+		<action name="general_medical_check_up.submenu" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_SUBMENU" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_SUBMENU_DESC" />
+		<action name="health_education_topic.access" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_ACCESS" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_ACCESS_DESC" />
+		<action name="health_education_topic.batch" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_BATCH_USE" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_BATCH_USE_DESC" />
+		<action name="health_education_topic.edit.description" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION_DESC" />
+		<action name="health_education_topic.edit.name" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME_DESC" />
+		<action name="health_education_topic.version" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION_DESC" />
+		<action name="health_education_topic.export" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EXPORT" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EXPORT_DESC" />
+		<action name="health_education_topic.import" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_IMPORT" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_IMPORT_DESC" />
+		<action name="health_education.access" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_ACCESS" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_ACCESS_DESC" />
+		<action name="health_education.batch" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_BATCH_USE" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_BATCH_USE_DESC" />
+		<action name="health_education.dashboard_add" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_DASHBOARD_ADD_DESC" />
+		<action name="health_education.dashboard_list" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_DASHBOARD_LIST_DESC" />
+		<action name="health_education.edit.health_education_topic" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC_DESC" />
+		<action name="health_education.version" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_VERSION_DESC" />
+		<action name="health_education.export" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EXPORT" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EXPORT_DESC" />
+		<action name="health_education.import" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_IMPORT" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_IMPORT_DESC" />
+		<action name="health_education.submenu" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_SUBMENU" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_SUBMENU_DESC" />
+		<action name="hiv_counseling_and_testing.access" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_ACCESS" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_ACCESS_DESC" />
+		<action name="hiv_counseling_and_testing.batch" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_BATCH_USE" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_BATCH_USE_DESC" />
+		<action name="hiv_counseling_and_testing.dashboard_add" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_ADD_DESC" />
+		<action name="hiv_counseling_and_testing.dashboard_list" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_DASHBOARD_LIST_DESC" />
+		<action name="hiv_counseling_and_testing.version" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION_DESC" />
+		<action name="hiv_counseling_and_testing.export" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_EXPORT" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_EXPORT_DESC" />
+		<action name="hiv_counseling_and_testing.import" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_IMPORT" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_IMPORT_DESC" />
+		<action name="hiv_counseling_and_testing.submenu" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_SUBMENU" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_SUBMENU_DESC" />
+		<action name="immunisation_type.access" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_ACCESS" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_ACCESS_DESC" />
+		<action name="immunisation_type.batch" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_BATCH_USE" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_BATCH_USE_DESC" />
+		<action name="immunisation_type.edit.description" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="immunisation_type.edit.name" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_NAME_DESC" />
+		<action name="immunisation_type.version" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_VERSION_DESC" />
+		<action name="immunisation_type.export" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EXPORT" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EXPORT_DESC" />
+		<action name="immunisation_type.import" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_IMPORT" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_IMPORT_DESC" />
+		<action name="immunisation_type.submenu" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_SUBMENU" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_SUBMENU_DESC" />
+		<action name="immunisation_vaccine_type.access" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_ACCESS" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_ACCESS_DESC" />
+		<action name="immunisation_vaccine_type.batch" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_BATCH_USE" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_BATCH_USE_DESC" />
+		<action name="immunisation_vaccine_type.edit.description" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="immunisation_vaccine_type.edit.name" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME_DESC" />
+		<action name="immunisation_vaccine_type.version" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION_DESC" />
+		<action name="immunisation_vaccine_type.export" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EXPORT" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EXPORT_DESC" />
+		<action name="immunisation_vaccine_type.import" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_IMPORT" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_IMPORT_DESC" />
+		<action name="immunisation_vaccine_type.submenu" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_SUBMENU" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_SUBMENU_DESC" />
+		<action name="immunisation.access" title="COM_EHEALTHPORTAL_IMMUNISATIONS_ACCESS" description="COM_EHEALTHPORTAL_IMMUNISATIONS_ACCESS_DESC" />
+		<action name="immunisation.batch" title="COM_EHEALTHPORTAL_IMMUNISATIONS_BATCH_USE" description="COM_EHEALTHPORTAL_IMMUNISATIONS_BATCH_USE_DESC" />
+		<action name="immunisation.dashboard_add" title="COM_EHEALTHPORTAL_IMMUNISATIONS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_IMMUNISATIONS_DASHBOARD_ADD_DESC" />
+		<action name="immunisation.dashboard_list" title="COM_EHEALTHPORTAL_IMMUNISATIONS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_IMMUNISATIONS_DASHBOARD_LIST_DESC" />
+		<action name="immunisation.edit.patient" title="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_PATIENT" description="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_PATIENT_DESC" />
+		<action name="immunisation.version" title="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_VERSION_DESC" />
+		<action name="immunisation.export" title="COM_EHEALTHPORTAL_IMMUNISATIONS_EXPORT" description="COM_EHEALTHPORTAL_IMMUNISATIONS_EXPORT_DESC" />
+		<action name="immunisation.import" title="COM_EHEALTHPORTAL_IMMUNISATIONS_IMPORT" description="COM_EHEALTHPORTAL_IMMUNISATIONS_IMPORT_DESC" />
+		<action name="immunisation.submenu" title="COM_EHEALTHPORTAL_IMMUNISATIONS_SUBMENU" description="COM_EHEALTHPORTAL_IMMUNISATIONS_SUBMENU_DESC" />
+		<action name="medication.access" title="COM_EHEALTHPORTAL_MEDICATIONS_ACCESS" description="COM_EHEALTHPORTAL_MEDICATIONS_ACCESS_DESC" />
+		<action name="medication.batch" title="COM_EHEALTHPORTAL_MEDICATIONS_BATCH_USE" description="COM_EHEALTHPORTAL_MEDICATIONS_BATCH_USE_DESC" />
+		<action name="medication.edit.description" title="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_DESCRIPTION_DESC" />
+		<action name="medication.edit.name" title="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_NAME" description="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_NAME_DESC" />
+		<action name="medication.version" title="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_VERSION_DESC" />
+		<action name="medication.export" title="COM_EHEALTHPORTAL_MEDICATIONS_EXPORT" description="COM_EHEALTHPORTAL_MEDICATIONS_EXPORT_DESC" />
+		<action name="medication.import" title="COM_EHEALTHPORTAL_MEDICATIONS_IMPORT" description="COM_EHEALTHPORTAL_MEDICATIONS_IMPORT_DESC" />
+		<action name="medication.submenu" title="COM_EHEALTHPORTAL_MEDICATIONS_SUBMENU" description="COM_EHEALTHPORTAL_MEDICATIONS_SUBMENU_DESC" />
+		<action name="nonpay_reason.access" title="COM_EHEALTHPORTAL_NONPAY_REASONS_ACCESS" description="COM_EHEALTHPORTAL_NONPAY_REASONS_ACCESS_DESC" />
+		<action name="nonpay_reason.batch" title="COM_EHEALTHPORTAL_NONPAY_REASONS_BATCH_USE" description="COM_EHEALTHPORTAL_NONPAY_REASONS_BATCH_USE_DESC" />
+		<action name="nonpay_reason.edit.description" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_DESCRIPTION_DESC" />
+		<action name="nonpay_reason.edit.name" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_NAME" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_NAME_DESC" />
+		<action name="nonpay_reason.version" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_VERSION_DESC" />
+		<action name="nonpay_reason.export" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EXPORT" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EXPORT_DESC" />
+		<action name="nonpay_reason.import" title="COM_EHEALTHPORTAL_NONPAY_REASONS_IMPORT" description="COM_EHEALTHPORTAL_NONPAY_REASONS_IMPORT_DESC" />
+		<action name="patient_queue.access" title="COM_EHEALTHPORTAL_PATIENT_QUEUE_ACCESS" description="COM_EHEALTHPORTAL_PATIENT_QUEUE_ACCESS_DESC" />
+		<action name="patient_queue.dashboard_list" title="COM_EHEALTHPORTAL_PATIENT_QUEUE_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_PATIENT_QUEUE_DASHBOARD_LIST_DESC" />
+		<action name="patient_queue.submenu" title="COM_EHEALTHPORTAL_PATIENT_QUEUE_SUBMENU" description="COM_EHEALTHPORTAL_PATIENT_QUEUE_SUBMENU_DESC" />
+		<action name="payment_type.access" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_ACCESS" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_ACCESS_DESC" />
+		<action name="payment_type.batch" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_BATCH_USE" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_BATCH_USE_DESC" />
+		<action name="payment_type.edit.description" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="payment_type.edit.name" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_NAME_DESC" />
+		<action name="payment_type.version" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_VERSION_DESC" />
+		<action name="payment_type.export" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EXPORT" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EXPORT_DESC" />
+		<action name="payment_type.import" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_IMPORT" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_IMPORT_DESC" />
+		<action name="payment.access" title="COM_EHEALTHPORTAL_PAYMENTS_ACCESS" description="COM_EHEALTHPORTAL_PAYMENTS_ACCESS_DESC" />
+		<action name="payment.batch" title="COM_EHEALTHPORTAL_PAYMENTS_BATCH_USE" description="COM_EHEALTHPORTAL_PAYMENTS_BATCH_USE_DESC" />
+		<action name="payment.dashboard_add" title="COM_EHEALTHPORTAL_PAYMENTS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_PAYMENTS_DASHBOARD_ADD_DESC" />
+		<action name="payment.dashboard_list" title="COM_EHEALTHPORTAL_PAYMENTS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_PAYMENTS_DASHBOARD_LIST_DESC" />
+		<action name="payment.edit.patient" title="COM_EHEALTHPORTAL_PAYMENTS_EDIT_PATIENT" description="COM_EHEALTHPORTAL_PAYMENTS_EDIT_PATIENT_DESC" />
+		<action name="payment.version" title="COM_EHEALTHPORTAL_PAYMENTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_PAYMENTS_EDIT_VERSION_DESC" />
+		<action name="payment.export" title="COM_EHEALTHPORTAL_PAYMENTS_EXPORT" description="COM_EHEALTHPORTAL_PAYMENTS_EXPORT_DESC" />
+		<action name="payment.import" title="COM_EHEALTHPORTAL_PAYMENTS_IMPORT" description="COM_EHEALTHPORTAL_PAYMENTS_IMPORT_DESC" />
+		<action name="payment.submenu" title="COM_EHEALTHPORTAL_PAYMENTS_SUBMENU" description="COM_EHEALTHPORTAL_PAYMENTS_SUBMENU_DESC" />
+		<action name="planning_type.access" title="COM_EHEALTHPORTAL_PLANNING_TYPES_ACCESS" description="COM_EHEALTHPORTAL_PLANNING_TYPES_ACCESS_DESC" />
+		<action name="planning_type.batch" title="COM_EHEALTHPORTAL_PLANNING_TYPES_BATCH_USE" description="COM_EHEALTHPORTAL_PLANNING_TYPES_BATCH_USE_DESC" />
+		<action name="planning_type.edit.description" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="planning_type.edit.name" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_NAME_DESC" />
+		<action name="planning_type.version" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_VERSION_DESC" />
+		<action name="planning_type.export" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EXPORT" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EXPORT_DESC" />
+		<action name="planning_type.import" title="COM_EHEALTHPORTAL_PLANNING_TYPES_IMPORT" description="COM_EHEALTHPORTAL_PLANNING_TYPES_IMPORT_DESC" />
+		<action name="prostate_and_testicular_cancer.access" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_ACCESS" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_ACCESS_DESC" />
+		<action name="prostate_and_testicular_cancer.batch" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_BATCH_USE" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_BATCH_USE_DESC" />
+		<action name="prostate_and_testicular_cancer.dashboard_add" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_ADD_DESC" />
+		<action name="prostate_and_testicular_cancer.dashboard_list" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_DASHBOARD_LIST_DESC" />
+		<action name="prostate_and_testicular_cancer.version" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION_DESC" />
+		<action name="prostate_and_testicular_cancer.export" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EXPORT" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EXPORT_DESC" />
+		<action name="prostate_and_testicular_cancer.import" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_IMPORT" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_IMPORT_DESC" />
+		<action name="prostate_and_testicular_cancer.submenu" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_SUBMENU" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_SUBMENU_DESC" />
+		<action name="referral.access" title="COM_EHEALTHPORTAL_REFERRALS_ACCESS" description="COM_EHEALTHPORTAL_REFERRALS_ACCESS_DESC" />
+		<action name="referral.batch" title="COM_EHEALTHPORTAL_REFERRALS_BATCH_USE" description="COM_EHEALTHPORTAL_REFERRALS_BATCH_USE_DESC" />
+		<action name="referral.edit.description" title="COM_EHEALTHPORTAL_REFERRALS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_REFERRALS_EDIT_DESCRIPTION_DESC" />
+		<action name="referral.edit.name" title="COM_EHEALTHPORTAL_REFERRALS_EDIT_NAME" description="COM_EHEALTHPORTAL_REFERRALS_EDIT_NAME_DESC" />
+		<action name="referral.version" title="COM_EHEALTHPORTAL_REFERRALS_EDIT_VERSION" description="COM_EHEALTHPORTAL_REFERRALS_EDIT_VERSION_DESC" />
+		<action name="referral.export" title="COM_EHEALTHPORTAL_REFERRALS_EXPORT" description="COM_EHEALTHPORTAL_REFERRALS_EXPORT_DESC" />
+		<action name="referral.import" title="COM_EHEALTHPORTAL_REFERRALS_IMPORT" description="COM_EHEALTHPORTAL_REFERRALS_IMPORT_DESC" />
+		<action name="referral.submenu" title="COM_EHEALTHPORTAL_REFERRALS_SUBMENU" description="COM_EHEALTHPORTAL_REFERRALS_SUBMENU_DESC" />
+		<action name="site.access" title="COM_EHEALTHPORTAL_SITES_ACCESS" description="COM_EHEALTHPORTAL_SITES_ACCESS_DESC" />
+		<action name="site.batch" title="COM_EHEALTHPORTAL_SITES_BATCH_USE" description="COM_EHEALTHPORTAL_SITES_BATCH_USE_DESC" />
+		<action name="site.edit.description" title="COM_EHEALTHPORTAL_SITES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_SITES_EDIT_DESCRIPTION_DESC" />
+		<action name="site.edit.site_name" title="COM_EHEALTHPORTAL_SITES_EDIT_SITE_NAME" description="COM_EHEALTHPORTAL_SITES_EDIT_SITE_NAME_DESC" />
+		<action name="site.edit.site_region" title="COM_EHEALTHPORTAL_SITES_EDIT_SITE_REGION" description="COM_EHEALTHPORTAL_SITES_EDIT_SITE_REGION_DESC" />
+		<action name="site.version" title="COM_EHEALTHPORTAL_SITES_EDIT_VERSION" description="COM_EHEALTHPORTAL_SITES_EDIT_VERSION_DESC" />
+		<action name="site.export" title="COM_EHEALTHPORTAL_SITES_EXPORT" description="COM_EHEALTHPORTAL_SITES_EXPORT_DESC" />
+		<action name="site.import" title="COM_EHEALTHPORTAL_SITES_IMPORT" description="COM_EHEALTHPORTAL_SITES_IMPORT_DESC" />
+		<action name="strength.access" title="COM_EHEALTHPORTAL_STRENGTHS_ACCESS" description="COM_EHEALTHPORTAL_STRENGTHS_ACCESS_DESC" />
+		<action name="strength.batch" title="COM_EHEALTHPORTAL_STRENGTHS_BATCH_USE" description="COM_EHEALTHPORTAL_STRENGTHS_BATCH_USE_DESC" />
+		<action name="strength.edit.description" title="COM_EHEALTHPORTAL_STRENGTHS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_STRENGTHS_EDIT_DESCRIPTION_DESC" />
+		<action name="strength.edit.name" title="COM_EHEALTHPORTAL_STRENGTHS_EDIT_NAME" description="COM_EHEALTHPORTAL_STRENGTHS_EDIT_NAME_DESC" />
+		<action name="strength.version" title="COM_EHEALTHPORTAL_STRENGTHS_EDIT_VERSION" description="COM_EHEALTHPORTAL_STRENGTHS_EDIT_VERSION_DESC" />
+		<action name="strength.export" title="COM_EHEALTHPORTAL_STRENGTHS_EXPORT" description="COM_EHEALTHPORTAL_STRENGTHS_EXPORT_DESC" />
+		<action name="strength.import" title="COM_EHEALTHPORTAL_STRENGTHS_IMPORT" description="COM_EHEALTHPORTAL_STRENGTHS_IMPORT_DESC" />
+		<action name="strength.submenu" title="COM_EHEALTHPORTAL_STRENGTHS_SUBMENU" description="COM_EHEALTHPORTAL_STRENGTHS_SUBMENU_DESC" />
+		<action name="testing_reason.access" title="COM_EHEALTHPORTAL_TESTING_REASONS_ACCESS" description="COM_EHEALTHPORTAL_TESTING_REASONS_ACCESS_DESC" />
+		<action name="testing_reason.batch" title="COM_EHEALTHPORTAL_TESTING_REASONS_BATCH_USE" description="COM_EHEALTHPORTAL_TESTING_REASONS_BATCH_USE_DESC" />
+		<action name="testing_reason.edit.description" title="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_DESCRIPTION_DESC" />
+		<action name="testing_reason.edit.name" title="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_NAME" description="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_NAME_DESC" />
+		<action name="testing_reason.version" title="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_VERSION_DESC" />
+		<action name="testing_reason.export" title="COM_EHEALTHPORTAL_TESTING_REASONS_EXPORT" description="COM_EHEALTHPORTAL_TESTING_REASONS_EXPORT_DESC" />
+		<action name="testing_reason.import" title="COM_EHEALTHPORTAL_TESTING_REASONS_IMPORT" description="COM_EHEALTHPORTAL_TESTING_REASONS_IMPORT_DESC" />
+		<action name="test.access" title="COM_EHEALTHPORTAL_TESTS_ACCESS" description="COM_EHEALTHPORTAL_TESTS_ACCESS_DESC" />
+		<action name="test.batch" title="COM_EHEALTHPORTAL_TESTS_BATCH_USE" description="COM_EHEALTHPORTAL_TESTS_BATCH_USE_DESC" />
+		<action name="test.dashboard_add" title="COM_EHEALTHPORTAL_TESTS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_TESTS_DASHBOARD_ADD_DESC" />
+		<action name="test.dashboard_list" title="COM_EHEALTHPORTAL_TESTS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_TESTS_DASHBOARD_LIST_DESC" />
+		<action name="test.version" title="COM_EHEALTHPORTAL_TESTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_TESTS_EDIT_VERSION_DESC" />
+		<action name="test.export" title="COM_EHEALTHPORTAL_TESTS_EXPORT" description="COM_EHEALTHPORTAL_TESTS_EXPORT_DESC" />
+		<action name="test.import" title="COM_EHEALTHPORTAL_TESTS_IMPORT" description="COM_EHEALTHPORTAL_TESTS_IMPORT_DESC" />
+		<action name="test.submenu" title="COM_EHEALTHPORTAL_TESTS_SUBMENU" description="COM_EHEALTHPORTAL_TESTS_SUBMENU_DESC" />
+		<action name="tuberculosis.access" title="COM_EHEALTHPORTAL_TUBERCULOSES_ACCESS" description="COM_EHEALTHPORTAL_TUBERCULOSES_ACCESS_DESC" />
+		<action name="tuberculosis.batch" title="COM_EHEALTHPORTAL_TUBERCULOSES_BATCH_USE" description="COM_EHEALTHPORTAL_TUBERCULOSES_BATCH_USE_DESC" />
+		<action name="tuberculosis.dashboard_add" title="COM_EHEALTHPORTAL_TUBERCULOSES_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_TUBERCULOSES_DASHBOARD_ADD_DESC" />
+		<action name="tuberculosis.dashboard_list" title="COM_EHEALTHPORTAL_TUBERCULOSES_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_TUBERCULOSES_DASHBOARD_LIST_DESC" />
+		<action name="tuberculosis.edit.patient" title="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_PATIENT" description="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_PATIENT_DESC" />
+		<action name="tuberculosis.version" title="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_VERSION" description="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_VERSION_DESC" />
+		<action name="tuberculosis.export" title="COM_EHEALTHPORTAL_TUBERCULOSES_EXPORT" description="COM_EHEALTHPORTAL_TUBERCULOSES_EXPORT_DESC" />
+		<action name="tuberculosis.import" title="COM_EHEALTHPORTAL_TUBERCULOSES_IMPORT" description="COM_EHEALTHPORTAL_TUBERCULOSES_IMPORT_DESC" />
+		<action name="tuberculosis.submenu" title="COM_EHEALTHPORTAL_TUBERCULOSES_SUBMENU" description="COM_EHEALTHPORTAL_TUBERCULOSES_SUBMENU_DESC" />
+		<action name="unit.access" title="COM_EHEALTHPORTAL_UNITS_ACCESS" description="COM_EHEALTHPORTAL_UNITS_ACCESS_DESC" />
+		<action name="unit.batch" title="COM_EHEALTHPORTAL_UNITS_BATCH_USE" description="COM_EHEALTHPORTAL_UNITS_BATCH_USE_DESC" />
+		<action name="unit.edit.description" title="COM_EHEALTHPORTAL_UNITS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_UNITS_EDIT_DESCRIPTION_DESC" />
+		<action name="unit.edit.name" title="COM_EHEALTHPORTAL_UNITS_EDIT_NAME" description="COM_EHEALTHPORTAL_UNITS_EDIT_NAME_DESC" />
+		<action name="unit.version" title="COM_EHEALTHPORTAL_UNITS_EDIT_VERSION" description="COM_EHEALTHPORTAL_UNITS_EDIT_VERSION_DESC" />
+		<action name="unit.export" title="COM_EHEALTHPORTAL_UNITS_EXPORT" description="COM_EHEALTHPORTAL_UNITS_EXPORT_DESC" />
+		<action name="unit.import" title="COM_EHEALTHPORTAL_UNITS_IMPORT" description="COM_EHEALTHPORTAL_UNITS_IMPORT_DESC" />
+		<action name="unit.submenu" title="COM_EHEALTHPORTAL_UNITS_SUBMENU" description="COM_EHEALTHPORTAL_UNITS_SUBMENU_DESC" />
+		<action name="vmmc.access" title="COM_EHEALTHPORTAL_VMMCS_ACCESS" description="COM_EHEALTHPORTAL_VMMCS_ACCESS_DESC" />
+		<action name="vmmc.batch" title="COM_EHEALTHPORTAL_VMMCS_BATCH_USE" description="COM_EHEALTHPORTAL_VMMCS_BATCH_USE_DESC" />
+		<action name="vmmc.dashboard_add" title="COM_EHEALTHPORTAL_VMMCS_DASHBOARD_ADD" description="COM_EHEALTHPORTAL_VMMCS_DASHBOARD_ADD_DESC" />
+		<action name="vmmc.dashboard_list" title="COM_EHEALTHPORTAL_VMMCS_DASHBOARD_LIST" description="COM_EHEALTHPORTAL_VMMCS_DASHBOARD_LIST_DESC" />
+		<action name="vmmc.version" title="COM_EHEALTHPORTAL_VMMCS_EDIT_VERSION" description="COM_EHEALTHPORTAL_VMMCS_EDIT_VERSION_DESC" />
+		<action name="vmmc.export" title="COM_EHEALTHPORTAL_VMMCS_EXPORT" description="COM_EHEALTHPORTAL_VMMCS_EXPORT_DESC" />
+		<action name="vmmc.import" title="COM_EHEALTHPORTAL_VMMCS_IMPORT" description="COM_EHEALTHPORTAL_VMMCS_IMPORT_DESC" />
+		<action name="vmmc.submenu" title="COM_EHEALTHPORTAL_VMMCS_SUBMENU" description="COM_EHEALTHPORTAL_VMMCS_SUBMENU_DESC" />
 	</section>
 	<section name="payment">
-		<action name="payment.edit.patient" title="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_PATIENT_DESC" />
-		<action name="payment.version" title="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PAYMENTS_EDIT_VERSION_DESC" />
+		<action name="payment.edit.patient" title="COM_EHEALTHPORTAL_PAYMENTS_EDIT_PATIENT" description="COM_EHEALTHPORTAL_PAYMENTS_EDIT_PATIENT_DESC" />
+		<action name="payment.version" title="COM_EHEALTHPORTAL_PAYMENTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_PAYMENTS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="general_medical_check_up">
-		<action name="general_medical_check_up.edit.patient" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT_DESC" />
-		<action name="general_medical_check_up.version" title="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION_DESC" />
+		<action name="general_medical_check_up.edit.patient" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_PATIENT_DESC" />
+		<action name="general_medical_check_up.version" title="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION" description="COM_EHEALTHPORTAL_GENERAL_MEDICAL_CHECK_UPS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="antenatal_care">
-		<action name="antenatal_care.version" title="COM_EHEALTH_PORTAL_ANTENATAL_CARES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_ANTENATAL_CARES_EDIT_VERSION_DESC" />
+		<action name="antenatal_care.version" title="COM_EHEALTHPORTAL_ANTENATAL_CARES_EDIT_VERSION" description="COM_EHEALTHPORTAL_ANTENATAL_CARES_EDIT_VERSION_DESC" />
 	</section>
 	<section name="immunisation">
-		<action name="immunisation.edit.patient" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_PATIENT_DESC" />
-		<action name="immunisation.version" title="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_IMMUNISATIONS_EDIT_VERSION_DESC" />
+		<action name="immunisation.edit.patient" title="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_PATIENT" description="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_PATIENT_DESC" />
+		<action name="immunisation.version" title="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_IMMUNISATIONS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="vmmc">
-		<action name="vmmc.version" title="COM_EHEALTH_PORTAL_VMMCS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_VMMCS_EDIT_VERSION_DESC" />
+		<action name="vmmc.version" title="COM_EHEALTHPORTAL_VMMCS_EDIT_VERSION" description="COM_EHEALTHPORTAL_VMMCS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="prostate_and_testicular_cancer">
-		<action name="prostate_and_testicular_cancer.version" title="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION_DESC" />
+		<action name="prostate_and_testicular_cancer.version" title="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION" description="COM_EHEALTHPORTAL_PROSTATE_AND_TESTICULAR_CANCERS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="tuberculosis">
-		<action name="tuberculosis.edit.patient" title="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_PATIENT" description="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_PATIENT_DESC" />
-		<action name="tuberculosis.version" title="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_TUBERCULOSES_EDIT_VERSION_DESC" />
+		<action name="tuberculosis.edit.patient" title="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_PATIENT" description="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_PATIENT_DESC" />
+		<action name="tuberculosis.version" title="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_VERSION" description="COM_EHEALTHPORTAL_TUBERCULOSES_EDIT_VERSION_DESC" />
 	</section>
 	<section name="hiv_counseling_and_testing">
-		<action name="hiv_counseling_and_testing.version" title="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION_DESC" />
+		<action name="hiv_counseling_and_testing.version" title="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION" description="COM_EHEALTHPORTAL_HIV_COUNSELINGS_AND_TESTINGS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="family_planning">
-		<action name="family_planning.edit.diagnosis" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS_DESC" />
-		<action name="family_planning.version" title="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FAMILY_PLANNINGS_EDIT_VERSION_DESC" />
+		<action name="family_planning.edit.diagnosis" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_DIAGNOSIS_DESC" />
+		<action name="family_planning.version" title="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_VERSION" description="COM_EHEALTHPORTAL_FAMILY_PLANNINGS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="health_education">
-		<action name="health_education.edit.health_education_topic" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC_DESC" />
-		<action name="health_education.version" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATIONS_EDIT_VERSION_DESC" />
+		<action name="health_education.edit.health_education_topic" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_HEALTH_EDUCATION_TOPIC_DESC" />
+		<action name="health_education.version" title="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_HEALTH_EDUCATIONS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="cervical_cancer">
-		<action name="cervical_cancer.version" title="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_CERVICAL_CANCERS_EDIT_VERSION_DESC" />
+		<action name="cervical_cancer.version" title="COM_EHEALTHPORTAL_CERVICAL_CANCERS_EDIT_VERSION" description="COM_EHEALTHPORTAL_CERVICAL_CANCERS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="breast_cancer">
-		<action name="breast_cancer.version" title="COM_EHEALTH_PORTAL_BREAST_CANCERS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_BREAST_CANCERS_EDIT_VERSION_DESC" />
+		<action name="breast_cancer.version" title="COM_EHEALTHPORTAL_BREAST_CANCERS_EDIT_VERSION" description="COM_EHEALTHPORTAL_BREAST_CANCERS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="test">
-		<action name="test.version" title="COM_EHEALTH_PORTAL_TESTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_TESTS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="immunisation_vaccine_type">
-		<action name="immunisation_vaccine_type.edit.name" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME_DESC" />
-		<action name="immunisation_vaccine_type.edit.description" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="immunisation_vaccine_type.version" title="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION_DESC" />
-	</section>
-	<section name="foetal_presentation">
-		<action name="foetal_presentation.edit.name" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_NAME_DESC" />
-		<action name="foetal_presentation.edit.description" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION_DESC" />
-		<action name="foetal_presentation.version" title="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION_DESC" />
+		<action name="test.version" title="COM_EHEALTHPORTAL_TESTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_TESTS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="foetal_lie">
-		<action name="foetal_lie.edit.name" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_NAME" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_NAME_DESC" />
-		<action name="foetal_lie.edit.description" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_DESCRIPTION_DESC" />
-		<action name="foetal_lie.version" title="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FOETAL_LIES_EDIT_VERSION_DESC" />
+		<action name="foetal_lie.edit.name" title="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_NAME" description="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_NAME_DESC" />
+		<action name="foetal_lie.edit.description" title="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_DESCRIPTION_DESC" />
+		<action name="foetal_lie.version" title="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_VERSION" description="COM_EHEALTHPORTAL_FOETAL_LIES_EDIT_VERSION_DESC" />
 	</section>
-	<section name="counseling_type">
-		<action name="counseling_type.edit.name" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_NAME_DESC" />
-		<action name="counseling_type.edit.description" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="counseling_type.version" title="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_COUNSELING_TYPES_EDIT_VERSION_DESC" />
+	<section name="immunisation_vaccine_type">
+		<action name="immunisation_vaccine_type.edit.name" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_NAME_DESC" />
+		<action name="immunisation_vaccine_type.edit.description" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="immunisation_vaccine_type.version" title="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_IMMUNISATION_VACCINE_TYPES_EDIT_VERSION_DESC" />
 	</section>
 	<section name="foetal_engagement">
-		<action name="foetal_engagement.edit.name" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME_DESC" />
-		<action name="foetal_engagement.edit.description" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION_DESC" />
-		<action name="foetal_engagement.version" title="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION_DESC" />
+		<action name="foetal_engagement.edit.name" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_NAME_DESC" />
+		<action name="foetal_engagement.edit.description" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_DESCRIPTION_DESC" />
+		<action name="foetal_engagement.version" title="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_FOETAL_ENGAGEMENTS_EDIT_VERSION_DESC" />
 	</section>
-	<section name="health_education_topic">
-		<action name="health_education_topic.edit.name" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME_DESC" />
-		<action name="health_education_topic.edit.description" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION_DESC" />
-		<action name="health_education_topic.version" title="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION_DESC" />
+	<section name="foetal_presentation">
+		<action name="foetal_presentation.edit.name" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_NAME" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_NAME_DESC" />
+		<action name="foetal_presentation.edit.description" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_DESCRIPTION_DESC" />
+		<action name="foetal_presentation.version" title="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_FOETAL_PRESENTATIONS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="testing_reason">
-		<action name="testing_reason.edit.name" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_NAME_DESC" />
-		<action name="testing_reason.edit.description" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_DESCRIPTION_DESC" />
-		<action name="testing_reason.version" title="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_TESTING_REASONS_EDIT_VERSION_DESC" />
+		<action name="testing_reason.edit.name" title="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_NAME" description="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_NAME_DESC" />
+		<action name="testing_reason.edit.description" title="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_DESCRIPTION_DESC" />
+		<action name="testing_reason.version" title="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_TESTING_REASONS_EDIT_VERSION_DESC" />
 	</section>
-	<section name="clinic">
-		<action name="clinic.edit.clinic_name" title="COM_EHEALTH_PORTAL_CLINICS_EDIT_CLINIC_NAME" description="COM_EHEALTH_PORTAL_CLINICS_EDIT_CLINIC_NAME_DESC" />
-		<action name="clinic.edit.description" title="COM_EHEALTH_PORTAL_CLINICS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_CLINICS_EDIT_DESCRIPTION_DESC" />
-		<action name="clinic.version" title="COM_EHEALTH_PORTAL_CLINICS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_CLINICS_EDIT_VERSION_DESC" />
+	<section name="counseling_type">
+		<action name="counseling_type.edit.name" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_NAME_DESC" />
+		<action name="counseling_type.edit.description" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="counseling_type.version" title="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_COUNSELING_TYPES_EDIT_VERSION_DESC" />
+	</section>
+	<section name="health_education_topic">
+		<action name="health_education_topic.edit.name" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_NAME_DESC" />
+		<action name="health_education_topic.edit.description" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_DESCRIPTION_DESC" />
+		<action name="health_education_topic.version" title="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION" description="COM_EHEALTHPORTAL_HEALTH_EDUCATION_TOPICS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="immunisation_type">
-		<action name="immunisation_type.edit.name" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_NAME_DESC" />
-		<action name="immunisation_type.edit.description" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="immunisation_type.version" title="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_IMMUNISATION_TYPES_EDIT_VERSION_DESC" />
-	</section>
-	<section name="unit">
-		<action name="unit.edit.name" title="COM_EHEALTH_PORTAL_UNITS_EDIT_NAME" description="COM_EHEALTH_PORTAL_UNITS_EDIT_NAME_DESC" />
-		<action name="unit.edit.description" title="COM_EHEALTH_PORTAL_UNITS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_UNITS_EDIT_DESCRIPTION_DESC" />
-		<action name="unit.version" title="COM_EHEALTH_PORTAL_UNITS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_UNITS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="referral">
-		<action name="referral.edit.name" title="COM_EHEALTH_PORTAL_REFERRALS_EDIT_NAME" description="COM_EHEALTH_PORTAL_REFERRALS_EDIT_NAME_DESC" />
-		<action name="referral.edit.description" title="COM_EHEALTH_PORTAL_REFERRALS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_REFERRALS_EDIT_DESCRIPTION_DESC" />
-		<action name="referral.version" title="COM_EHEALTH_PORTAL_REFERRALS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_REFERRALS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="planning_type">
-		<action name="planning_type.edit.name" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_NAME_DESC" />
-		<action name="planning_type.edit.description" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="planning_type.version" title="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PLANNING_TYPES_EDIT_VERSION_DESC" />
-	</section>
-	<section name="diagnosis_type">
-		<action name="diagnosis_type.edit.name" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_NAME_DESC" />
-		<action name="diagnosis_type.edit.description" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="diagnosis_type.version" title="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_DIAGNOSIS_TYPES_EDIT_VERSION_DESC" />
-	</section>
-	<section name="nonpay_reason">
-		<action name="nonpay_reason.edit.name" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_NAME_DESC" />
-		<action name="nonpay_reason.edit.description" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_DESCRIPTION_DESC" />
-		<action name="nonpay_reason.version" title="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_NONPAY_REASONS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="medication">
-		<action name="medication.edit.name" title="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_NAME" description="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_NAME_DESC" />
-		<action name="medication.edit.description" title="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_DESCRIPTION_DESC" />
-		<action name="medication.version" title="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_MEDICATIONS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="payment_amount">
-		<action name="payment_amount.edit.name" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_NAME" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_NAME_DESC" />
-		<action name="payment_amount.edit.description" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_DESCRIPTION_DESC" />
-		<action name="payment_amount.version" title="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PAYMENT_AMOUNTS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="administration_part">
-		<action name="administration_part.edit.name" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_NAME" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_NAME_DESC" />
-		<action name="administration_part.edit.description" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION_DESC" />
-		<action name="administration_part.version" title="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_ADMINISTRATION_PARTS_EDIT_VERSION_DESC" />
-	</section>
-	<section name="payment_type">
-		<action name="payment_type.edit.name" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_NAME" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_NAME_DESC" />
-		<action name="payment_type.edit.description" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION_DESC" />
-		<action name="payment_type.version" title="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_PAYMENT_TYPES_EDIT_VERSION_DESC" />
+		<action name="immunisation_type.edit.name" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_NAME_DESC" />
+		<action name="immunisation_type.edit.description" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="immunisation_type.version" title="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_IMMUNISATION_TYPES_EDIT_VERSION_DESC" />
 	</section>
 	<section name="strength">
-		<action name="strength.edit.name" title="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_NAME" description="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_NAME_DESC" />
-		<action name="strength.edit.description" title="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_DESCRIPTION_DESC" />
-		<action name="strength.version" title="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_VERSION" description="COM_EHEALTH_PORTAL_STRENGTHS_EDIT_VERSION_DESC" />
+		<action name="strength.edit.name" title="COM_EHEALTHPORTAL_STRENGTHS_EDIT_NAME" description="COM_EHEALTHPORTAL_STRENGTHS_EDIT_NAME_DESC" />
+		<action name="strength.edit.description" title="COM_EHEALTHPORTAL_STRENGTHS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_STRENGTHS_EDIT_DESCRIPTION_DESC" />
+		<action name="strength.version" title="COM_EHEALTHPORTAL_STRENGTHS_EDIT_VERSION" description="COM_EHEALTHPORTAL_STRENGTHS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="referral">
+		<action name="referral.edit.name" title="COM_EHEALTHPORTAL_REFERRALS_EDIT_NAME" description="COM_EHEALTHPORTAL_REFERRALS_EDIT_NAME_DESC" />
+		<action name="referral.edit.description" title="COM_EHEALTHPORTAL_REFERRALS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_REFERRALS_EDIT_DESCRIPTION_DESC" />
+		<action name="referral.version" title="COM_EHEALTHPORTAL_REFERRALS_EDIT_VERSION" description="COM_EHEALTHPORTAL_REFERRALS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="planning_type">
+		<action name="planning_type.edit.name" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_NAME_DESC" />
+		<action name="planning_type.edit.description" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="planning_type.version" title="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_PLANNING_TYPES_EDIT_VERSION_DESC" />
+	</section>
+	<section name="diagnosis_type">
+		<action name="diagnosis_type.edit.name" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_NAME_DESC" />
+		<action name="diagnosis_type.edit.description" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="diagnosis_type.version" title="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_DIAGNOSIS_TYPES_EDIT_VERSION_DESC" />
+	</section>
+	<section name="nonpay_reason">
+		<action name="nonpay_reason.edit.name" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_NAME" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_NAME_DESC" />
+		<action name="nonpay_reason.edit.description" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_DESCRIPTION_DESC" />
+		<action name="nonpay_reason.version" title="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_NONPAY_REASONS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="medication">
+		<action name="medication.edit.name" title="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_NAME" description="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_NAME_DESC" />
+		<action name="medication.edit.description" title="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_DESCRIPTION_DESC" />
+		<action name="medication.version" title="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_VERSION" description="COM_EHEALTHPORTAL_MEDICATIONS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="payment_type">
+		<action name="payment_type.edit.name" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_NAME" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_NAME_DESC" />
+		<action name="payment_type.edit.description" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_DESCRIPTION_DESC" />
+		<action name="payment_type.version" title="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_VERSION" description="COM_EHEALTHPORTAL_PAYMENT_TYPES_EDIT_VERSION_DESC" />
+	</section>
+	<section name="administration_part">
+		<action name="administration_part.edit.name" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_NAME" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_NAME_DESC" />
+		<action name="administration_part.edit.description" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_DESCRIPTION_DESC" />
+		<action name="administration_part.version" title="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_VERSION" description="COM_EHEALTHPORTAL_ADMINISTRATION_PARTS_EDIT_VERSION_DESC" />
 	</section>
 	<section name="site">
-		<action name="site.edit.site_name" title="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_NAME" description="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_NAME_DESC" />
-		<action name="site.edit.description" title="COM_EHEALTH_PORTAL_SITES_EDIT_DESCRIPTION" description="COM_EHEALTH_PORTAL_SITES_EDIT_DESCRIPTION_DESC" />
-		<action name="site.edit.site_region" title="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_REGION" description="COM_EHEALTH_PORTAL_SITES_EDIT_SITE_REGION_DESC" />
-		<action name="site.version" title="COM_EHEALTH_PORTAL_SITES_EDIT_VERSION" description="COM_EHEALTH_PORTAL_SITES_EDIT_VERSION_DESC" />
+		<action name="site.edit.site_name" title="COM_EHEALTHPORTAL_SITES_EDIT_SITE_NAME" description="COM_EHEALTHPORTAL_SITES_EDIT_SITE_NAME_DESC" />
+		<action name="site.edit.description" title="COM_EHEALTHPORTAL_SITES_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_SITES_EDIT_DESCRIPTION_DESC" />
+		<action name="site.edit.site_region" title="COM_EHEALTHPORTAL_SITES_EDIT_SITE_REGION" description="COM_EHEALTHPORTAL_SITES_EDIT_SITE_REGION_DESC" />
+		<action name="site.version" title="COM_EHEALTHPORTAL_SITES_EDIT_VERSION" description="COM_EHEALTHPORTAL_SITES_EDIT_VERSION_DESC" />
+	</section>
+	<section name="unit">
+		<action name="unit.edit.name" title="COM_EHEALTHPORTAL_UNITS_EDIT_NAME" description="COM_EHEALTHPORTAL_UNITS_EDIT_NAME_DESC" />
+		<action name="unit.edit.description" title="COM_EHEALTHPORTAL_UNITS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_UNITS_EDIT_DESCRIPTION_DESC" />
+		<action name="unit.version" title="COM_EHEALTHPORTAL_UNITS_EDIT_VERSION" description="COM_EHEALTHPORTAL_UNITS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="clinic">
+		<action name="clinic.edit.clinic_name" title="COM_EHEALTHPORTAL_CLINICS_EDIT_CLINIC_NAME" description="COM_EHEALTHPORTAL_CLINICS_EDIT_CLINIC_NAME_DESC" />
+		<action name="clinic.edit.description" title="COM_EHEALTHPORTAL_CLINICS_EDIT_DESCRIPTION" description="COM_EHEALTHPORTAL_CLINICS_EDIT_DESCRIPTION_DESC" />
+		<action name="clinic.version" title="COM_EHEALTHPORTAL_CLINICS_EDIT_VERSION" description="COM_EHEALTHPORTAL_CLINICS_EDIT_VERSION_DESC" />
 	</section>
 </access>

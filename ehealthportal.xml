@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="4.0" method="upgrade">
+	<name>COM_EHEALTHPORTAL</name>
+	<creationDate>19th January, 2024</creationDate>
+	<author>Llewellyn van der Merwe</author>
+	<authorEmail>joomla@vdm.io</authorEmail>
+	<authorUrl>https://git.vdm.dev/joomla/eHealth-Portal</authorUrl>
+	<copyright>Copyright (C) 2020 Vast Development Method. All rights reserved.</copyright>
+	<license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<version>4.0.0</version>
+	<description><![CDATA[
+		<h1>eHealth Portal (v.4.0.0)</h1>
+		<div style="clear: both;"></div>
+		<p>eHealth Portal is a secure web-based viewer that offers health care providers that may not have access to one of the provincial clinical viewers, a single point of access to their patients' digital health information.</p>
+		<p>Created by <a href="https://git.vdm.dev/joomla/eHealth-Portal" target="_blank">Llewellyn van der Merwe</a><br /><small>Development started 13th August, 2020</small></p>
+	]]></description>
+	<namespace path="src">JCB\Component\Ehealthportal</namespace>
+
+	<!-- Runs on install -->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<!-- Runs on uninstall -->
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
+	<!-- Runs on install/uninstall/update -->
+	<scriptfile>EhealthportalInstallerScript.php</scriptfile>
+
+	<media destination="com_ehealthportal" folder="media">
+		<filename>index.html</filename>
+		<folder>js</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+	</media>
+
+	<!-- Update Schema -->
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql/</schemapath>
+		</schemas>
+	</update>
+
+	
+
+	
+
+	<administration>
+		<menu>COM_EHEALTHPORTAL_MENU</menu>
+		<submenu>
+			<!-- Instead of link you can specify individual link attributes -->
+			<menu option="com_ehealthportal" view="ehealthportal">COM_EHEALTHPORTAL_MENU_DASHBOARD</menu>
+			<menu option="com_ehealthportal" view="payments">COM_EHEALTHPORTAL_MENU_PAYMENTS</menu>
+			<menu option="com_ehealthportal" view="general_medical_check_ups">COM_EHEALTHPORTAL_MENU_GENERAL_MEDICAL_CHECK_UPS</menu>
+			<menu option="com_ehealthportal" view="antenatal_cares">COM_EHEALTHPORTAL_MENU_ANTENATAL_CARES</menu>
+			<menu option="com_ehealthportal" view="immunisations">COM_EHEALTHPORTAL_MENU_IMMUNISATIONS</menu>
+			<menu option="com_ehealthportal" view="vmmcs">COM_EHEALTHPORTAL_MENU_VMMCS</menu>
+			<menu option="com_ehealthportal" view="prostate_and_testicular_cancers">COM_EHEALTHPORTAL_MENU_PROSTATE_AND_TESTICULAR_CANCERS</menu>
+			<menu option="com_ehealthportal" view="tuberculoses">COM_EHEALTHPORTAL_MENU_TUBERCULOSES</menu>
+			<menu option="com_ehealthportal" view="hiv_counselings_and_testings">COM_EHEALTHPORTAL_MENU_HIV_COUNSELINGS_AND_TESTINGS</menu>
+			<menu option="com_ehealthportal" view="family_plannings">COM_EHEALTHPORTAL_MENU_FAMILY_PLANNINGS</menu>
+			<menu option="com_ehealthportal" view="health_educations">COM_EHEALTHPORTAL_MENU_HEALTH_EDUCATIONS</menu>
+			<menu option="com_ehealthportal" view="cervical_cancers">COM_EHEALTHPORTAL_MENU_CERVICAL_CANCERS</menu>
+			<menu option="com_ehealthportal" view="breast_cancers">COM_EHEALTHPORTAL_MENU_BREAST_CANCERS</menu>
+			<menu option="com_ehealthportal" view="tests">COM_EHEALTHPORTAL_MENU_TESTS</menu>
+			<menu option="com_ehealthportal" view="patient_queue">COM_EHEALTHPORTAL_MENU_PATIENT_QUEUE</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+			<filename>README.txt</filename>
+			<folder>assets</folder>
+			<folder>forms</folder>
+			<folder>layouts</folder>
+			<folder>presets</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_ehealthportal.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_ehealthportal.sys.ini</language>
+		</languages>
+
+	</administration>
+	<updateservers>
+		<server type="extension" enabled="1" element="com_ehealthportal" name="eHealth Portal">https://raw.githubusercontent.com/Namibia/eHealth-Portal/master/ehealth_portal_update_server.xml</server>
+	</updateservers>
+</extension>

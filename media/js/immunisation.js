@@ -9,12 +9,12 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		1.0.5
-	@build			24th April, 2021
+	@version		4.0.0
+	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
 	@subpackage		immunisation.js
-	@author			Oh Martin <https://github.com/namibia/eHealth-Portal>
+	@author			Llewellyn van der Merwe <https://git.vdm.dev/joomla/eHealth-Portal>
 	@copyright		Copyright (C) 2020 Vast Development Method. All rights reserved.
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,7 +50,7 @@ jQuery(document).ready(function($)
 });
 
 function getImmunisationVaccineTypeServer(administration_part){
-	var getUrl = JRouter("index.php?option=com_ehealth_portal&task=ajax.getImmunisationVaccineType&raw=true&format=json");
+	var getUrl = JRouter("index.php?option=com_ehealthportal&task=ajax.getImmunisationVaccineType&raw=true&format=json");
 	if(token.length > 0 && administration_part > 0){
 		var request = 'token='+token+'&administration_part='+administration_part;
 	}
@@ -94,4 +94,4 @@ function setImmunisationVaccineType(array){
 		jQuery('#jform_immunisation_vaccine_type').append('<option value="">'+create_an_immunisation_vaccine_type+'</option>');
 	}
 	jQuery('#jform_immunisation_vaccine_type').trigger('liszt:updated');
-} 
+}
