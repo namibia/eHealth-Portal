@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addruleprefix="JCB\Component\Ehealthportal\Administrator\Rule"
-	addfieldprefix="JCB\Component\Ehealthportal\Administrator\Field"
+	addruleprefix="VDM\Component\Ehealthportal\Administrator\Rule"
+	addfieldprefix="VDM\Component\Ehealthportal\Administrator\Field"
 >
 	<fieldset name="details">
 		<!-- Default Fields. -->

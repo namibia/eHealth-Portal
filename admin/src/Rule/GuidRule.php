@@ -10,7 +10,7 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		4.0.0
+	@version		4.0.x
 	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
@@ -22,7 +22,7 @@
 	Portal for mobile health clinics
 
 /-----------------------------------------------------------------------------------------------------------------------------*/
-namespace JCB\Component\Ehealthportal\Administrator\Rule;
+namespace VDM\Component\Ehealthportal\Administrator\Rule;
 
 // No direct access to this file
 \defined('JPATH_PLATFORM') or die;
@@ -34,7 +34,7 @@ use Joomla\CMS\Form\FormRule;
 use Joomla\Registry\Registry;
 use Joomla\CMS\HTML\HTMLHelper as Html;
 use Joomla\CMS\Component\ComponentHelper;
-use JCB\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
+use VDM\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
 
 /**
  * Form Rule (Guid) class for the Joomla Platform.

@@ -10,7 +10,7 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		4.0.0
+	@version		4.0.x
 	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
@@ -22,7 +22,7 @@
 	Portal for mobile health clinics
 
 /-----------------------------------------------------------------------------------------------------------------------------*/
-namespace JCB\Component\Ehealthportal\Administrator\Controller;
+namespace VDM\Component\Ehealthportal\Administrator\Controller;
 
 // No direct access to this file
 \defined('_JEXEC') or die;
@@ -40,7 +40,7 @@ use Joomla\Utilities\ArrayHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
-use JCB\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
+use VDM\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
 
 /**
  * Diagnosis_type Form Controller

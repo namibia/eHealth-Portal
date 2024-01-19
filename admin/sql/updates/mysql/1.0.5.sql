@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS `#__ehealth_portal_user_map` (
-	`guid` VARCHAR(36) NOT NULL DEFAULT '',
-	`id` int(11) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`guid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;

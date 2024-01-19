@@ -10,7 +10,7 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		4.0.0
+	@version		4.0.x
 	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
@@ -80,13 +80,13 @@ use Joomla\CMS\Extension\Service\Provider\MVCFactory;
 use Joomla\CMS\Extension\Service\Provider\RouterFactory;
 use Joomla\CMS\HTML\Registry;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
-use JCB\Component\Ehealthportal\Administrator\Extension\EhealthportalComponent;
-// (soon) use JCB\Component\Ehealthportal\Administrator\Helper\AssociationsHelper;
+use VDM\Component\Ehealthportal\Administrator\Extension\EhealthportalComponent;
+// (soon) use VDM\Component\Ehealthportal\Administrator\Helper\AssociationsHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
 /**
- * The JCB Ehealthportal service provider.
+ * The VDM Ehealthportal service provider.
  *
  * @since  4.0.0
  */
@@ -105,10 +105,10 @@ return new class () implements ServiceProviderInterface
 	{
 		// (soon) $container->set(AssociationExtensionInterface::class, new AssociationsHelper());
 
-		$container->registerServiceProvider(new CategoryFactory('\\JCB\\Component\\Ehealthportal'));
-		$container->registerServiceProvider(new MVCFactory('\\JCB\\Component\\Ehealthportal'));
-		$container->registerServiceProvider(new ComponentDispatcherFactory('\\JCB\\Component\\Ehealthportal'));
-		$container->registerServiceProvider(new RouterFactory('\\JCB\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new CategoryFactory('\\VDM\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new MVCFactory('\\VDM\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\VDM\\Component\\Ehealthportal'));
+		$container->registerServiceProvider(new RouterFactory('\\VDM\\Component\\Ehealthportal'));
 
 		$container->set(
 			ComponentInterface::class,

@@ -10,7 +10,7 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		4.0.0
+	@version		4.0.x
 	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
@@ -22,7 +22,7 @@
 	Portal for mobile health clinics
 
 /-----------------------------------------------------------------------------------------------------------------------------*/
-namespace JCB\Component\Ehealthportal\Administrator\Extension;
+namespace VDM\Component\Ehealthportal\Administrator\Extension;
 
 // No direct access to this file
 \defined('_JEXEC') or die;
@@ -43,7 +43,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Tag\TagServiceInterface;
 use Joomla\CMS\Tag\TagServiceTrait;
 use Joomla\CMS\User\UserFactoryInterface;
-// (soon) use JCB\Component\Ehealthportal\Administrator\Service\HTML\AdministratorService;
+// (soon) use VDM\Component\Ehealthportal\Administrator\Service\HTML\AdministratorService;
 use Psr\Container\ContainerInterface;
 
 /**

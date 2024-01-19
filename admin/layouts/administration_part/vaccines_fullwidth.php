@@ -10,7 +10,7 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		4.0.0
+	@version		4.0.x
 	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
@@ -29,7 +29,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper as Html;
-use JCB\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
+use VDM\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
 use VDM\Joomla\Utilities\StringHelper;
 
 // set the defaults

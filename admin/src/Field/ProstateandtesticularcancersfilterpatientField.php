@@ -10,7 +10,7 @@
                                                         |_|
 /-------------------------------------------------------------------------------------------------------------------------------/
 
-	@version		4.0.0
+	@version		4.0.x
 	@build			19th January, 2024
 	@created		13th August, 2020
 	@package		eHealth Portal
@@ -22,7 +22,7 @@
 	Portal for mobile health clinics
 
 /-----------------------------------------------------------------------------------------------------------------------------*/
-namespace JCB\Component\Ehealthportal\Administrator\Field;
+namespace VDM\Component\Ehealthportal\Administrator\Field;
 
 // No direct access to this file
 \defined('_JEXEC') or die;
@@ -32,7 +32,7 @@ use Joomla\CMS\Form\Field\ListField;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper as Html;
 use Joomla\CMS\Component\ComponentHelper;
-use JCB\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
+use VDM\Component\Ehealthportal\Administrator\Helper\EhealthportalHelper;
 
 /**
  * Prostateandtesticularcancersfilterpatient Form Field class for the Ehealthportal component
