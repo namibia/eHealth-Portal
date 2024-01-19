@@ -12,7 +12,7 @@
 		<h1>eHealth Portal (v.3.0.0)</h1>
 		<div style="clear: both;"></div>
 		<p>eHealth Portal is a secure web-based viewer that offers health care providers that may not have access to one of the provincial clinical viewers, a single point of access to their patients' digital health information.</p>
-		<p>Created by <a href="https://git.vdm.dev/joomla/eHealth-Portal" target="_blank">Llewellyn van der Merwe</a><br /><small>Development started 19th January, 2024</small></p>
+		<p>Created by <a href="https://git.vdm.dev/joomla/eHealth-Portal" target="_blank">Llewellyn van der Merwe</a><br /><small>Development started 13th August, 2020</small></p>
 	]]></description>
 
 	<!-- Runs on install; New in Joomla 1.5 -->
@@ -93,6 +93,6 @@
 
 	</administration>
 	<updateservers>
-		<server type="extension" enabled="1" element="com_ehealthportal" name="eHealth Portal">https://raw.githubusercontent.com/Namibia/eHealth-Portal/master/ehealth_portal_update_server.xml</server>
+		<server type="extension" enabled="1" element="com_ehealthportal" name="eHealth Portal">https://git.vdm.dev/joomla/eHealth-Portal/raw/branch/3.10/ehealth_portal_update_server.xml</server>
 	</updateservers>
 </extension>
